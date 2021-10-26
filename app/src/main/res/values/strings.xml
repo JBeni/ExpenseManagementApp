@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Expense Management App</string>
+
+    <string name="name">Name</string>
+    <string name="edit_name">Enter your Name</string>
+
+    <string name="phone">Phone</string>
+    <string name="edit_phone">Enter your Phone Number</string>
+
+    <string name="email">Email</string>
+    <string name="edit_email">Enter your Email Address</string>
+
+    <string name="work_status_dropdown">Work Status Dropdown</string>
+    <string-array name="workStatusDropdown">
+        <item>Employed</item>
+        <item>Unemployed</item>
+        <item>Student</item>
+    </string-array>
+
+    <string name="work_status_radio_group">Work Status Radio Group</string>
+    <string name="radio_option_employed">Employed</string>
+    <string name="radio_option_unemployed">Unemployed</string>
+    <string name="radio_option_student">Student</string>
+
+    <string name="select_date">Select a Date</string>
+
+    <string name="terms_and_conditions">Do you agree to the terms and conditions?</string>
+    <string name="save_button">SAVE</string>
+
+    <string name="next_command_prompt">Next</string>
+    <string name="exit_command_label">Exit</string>
+    <string name="list_view_command">View List</string>
+
+</resources>
+
