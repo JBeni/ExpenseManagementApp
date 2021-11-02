@@ -1,4 +1,4 @@
-package com.example.expensemanagementapp;
+package com.example.AndroidResourcesgementapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

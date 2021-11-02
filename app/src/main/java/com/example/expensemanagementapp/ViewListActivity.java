@@ -1,4 +1,4 @@
-package com.example.expensemanagementapp;
+package com.example.AndroidResourcesgementapp;
 
 import android.app.ListActivity;
 import android.os.Bundle;
