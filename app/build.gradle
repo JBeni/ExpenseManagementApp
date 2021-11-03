@@ -6,7 +6,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.expensemanagementapp"
+        applicationId "com.example.app"
         minSdk 30
         targetSdk 31
         versionCode 1
@@ -16,6 +16,9 @@ android {
     }
 
     buildTypes {
+        customDebugType {
+            debuggable true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

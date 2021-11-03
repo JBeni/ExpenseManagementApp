@@ -3,26 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable/button_press.xml" value="0.2875" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/activity_details.xml" value="0.35260416666666666" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/content_main.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_first.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_home_item.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_notifications.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_second.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/recycler_view_trips.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/text_row_trip.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu_main.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/activity_main.xml" value="0.291213768115942" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.26902173913043476" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_home.xml" value="0.291213768115942" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/single_item.xml" value="0.21979166666666666" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/single_row_design.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/view_item.xml" value="0.20244565217391305" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/view_page.xml" value="0.20244565217391305" />
       </map>
     </option>
   </component>
@@ -31,5 +18,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.291213768115942" />
+      </ProjectState>
+    </option>
   </component>
 </project>
