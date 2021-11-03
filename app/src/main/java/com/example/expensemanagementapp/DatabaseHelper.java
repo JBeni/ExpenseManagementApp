@@ -62,7 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "   %s TEXT, " +
                         "   %s TEXT, " +
                         "   %s TEXT, " +
-                        "   %s TEXT, " +
+                        "   %s INTEGER, " +
                         "   FOREIGN KEY(trip_id) REFERENCE Trips(id))",
                 EXPENSE_TABLE_NAME, EXPENSE_ID_COLUMN, EXPENSE_TYPE_COLUMN,
                 EXPENSE_AMOUNT_COLUMN, EXPENSE_TIME_COLUMN, EXPENSE_COMMENTS_COLUMN, EXPENSE_TRIP_ID_COLUMN);

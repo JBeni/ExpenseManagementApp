@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable/button_press.xml" value="0.2875" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.22135416666666666" />
@@ -13,6 +14,7 @@
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_first.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_home_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_notifications.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_second.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/recycler_view_trips.xml" value="0.20520833333333333" />
