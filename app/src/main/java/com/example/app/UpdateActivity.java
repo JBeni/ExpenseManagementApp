@@ -14,10 +14,10 @@ import android.widget.Toast;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    EditText title_input, author_input;
+    EditText title_input, author_input, pages_input;
     Button update_button, delete_button;
 
-    String id, title, author;
+    String id, title, author, pages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         title_input = findViewById(R.id.title_input2);
         author_input = findViewById(R.id.author_input2);
+        // pages_input = findViewById(R.id.pages_input2);
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
 
@@ -45,7 +46,8 @@ public class UpdateActivity extends AppCompatActivity {
                 DatabaseSqlite myDB = new DatabaseSqlite(UpdateActivity.this);
                 title = title_input.getText().toString().trim();
                 author = author_input.getText().toString().trim();
-                myDB.updateData(id, title, author);
+                pages = "3";
+                myDB.updateData(id, title, author, pages);
             }
         });
         delete_button.setOnClickListener(new View.OnClickListener() {
@@ -64,10 +66,12 @@ public class UpdateActivity extends AppCompatActivity {
             id = getIntent().getStringExtra("id");
             title = getIntent().getStringExtra("title");
             author = getIntent().getStringExtra("author");
+            // pages = getIntent().getStringExtra("pages");
 
             //Setting Intent Data
             title_input.setText(title);
             author_input.setText(author);
+            //pages_input.setText(pages);
             Log.d("stev", title+" "+author);
         }else{
             Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show();
@@ -94,4 +98,5 @@ public class UpdateActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
+
 }

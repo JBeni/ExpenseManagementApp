@@ -20,14 +20,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
     RecyclerView recyclerView;
     FloatingActionButton add_button;
-    FloatingActionButton view_button;
     ImageView empty_imageview;
     TextView no_data;
 
     DatabaseSqlite myDB;
-    ArrayList<String> book_id, book_title, book_author;
+    ArrayList<String> book_id, book_title, book_author, book_pages;
     CustomAdapter customAdapter;
 
     @Override
@@ -47,22 +47,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        view_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ViewActivity.class);
-                startActivity(intent);
-            }
-        });
-
         myDB = new DatabaseSqlite(MainActivity.this);
         book_id = new ArrayList<>();
         book_title = new ArrayList<>();
         book_author = new ArrayList<>();
+        book_pages = new ArrayList<>();
 
         storeDataInArrays();
 
-        customAdapter = new CustomAdapter(MainActivity.this,this, book_id, book_title, book_author);
+        customAdapter = new CustomAdapter(MainActivity.this,this, book_id, book_title, book_author,
+                book_pages);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
@@ -86,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 book_id.add(cursor.getString(0));
                 book_title.add(cursor.getString(1));
                 book_author.add(cursor.getString(2));
+                // book_pages.add(cursor.getString(3));
             }
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);

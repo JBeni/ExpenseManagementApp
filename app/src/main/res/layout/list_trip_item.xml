@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="match_parent"
+        android:layout_width="295dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp">
 
@@ -49,31 +49,34 @@
                 android:text="Author1"
                 app:layout_constraintStart_toStartOf="@+id/book_title_txt"
                 app:layout_constraintTop_toBottomOf="@+id/book_title_txt" />
-<!--
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/edit_trip_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:layout_margin="16dp"
-                android:contentDescription="@string/edit_trip_button"
-                android:src="@android:drawable/ic_menu_edit"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="260dp"
-                tools:layout_editor_absoluteY="4dp" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/delete_trip_button"
-                android:layout_width="55dp"
-                android:layout_height="57dp"
-                android:layout_gravity="end|bottom"
-                android:layout_margin="16dp"
-                android:contentDescription="@string/delete_trip_button"
-                android:src="@android:drawable/ic_menu_delete"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="328dp"
-                tools:layout_editor_absoluteY="4dp" />
--->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edit_trip_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="-67dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginRight="228dp"
+        android:contentDescription="@string/edit_trip_button"
+        android:src="@android:drawable/ic_menu_edit"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/delete_trip_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="-50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="228dp"
+        android:contentDescription="@string/delete_trip_button"
+        android:src="@android:drawable/ic_menu_delete"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </LinearLayout>
