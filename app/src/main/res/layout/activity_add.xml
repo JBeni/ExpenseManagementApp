@@ -8,39 +8,136 @@
     android:padding="30dp">
 
     <EditText
-        android:id="@+id/title_input"
+        android:id="@+id/name_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="Book Title"
+        android:hint="@string/name_column_hint"
+        android:minHeight="48dp"
+        android:textColor="#546E7A"
         android:inputType="textPersonName"
+        android:autofillHints="@string/name_column_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/author_input"
+        android:id="@+id/destination_column"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autofillHints="@string/name_column_value_hint"
+        android:ems="10"
+        android:hint="@string/destination_column_hint"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="#546BBA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_column" />
+
+    <EditText
+        android:id="@+id/date_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Book Author"
-        android:inputType="textPersonName"
+        android:hint="@string/date_column_hint"
+        android:minHeight="48dp"
+        android:textColor="#546E7A"
+        android:inputType="date"
+        android:autofillHints="@string/name_column_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_input" />
+        app:layout_constraintTop_toBottomOf="@+id/destination_column" />
+
+    <EditText
+        android:id="@+id/risk_assessment_column"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/risk_assessment_column_hint"
+        android:minHeight="48dp"
+        android:textColor="#546E7A"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/name_column_value_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_column"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/description_column"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/description_column_hint"
+        android:minHeight="48dp"
+        android:textColor="#546E7A"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/name_column_value_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/risk_assessment_column" />
+
+    <EditText
+        android:id="@+id/duration_column"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/duration_column_hint"
+        android:minHeight="48dp"
+        android:textColor="#546E7A"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/name_column_value_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_column" />
+
+    <EditText
+        android:id="@+id/aim_column"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/aim_column_hint"
+        android:minHeight="48dp"
+        android:textColor="#546E7A"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/name_column_value_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/duration_column" />
+
+    <EditText
+        android:id="@+id/status_column"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:minHeight="48dp"
+        android:textColor="#546E7A"
+        android:hint="@string/status_column_hint"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/name_column_value_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aim_column" />
 
     <Button
-        android:id="@+id/add_button"
+        android:id="@+id/save_trip_db_button"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="40dp"
-        android:text="Add"
+        android:text="@string/save_trip_db_button_text"
         android:textSize="20sp"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/author_input" />
+        app:layout_constraintTop_toBottomOf="@+id/status_column" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

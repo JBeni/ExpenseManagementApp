@@ -11,6 +11,8 @@
 
     // AddEdit Trip Fragment
     <string name="name_column_hint">Enter name of trip</string>
+    <string name="name_column_value_hint">conference</string>
+
     <string name="destination_column_hint">Enter destination of trip</string>
     <string name="date_column_hint">Enter date of trip</string>
     <string name="risk_assessment_column_hint">Risk Assessment: Yes or No</string>
@@ -19,8 +21,7 @@
     <string name="aim_column_hint">Enter aim of trip</string>
     <string name="status_column_hint">Enter status of trip</string>
 
-    <string name="go_back_trip_button">Go Back</string>
-    <string name="save_trip_button">Save</string>
+    <string name="save_trip_db_button_text">Add trip</string>
 
 
 </resources>
