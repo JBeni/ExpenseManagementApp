@@ -1,6 +1,28 @@
 <resources>
     <string name="app_name">ExpenseManagementApp</string>
+
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="add_trip_button">Add Trip</string>
+    <string name="edit_trip_button">Edit Trip</string>
+    <string name="delete_trip_button">Delete Trip</string>
+
+    // AddEdit Trip Fragment
+    <string name="name_column_hint">Enter name of trip</string>
+    <string name="destination_column_hint">Enter destination of trip</string>
+    <string name="date_column_hint">Enter date of trip</string>
+    <string name="risk_assessment_column_hint">Risk Assessment: Yes or No</string>
+    <string name="description_column_hint">Enter description of trip</string>
+    <string name="duration_column_hint">Enter duration of trip</string>
+    <string name="aim_column_hint">Enter aim of trip</string>
+    <string name="status_column_hint">Enter status of trip</string>
+
+    <string name="go_back_trip_button">Go Back</string>
+    <string name="save_trip_button">Save</string>
+
+
+
+
 </resources>
