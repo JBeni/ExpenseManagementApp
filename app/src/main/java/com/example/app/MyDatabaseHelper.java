@@ -9,14 +9,10 @@ import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase database;
     Context context;
-    List<Contacts> contactsList = new ArrayList<>();
 
     private static final String DATABASE_NAME = "ExpenseManagement.db";
     private static final int DATABASE_VERSION = 1;
@@ -175,6 +171,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    /*
     public List<Contacts> getContacts() {
         String query =" SELECT * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -196,4 +193,5 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
         return contactsList;
     }
+    */
 }
