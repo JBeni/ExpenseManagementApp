@@ -1,7 +1,6 @@
 package com.example.app;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,7 +12,6 @@ public class AddActivity extends AppCompatActivity {
 
     EditText name, destination, date, risk_assessment, description, duration, aim, status;
     Button save_button;
-
     private boolean allConditionChecked = true;
 
     @Override
@@ -21,14 +19,14 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        name = findViewById(R.id.name_column);
-        destination = findViewById(R.id.destination_column);
-        date = findViewById(R.id.date_column);
-        risk_assessment = findViewById(R.id.risk_assessment_column);
-        description = findViewById(R.id.description_column);
-        duration = findViewById(R.id.duration_column);
-        aim = findViewById(R.id.aim_column);
-        status = findViewById(R.id.status_column);
+        name = findViewById(R.id.name_trip_column);
+        destination = findViewById(R.id.destination_trip_column);
+        date = findViewById(R.id.date_trip_column);
+        risk_assessment = findViewById(R.id.risk_assessment_trip_column);
+        description = findViewById(R.id.description_trip_column);
+        duration = findViewById(R.id.duration_trip_column);
+        aim = findViewById(R.id.aim_trip_column);
+        status = findViewById(R.id.status_trip_column);
 
         checkEditTextErrors(name);
         checkEditTextErrors(destination);
