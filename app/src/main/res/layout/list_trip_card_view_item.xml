@@ -38,7 +38,7 @@
             android:src="@drawable/ic_dots" />
 
         <TextView
-            android:id="@+id/book_title_id"
+            android:id="@+id/trip_name_card_view"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="150dp"

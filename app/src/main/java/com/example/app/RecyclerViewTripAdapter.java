@@ -3,10 +3,8 @@ package com.example.app;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,18 +46,15 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         return new TripViewHolder(view);
     }
 
-    // @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull final TripViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        holder.trip_name_txt.setText(String.valueOf(trips.get(position).getId()));
+        String beniamin = trips.get(position).getName();
+        holder.trip_name_txt.setText(trips.get(position).getName().toString());
 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ViewActivity.class);
-                //intent.putExtra("id", String.valueOf(trips.get(position).getId()));
-
-                // intent.putExtra("pages", String.valueOf(book_pages.get(position)));
                 activity.startActivityForResult(intent, 1);
             }
         });
@@ -126,17 +119,10 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.edit_trip_card_button:
-                        //String RemoveCategory=mDataSet.get(position).getCategory();
-                        // mDataSet.remove(position);
-                        //notifyItemRemoved(position);
-                        // notifyItemRangeChanged(position,mDataSet.size());
-                        //mySharedPreferences.saveStringPrefs(Constants.REMOVE_CTAGURY,RemoveCategory,MainActivity.context);
                         Toast.makeText(view.getContext(), "Add to favourite", Toast.LENGTH_LONG).show();
                         return true;
                     case R.id.delete_trip_card_button:
                         //mDataSet.remove(position);
-                        //notifyItemRemoved(position);
-                        //notifyItemRangeChanged(position,mDataSet.size());
                         Toast.makeText(view.getContext(), "Done for now", Toast.LENGTH_LONG).show();
                         return true;
                     default:
@@ -148,7 +134,8 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount() { return getTripListSize(); }
+    public int getTripListSize() {
         return trips.size();
     }
 
@@ -159,7 +146,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
 
         TripViewHolder(@NonNull View itemView) {
             super(itemView);
-            trip_name_txt = itemView.findViewById(R.id.book_title_id);
+            trip_name_txt = itemView.findViewById(R.id.trip_name_card_view);
             mainLayout = itemView.findViewById(R.id.main_content_cardView);
             trip_menu_options = itemView.findViewById(R.id.trip_card_options);
 
