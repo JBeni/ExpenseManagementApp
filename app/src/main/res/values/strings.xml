@@ -10,30 +10,28 @@
     <string name="delete_trip_button">Delete Trip</string>
 
     // AddEdit Trip Fragment
-    <string name="name_column_hint">Enter name of trip</string>
-    <string name="name_column_value_hint">conference</string>
+    <string name="name_trip_value_hint">value</string>
 
-    <string name="destination_column_hint">Enter destination of trip</string>
-    <string name="date_column_hint">Enter date of trip</string>
-    <string name="risk_assessment_column_hint">Risk Assessment: Yes or No</string>
-    <string name="description_column_hint">Enter description of trip</string>
-    <string name="duration_column_hint">Enter duration of trip</string>
-    <string name="aim_column_hint">Enter aim of trip</string>
-    <string name="status_column_hint">Enter status of trip</string>
-
+    <string name="name_trip_hint">Name, e.g: meeting, conference</string>
+    <string name="destination_trip_hint">Destination, e.g: London</string>
+    <string name="date_trip_hint">Date, e.g: day/month/year 24/12/1990</string>
+    <string name="risk_assessment_trip_hint">Risk Assessment: Yes or No</string>
+    <string name="description_trip_hint">Description, e.g: Meeting to speak about the details of the next construction phase</string>
+    <string name="duration_trip_hint">Duration, e.g: 10 days, 1 hour</string>
+    <string name="aim_trip_hint">Aim, e.g: set the budget</string>
+    <string name="status_trip_hint">Status, e.g: Started, OnGoing, Finished</string>
     <string name="save_trip_db_button_text">Add trip</string>
 
+    // Expense Activity Resources
+    <string name="type_expense_hint">Name, e.g: travel, food, other</string>
+    <string name="amount_expense_hint">Name, e.g: 100 dolars</string>
+    <string name="time_expense_hint">Name, e.g: 25/10/2021 10:21 GMT+3</string>
+    <string name="additional_comments_expense_hint">Name, e.g: meeting, conference</string>
+    <string name="save_expense_db_button_text">Add Expense</string>
 
 
-    // useless
-    <string name="cardview_contents">This is a CardView widget. CardView widgets can have
-        shadows and rounded corners.
-        \n\nTo create a card with a shadow, use the <font fgcolor="#FFFFFFFF">android:elevation</font>
-        attribute.
-        \n\nTo set the corner radius in your layouts, use the <font
-            fgcolor="#FFFFFFFF">card_view:cardCornerRadius</font> attribute.
-    </string>
-    <string name="cardview_radius_seekbar_text">Radius</string>
-    <string name="cardview_elevation_seekbar_text">Elevation</string>
+    //
+
+
 
 </resources>
