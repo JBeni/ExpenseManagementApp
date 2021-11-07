@@ -5,11 +5,11 @@
     android:layout_height="wrap_content">
 
     <item
-        android:id="@+id/option1"
+        android:id="@+id/edit_trip_card_button"
         android:title="Edit"/>
 
     <item
-        android:id="@+id/option2"
+        android:id="@+id/delete_trip_card_button"
         android:title="Delete"/>
 
 </menu>
