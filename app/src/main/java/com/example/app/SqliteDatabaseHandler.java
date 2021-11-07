@@ -50,6 +50,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
 
     public SqliteDatabaseHandler(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
         this.database = getWritableDatabase();
     }
 
@@ -110,9 +111,9 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
 
         long result = db.insert(TRIP_TABLE_NAME, null, rowValues);
         if (result == -1) {
-            Toast.makeText(context, "Insert operation has failed!", Toast.LENGTH_LONG).show();
+            Toast.makeText(context.getApplicationContext(), "Insert operation has failed!", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(context, "Insert operation was successful!", Toast.LENGTH_LONG).show();
+            Toast.makeText(context.getApplicationContext(), "Insert operation was successful!", Toast.LENGTH_LONG).show();
         }
     }
 
