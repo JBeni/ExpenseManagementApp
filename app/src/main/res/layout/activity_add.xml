@@ -8,125 +8,125 @@
     android:padding="30dp">
 
     <EditText
-        android:id="@+id/name_column"
+        android:id="@+id/name_trip_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="@string/name_column_hint"
+        android:hint="@string/name_trip_hint"
         android:minHeight="48dp"
         android:textColor="#546E7A"
         android:inputType="textPersonName"
-        android:autofillHints="@string/name_column_value_hint"
+        android:autofillHints="@string/name_trip_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/destination_column"
+        android:id="@+id/destination_trip_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:autofillHints="@string/name_column_value_hint"
+        android:autofillHints="@string/name_trip_value_hint"
         android:ems="10"
-        android:hint="@string/destination_column_hint"
+        android:hint="@string/destination_trip_hint"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="#546BBA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_column" />
+        app:layout_constraintTop_toBottomOf="@+id/name_trip_column" />
 
     <EditText
-        android:id="@+id/date_column"
+        android:id="@+id/date_trip_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/date_column_hint"
+        android:hint="@string/date_trip_hint"
         android:minHeight="48dp"
         android:textColor="#546E7A"
         android:inputType="date"
-        android:autofillHints="@string/name_column_value_hint"
+        android:autofillHints="@string/name_trip_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/destination_column" />
+        app:layout_constraintTop_toBottomOf="@+id/destination_trip_column" />
 
     <EditText
-        android:id="@+id/risk_assessment_column"
+        android:id="@+id/risk_assessment_trip_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/risk_assessment_column_hint"
+        android:hint="@string/risk_assessment_trip_hint"
         android:minHeight="48dp"
         android:textColor="#546E7A"
         android:inputType="textPersonName"
-        android:autofillHints="@string/name_column_value_hint"
+        android:autofillHints="@string/name_trip_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_column"
+        app:layout_constraintTop_toBottomOf="@+id/date_trip_column"
         tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/description_column"
+        android:id="@+id/description_trip_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/description_column_hint"
+        android:hint="@string/description_trip_hint"
         android:minHeight="48dp"
         android:textColor="#546E7A"
         android:inputType="textPersonName"
-        android:autofillHints="@string/name_column_value_hint"
+        android:autofillHints="@string/name_trip_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/risk_assessment_column" />
+        app:layout_constraintTop_toBottomOf="@+id/risk_assessment_trip_column" />
 
     <EditText
-        android:id="@+id/duration_column"
+        android:id="@+id/duration_trip_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/duration_column_hint"
+        android:hint="@string/duration_trip_hint"
         android:minHeight="48dp"
         android:textColor="#546E7A"
         android:inputType="textPersonName"
-        android:autofillHints="@string/name_column_value_hint"
+        android:autofillHints="@string/name_trip_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_column" />
+        app:layout_constraintTop_toBottomOf="@+id/description_trip_column" />
 
     <EditText
-        android:id="@+id/aim_column"
+        android:id="@+id/aim_trip_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/aim_column_hint"
+        android:hint="@string/aim_trip_hint"
         android:minHeight="48dp"
         android:textColor="#546E7A"
         android:inputType="textPersonName"
-        android:autofillHints="@string/name_column_value_hint"
+        android:autofillHints="@string/name_trip_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/duration_column" />
+        app:layout_constraintTop_toBottomOf="@+id/duration_trip_column" />
 
     <EditText
-        android:id="@+id/status_column"
+        android:id="@+id/status_trip_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:minHeight="48dp"
         android:textColor="#546E7A"
-        android:hint="@string/status_column_hint"
+        android:hint="@string/status_trip_hint"
         android:inputType="textPersonName"
-        android:autofillHints="@string/name_column_value_hint"
+        android:autofillHints="@string/name_trip_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aim_column" />
+        app:layout_constraintTop_toBottomOf="@+id/aim_trip_column" />
 
     <Button
         android:id="@+id/save_trip_db_button"
@@ -138,6 +138,6 @@
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status_column" />
+        app:layout_constraintTop_toBottomOf="@+id/status_trip_column" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
