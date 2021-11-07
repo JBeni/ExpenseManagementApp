@@ -8,11 +8,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     DatabaseSqlite myDB;
     ArrayList<String> book_id, book_title, book_author, book_pages;
     CustomAdapter customAdapter;
+
+    ImageButton mImageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +66,25 @@ public class MainActivity extends AppCompatActivity {
 
         customAdapter = new CustomAdapter(MainActivity.this,this, book_id, book_title, book_author, book_pages);
         recyclerView.setAdapter(customAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 3));
 
+    }
+
+    public void showOptions(View view) {
+        PopupMenu popup = new PopupMenu(MainActivity.this, view);
+        popup.getMenuInflater().inflate(R.menu.trip_menu, popup.getMenu());
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                CardView cView = (CardView) ((ViewGroup) view.getParent()).getParent();
+                int position = recyclerView.getChildAdapterPosition(cView);
+                Toast.makeText(getApplicationContext(),
+                        item.toString()+" clicked at position"+position,
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+        popup.show();
     }
 
     @Override

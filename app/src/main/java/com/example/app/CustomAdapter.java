@@ -7,15 +7,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +33,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private Context context;
     private Activity activity;
     private ArrayList book_id, book_title, book_author, book_pages;
+
+    ImageButton mImageButton;
 
     CustomAdapter(Activity activity, Context context, ArrayList book_id, ArrayList book_title, ArrayList book_author,
                   ArrayList book_pages){
@@ -43,13 +50,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.list_trip_item, parent, false);
+        View view = inflater.inflate(R.layout.cardveiw_item_book, parent, false);
         return new MyViewHolder(view);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+        /*
         holder.book_id_txt.setText(String.valueOf(book_id.get(position)));
         holder.book_title_txt.setText(String.valueOf(book_title.get(position)));
         holder.book_author_txt.setText(String.valueOf(book_author.get(position)));
@@ -59,11 +67,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ViewActivity.class);
-/*
+
                 intent.putExtra("id", String.valueOf(book_id.get(position)));
                 intent.putExtra("title", String.valueOf(book_title.get(position)));
                 intent.putExtra("author", String.valueOf(book_author.get(position)));
- */
+
                 // intent.putExtra("pages", String.valueOf(book_pages.get(position)));
                 activity.startActivityForResult(intent, 1);
             }
@@ -94,9 +102,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-   //                     DatabaseSqlite myDB = new DatabaseSqlite(UpdateActivity.this);
- //                       myDB.deleteOneRow(id);
-//                        finish();
+                        DatabaseSqlite myDB = new DatabaseSqlite(UpdateActivity.this);
+                        myDB.deleteOneRow(id);
+                        finish();
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -110,6 +118,33 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             }
         });
 
+*/
+
+        holder.trip_menu_options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupMenu(holder.trip_menu_options);
+            }
+        });
+    }
+
+    public void showPopupMenu(View view) {
+        PopupMenu popup = new PopupMenu(view.getContext(), view);
+        popup.getMenuInflater().inflate(R.menu.trip_menu, popup.getMenu());
+        /*
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                CardView cView = (CardView) ((ViewGroup) view.getParent()).getParent();
+                int position = recyclerView.getChildAdapterPosition(cView);
+                Toast.makeText(getApplicationContext(),
+                        item.toString()+" clicked at position"+position,
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+        */
+        popup.show();
     }
 
     @Override
@@ -125,19 +160,24 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         FloatingActionButton edit_button;
         FloatingActionButton delete_button;
 
+        ImageButton trip_menu_options;
+
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            book_id_txt = itemView.findViewById(R.id.book_id_txt);
-            book_title_txt = itemView.findViewById(R.id.book_title_txt);
-            book_author_txt = itemView.findViewById(R.id.book_author_txt);
+            //book_id_txt = itemView.findViewById(R.id.book_id_txt);
+            //book_title_txt = itemView.findViewById(R.id.book_title_txt);
+            //book_author_txt = itemView.findViewById(R.id.book_author_txt);
             // book_pages_txt = itemView.findViewById(R.id.book_pages_txt);
-            mainLayout = itemView.findViewById(R.id.cardView);
-            edit_button = itemView.findViewById(R.id.edit_trip_button);
-            delete_button = itemView.findViewById(R.id.delete_trip_button);
+
+            //mainLayout = itemView.findViewById(R.id.cardView);
+            //edit_button = itemView.findViewById(R.id.edit_trip_button);
+            //delete_button = itemView.findViewById(R.id.delete_trip_button);
+
+            trip_menu_options = itemView.findViewById(R.id.options);
 
             //Animate Recyclerview
-            Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
-            mainLayout.setAnimation(translate_anim);
+            //Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
+            //mainLayout.setAnimation(translate_anim);
         }
     }
 

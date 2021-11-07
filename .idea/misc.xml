@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/drawable/ic_add.xml" value="0.2359375" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/activity_add.xml" value="0.21979166666666666" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/activity_book.xml" value="0.34782608695652173" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/activity_main.xml" value="0.291213768115942" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/activity_update.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/activity_view.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/add_edit_trip_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/cardveiw_item_book.xml" value="0.25" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.26902173913043476" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/fragment_home.xml" value="0.291213768115942" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/list_expense_item.xml" value="0.3641304347826087" />
@@ -22,6 +24,7 @@
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu_dashboard.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu_home.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/my_menu.xml" value="0.21979166666666666" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/trip_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2359375" />
       </map>
     </option>
