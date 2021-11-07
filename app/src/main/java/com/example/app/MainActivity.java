@@ -2,42 +2,33 @@ package com.example.app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
 
     RecyclerView recyclerView;
     FloatingActionButton add_button;
     ImageView empty_imageview;
     TextView no_data;
 
-    DatabaseSqlite myDB;
-    ArrayList<String> book_id, book_title, book_author, book_pages;
-    CustomAdapter customAdapter;
-
-    ImageButton mImageButton;
+    SqliteDatabaseHandler databaseHandler;
+    List<Trip> trips;
+    RecyclerViewTripAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,57 +47,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        myDB = new DatabaseSqlite(MainActivity.this);
-        book_id = new ArrayList<>();
-        book_title = new ArrayList<>();
-        book_author = new ArrayList<>();
-        book_pages = new ArrayList<>();
+        databaseHandler = new SqliteDatabaseHandler(MainActivity.this);
+        trips = new ArrayList<Trip>();
 
         storeDataInArrays();
 
-        customAdapter = new CustomAdapter(MainActivity.this,this, book_id, book_title, book_author, book_pages);
+        customAdapter = new RecyclerViewTripAdapter(MainActivity.this,this, trips);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 3));
-
-    }
-
-    public void showOptions(View view) {
-        PopupMenu popup = new PopupMenu(MainActivity.this, view);
-        popup.getMenuInflater().inflate(R.menu.trip_menu, popup.getMenu());
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                CardView cView = (CardView) ((ViewGroup) view.getParent()).getParent();
-                int position = recyclerView.getChildAdapterPosition(cView);
-                Toast.makeText(getApplicationContext(),
-                        item.toString()+" clicked at position"+position,
-                        Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
-        popup.show();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1){
+        if (requestCode == 1) {
             recreate();
         }
     }
 
     void storeDataInArrays() {
-        Cursor cursor = myDB.readAllData();
-        if(cursor.getCount() == 0){
+        trips = databaseHandler.getAllTrips();
+        if (trips.size() == 0){
             empty_imageview.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
         } else {
-            while (cursor.moveToNext()) {
-                book_id.add(cursor.getString(0));
-                book_title.add(cursor.getString(1));
-                book_author.add(cursor.getString(2));
-                // book_pages.add(cursor.getString(3));
-            }
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
         }
@@ -121,10 +85,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.delete_all){
-            confirmDialog();
+        switch (item.getItemId()) {
+            case R.id.delete_all:
+                confirmDialog();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     void confirmDialog(){
@@ -134,8 +101,9 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                DatabaseSqlite myDB = new DatabaseSqlite(MainActivity.this);
-                myDB.deleteAllData();
+                SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(MainActivity.this);
+                databaseHandler.deleteAllTrips();
+
                 //Refresh Activity
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -145,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
             }
         });
         builder.create().show();
