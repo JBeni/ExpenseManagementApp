@@ -43,11 +43,11 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //And only then we call this
-                DatabaseSqlite myDB = new DatabaseSqlite(UpdateActivity.this);
+                SqliteDatabaseHandler myDB = new SqliteDatabaseHandler(UpdateActivity.this);
                 title = title_input.getText().toString().trim();
                 author = author_input.getText().toString().trim();
                 pages = "3";
-                myDB.updateData(id, title, author, pages);
+                //myDB.updateData(id, title, author, pages);
             }
         });
         delete_button.setOnClickListener(new View.OnClickListener() {
@@ -85,8 +85,8 @@ public class UpdateActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                DatabaseSqlite myDB = new DatabaseSqlite(UpdateActivity.this);
-                myDB.deleteOneRow(id);
+                SqliteDatabaseHandler myDB = new SqliteDatabaseHandler(UpdateActivity.this);
+                //myDB.deleteOneRow(id);
                 finish();
             }
         });
