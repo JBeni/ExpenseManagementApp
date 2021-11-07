@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -74,8 +72,14 @@ public class AddActivity extends AppCompatActivity {
                 isEditTextEmpty(status);
 
                 if (allConditionChecked) {
-                    DatabaseSqlite myDB = new DatabaseSqlite(AddActivity.this);
-                    myDB.addBook(name.getText().toString().trim(), destination.getText().toString().trim(), Integer.valueOf(3));
+                    SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(AddActivity.this);
+                    String beniamin = name.getText().toString().trim();
+
+                    databaseHandler.insertTrip(
+                        name.getText().toString().trim(), destination.getText().toString().trim(), date.getText().toString().trim(),
+                        risk_assessment.getText().toString().trim(), description.getText().toString().trim(),
+                        duration.getText().toString().trim(), aim.getText().toString().trim(), status.getText().toString().trim()
+                    );
                 } else {
                     allConditionChecked = true;
                 }
