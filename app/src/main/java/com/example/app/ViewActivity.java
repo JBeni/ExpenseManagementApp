@@ -1,6 +1,8 @@
 package com.example.app;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,7 @@ public class ViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
+/*
         update_button = findViewById(R.id.edit_expense_button);
         delete_button = findViewById(R.id.delete_expense_button);
 
@@ -23,7 +26,7 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //And only then we call this
-                //DatabaseSqlite myDB = new DatabaseSqlite(UpdateActivity.this);
+                //SqliteDatabaseHandler myDB = new SqliteDatabaseHandler(UpdateActivity.this);
                 //title = title_input.getText().toString().trim();
                 //author = author_input.getText().toString().trim();
                 //pages = "3";
@@ -36,5 +39,7 @@ public class ViewActivity extends AppCompatActivity {
                 //confirmDialog();
             }
         });
+*/
     }
+
 }

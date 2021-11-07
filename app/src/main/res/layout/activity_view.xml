@@ -15,27 +15,22 @@
         tools:layout_editor_absoluteY="120dp"
         tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:id="@+id/textAView"
+        android:layout_width="176dp"
+        android:layout_height="94dp"
+        android:text="TextView"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="219dp"
+        tools:layout_editor_absoluteY="261dp" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="253dp"
-        tools:srcCompat="@tools:sample/avatars"
-        tools:ignore="MissingConstraints" />
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="409dp"
-        android:layout_height="348dp"
-        android:fillViewport="true"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="382dp"
-        tools:ignore="MissingConstraints">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </androidx.core.widget.NestedScrollView>
+        android:layout_height="200dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="404dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
