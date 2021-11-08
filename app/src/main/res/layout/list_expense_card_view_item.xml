@@ -33,16 +33,15 @@
                 android:layout_height="30dp"
                 android:background="#bbade6"
                 android:layout_alignParentEnd="true"
-                android:onClick="showExpenseOptions"
                 android:src="@drawable/ic_dots" />
 
             <TextView
-                android:id="@+id/expense_name_card_view"
+                android:id="@+id/expense_type_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="150dp"
                 android:gravity="center"
-                android:text="Expense Name"
+                android:text="Expense Type"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp" />
 
