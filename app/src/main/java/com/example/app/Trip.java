@@ -3,14 +3,14 @@ package com.example.app;
 public class Trip {
 
     private long id;
-    private String name;
-    private String destination;
-    private String date;
-    private String risk_assessment;
-    private String description;
-    private String duration;
-    private String aim;
-    private String status;
+    private String name; // required field
+    private String destination; // required field
+    private String date; // required field
+    private String risk_assessment; // required field
+    private String description; // optional field
+    private String duration; // required field
+    private String aim; // optional field
+    private String status; // required field
 
     public Trip(
             long id, String name, String destination, String date, String risk_assessment,
