@@ -13,47 +13,37 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
-
-/**
- *
- * Code taken https://github.com/stevdza-san/SQLite_Android-Complete_Tutorial
- *
- **/
 
 public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerViewExpenseAdapter.ExpenseViewHolder> {
 
     private Context context;
     private Activity activity;
-    private List<Trip> trips;
+    private List<Expense> expenses;
 
-    RecyclerViewExpenseAdapter(Activity activity, Context context, List<Trip> trips) {
+    RecyclerViewExpenseAdapter(Activity activity, Context context, List<Expense> expenses) {
         this.activity = activity;
         this.context = context;
-        this.trips = trips;
+        this.expenses = expenses;
     }
 
     @NonNull
     @Override
     public ExpenseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.list_trip_card_view_item, parent, false);
+        View view = inflater.inflate(R.layout.list_expense_card_view_item, parent, false);
         return new ExpenseViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ExpenseViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        String beniamin = trips.get(position).getName();
-        holder.trip_name_txt.setText(trips.get(position).getName().toString());
+        holder.expense_type_txt.setText(expenses.get(position).getType().toString());
 
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+        holder.expense_main_grid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ViewTripExpensesActivity.class);
@@ -61,51 +51,13 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
             }
         });
 
-/*
-        holder.edit_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateTripActivity.class);
-                intent.putExtra("id", String.valueOf(trips.get(position).getId()));
-
-                activity.startActivityForResult(intent, 1);
-            }
-        });
-
-        holder.delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateTripActivity.class);
-                activity.startActivityForResult(intent, 1);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                builder.setTitle("Delete ?");
-                builder.setMessage("Are you sure you want to delete ?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //SqliteDatabaseHandler myDB = new SqliteDatabaseHandler(UpdateTripActivity.this);
-                        //myDB.deleteOneRow(id);
-                        //finish();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                });
-                builder.create().show();
-            }
-        });
-*/
-
         /**
          * https://stackoverflow.com/questions/34641240/toolbar-inside-cardview-to-create-a-popup-menu-overflow-icon
          */
-        holder.trip_menu_options.setOnClickListener(new View.OnClickListener() {
+        holder.expense_menu_options.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopupMenu(holder.trip_menu_options);
+                showPopupMenu(holder.expense_menu_options);
             }
         });
     }
@@ -136,25 +88,25 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
     @Override
-    public int getItemCount() { return getTripListSize(); }
-    public int getTripListSize() {
-        return trips.size();
+    public int getItemCount() { return getExpenseListSize(); }
+    public int getExpenseListSize() {
+        return expenses.size();
     }
 
     class ExpenseViewHolder extends RecyclerView.ViewHolder {
-        TextView trip_name_txt;
-        CardView mainLayout;
-        ImageButton trip_menu_options;
+        TextView expense_type_txt;
+        CardView expense_main_grid;
+        ImageButton expense_menu_options;
 
         ExpenseViewHolder(@NonNull View itemView) {
             super(itemView);
-            trip_name_txt = itemView.findViewById(R.id.trip_name_card_view);
-            mainLayout = itemView.findViewById(R.id.main_content_trip_card_view);
-            trip_menu_options = itemView.findViewById(R.id.trip_card_options);
+            expense_type_txt = itemView.findViewById(R.id.expense_type_card_view);
+            expense_main_grid = itemView.findViewById(R.id.main_content_expense_card_view);
+            expense_menu_options = itemView.findViewById(R.id.expense_card_options);
 
             //Animate Recyclerview
             Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
-            mainLayout.setAnimation(translate_anim);
+            expense_main_grid.setAnimation(translate_anim);
         }
     }
 }
