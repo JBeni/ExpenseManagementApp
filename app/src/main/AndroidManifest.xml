@@ -11,7 +11,12 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ViewTripExpensesActivity"
+            android:name=".AddExpenseActivity"
+            android:label="Add Tip Expense"
+            android:parentActivityName=".TripExpensesActivity" />
+
+        <activity
+            android:name=".TripExpensesActivity"
             android:label="View Trip Expenses"
             android:parentActivityName=".MainActivity" />
 
