@@ -33,7 +33,6 @@
                 android:layout_height="30dp"
                 android:background="#bbade6"
                 android:layout_alignParentEnd="true"
-                android:onClick="showTripOptions"
                 android:src="@drawable/ic_dots" />
 
             <TextView
