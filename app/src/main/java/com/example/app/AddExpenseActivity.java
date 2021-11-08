@@ -48,7 +48,7 @@ public class AddExpenseActivity extends AppCompatActivity {
             }
         });
 */
-        save_button = findViewById(R.id.save_trip_db_button);
+        save_button = findViewById(R.id.save_expense_db_button_text);
         save_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,13 +59,11 @@ public class AddExpenseActivity extends AppCompatActivity {
 
                 if (allConditionChecked) {
                     SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(AddExpenseActivity.this);
-/*
-                    databaseHandler.insertTrip(
-                        name.getText().toString().trim(), destination.getText().toString().trim(), date.getText().toString().trim(),
-                        risk_assessment.getText().toString().trim(), description.getText().toString().trim(),
-                        duration.getText().toString().trim(), aim.getText().toString().trim(), status.getText().toString().trim()
+
+                    databaseHandler.insertExpense(
+                        type.getText().toString().trim(), amount.getText().toString().trim(), time.getText().toString().trim(),
+                            additional_comments.getText().toString().trim(), Long.parseLong(getIntent().getStringExtra("trip_id"))
                     );
-*/
                 } else {
                     allConditionChecked = true;
                 }
