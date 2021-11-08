@@ -119,6 +119,9 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.view_trip_card_button:
+                        Toast.makeText(view.getContext(), "View Trip Data", Toast.LENGTH_LONG).show();
+                        return true;
                     case R.id.edit_trip_card_button:
                         Toast.makeText(view.getContext(), "Add to favourite", Toast.LENGTH_LONG).show();
                         return true;
