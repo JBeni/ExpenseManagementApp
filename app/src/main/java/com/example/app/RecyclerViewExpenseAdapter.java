@@ -46,7 +46,7 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
         holder.expense_main_grid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ViewTripExpensesActivity.class);
+                Intent intent = new Intent(context, ViewTripExpenseActivity.class);
                 activity.startActivityForResult(intent, 1);
             }
         });
