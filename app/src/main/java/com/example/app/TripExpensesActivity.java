@@ -2,6 +2,8 @@ package com.example.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -57,7 +59,7 @@ public class TripExpensesActivity extends AppCompatActivity {
      */
     void storeDataInArrays() {
         expenses = databaseHandler.getTripExpenses(getIntent().getStringExtra("trip_id"));
-        if (expenses.size() == 0){
+        if (expenses.size() == 0) {
             empty_imageview.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
         } else {
@@ -66,14 +68,12 @@ public class TripExpensesActivity extends AppCompatActivity {
         }
     }
 
-/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.my_menu, menu);
+        //MenuInflater inflater = getMenuInflater();
+        //inflater.inflate(R.menu.expense_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -84,5 +84,4 @@ public class TripExpensesActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

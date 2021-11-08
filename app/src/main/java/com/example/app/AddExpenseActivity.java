@@ -48,6 +48,7 @@ public class AddExpenseActivity extends AppCompatActivity {
             }
         });
 */
+
         save_button = findViewById(R.id.save_expense_db_button_text);
         save_button.setOnClickListener(new View.OnClickListener() {
             @Override
