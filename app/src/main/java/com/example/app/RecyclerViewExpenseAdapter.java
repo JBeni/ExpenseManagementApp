@@ -67,15 +67,15 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
      */
     public void showPopupMenu(View view) {
         PopupMenu popup = new PopupMenu(view.getContext(), view);
-        popup.getMenuInflater().inflate(R.menu.trip_menu, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.expense_menu, popup.getMenu());
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.edit_trip_card_button:
+                    case R.id.edit_expense_card_button:
                         Toast.makeText(view.getContext(), "Add to favourite", Toast.LENGTH_LONG).show();
                         return true;
-                    case R.id.delete_trip_card_button:
+                    case R.id.delete_expense_card_button:
                         //mDataSet.remove(position);
                         Toast.makeText(view.getContext(), "Done for now", Toast.LENGTH_LONG).show();
                         return true;
