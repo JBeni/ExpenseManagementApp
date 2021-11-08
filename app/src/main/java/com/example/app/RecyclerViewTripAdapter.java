@@ -54,7 +54,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ViewActivity.class);
+                Intent intent = new Intent(context, ViewTripExpensesActivity.class);
                 activity.startActivityForResult(intent, 1);
             }
         });
@@ -63,7 +63,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         holder.edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateActivity.class);
+                Intent intent = new Intent(context, UpdateTripActivity.class);
                 intent.putExtra("id", String.valueOf(trips.get(position).getId()));
 
                 activity.startActivityForResult(intent, 1);
@@ -73,7 +73,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         holder.delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateActivity.class);
+                Intent intent = new Intent(context, UpdateTripActivity.class);
                 activity.startActivityForResult(intent, 1);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
@@ -82,7 +82,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //SqliteDatabaseHandler myDB = new SqliteDatabaseHandler(UpdateActivity.this);
+                        //SqliteDatabaseHandler myDB = new SqliteDatabaseHandler(UpdateTripActivity.this);
                         //myDB.deleteOneRow(id);
                         //finish();
                     }
@@ -147,7 +147,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         TripViewHolder(@NonNull View itemView) {
             super(itemView);
             trip_name_txt = itemView.findViewById(R.id.trip_name_card_view);
-            mainLayout = itemView.findViewById(R.id.main_content_cardView);
+            mainLayout = itemView.findViewById(R.id.main_content_trip_card_view);
             trip_menu_options = itemView.findViewById(R.id.trip_card_options);
 
             //Animate Recyclerview
