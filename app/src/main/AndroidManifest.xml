@@ -6,6 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".SharedTripViewModel"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -13,32 +14,32 @@
         <activity
             android:name=".ViewTripExpenseActivity"
             android:label="View Expense"
-            android:parentActivityName=".TripExpensesActivity" />
+            android:parentActivityName=".MainTripExpensesActivity" />
 
         <activity
             android:name=".AddExpenseActivity"
             android:label="Add Trip Expense"
-            android:parentActivityName=".TripExpensesActivity" />
+            android:parentActivityName=".MainTripExpensesActivity" />
 
         <activity
-            android:name=".TripExpensesActivity"
+            android:name=".MainTripExpensesActivity"
             android:label="View Trip Expenses"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainTripActivity" />
 
         <activity
             android:name=".ViewTripActivity"
             android:label="View Trip"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainTripActivity" />
         <activity
             android:name=".UpdateTripActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainTripActivity" />
         <activity
             android:name=".AddTripActivity"
             android:label="Add Book"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainTripActivity" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".MainTripActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
