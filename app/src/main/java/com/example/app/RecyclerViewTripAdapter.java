@@ -14,15 +14,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
-
 
 /**
  * The link was used to guide me and to adjust to me needs using parts of code from
@@ -126,10 +121,19 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.view_trip_card_button:
-                        long trip_id = trips.get(position).getId();
-                        String trip_name = trips.get(position).getName();
+                        Intent intent = new Intent(context, ViewTripActivity.class);
 
-                        Toast.makeText(view.getContext(), "View Trip Data: id= " + trip_id + " , name= " + trip_name, Toast.LENGTH_LONG).show();
+                        intent.putExtra("id", trips.get(position).getId());
+                        intent.putExtra("name", trips.get(position).getName());
+                        intent.putExtra("destination", trips.get(position).getDestination());
+                        intent.putExtra("date", trips.get(position).getDate());
+                        intent.putExtra("risk_assessment", trips.get(position).getRisk_assessment());
+                        intent.putExtra("description", trips.get(position).getDescription());
+                        intent.putExtra("duration", trips.get(position).getDuration());
+                        intent.putExtra("aim", trips.get(position).getAim());
+                        intent.putExtra("status", trips.get(position).getStatus());
+
+                        activity.startActivityForResult(intent, 1);
                         return true;
                     case R.id.edit_trip_card_button:
                         Toast.makeText(view.getContext(), "Add to favourite", Toast.LENGTH_LONG).show();
