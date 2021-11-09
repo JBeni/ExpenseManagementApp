@@ -47,6 +47,7 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ViewTripExpenseActivity.class);
+                intent.putExtra("trip_id", String.valueOf(expenses.get(position).getTripId()));
                 activity.startActivityForResult(intent, 1);
             }
         });
