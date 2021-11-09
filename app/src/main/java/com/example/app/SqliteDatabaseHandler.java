@@ -248,8 +248,9 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         String amount = cursor.getString(2);
         String time = cursor.getString(3);
         String additional_comments = cursor.getString(4);
+        int trip_id = cursor.getInt(5);
 
-        return new Expense(id, type, amount, time, additional_comments);
+        return new Expense(id, type, amount, time, additional_comments, trip_id);
     }
 
     public List<Expense> getAllExpenses() {
@@ -265,17 +266,18 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             String amount = cursor.getString(2);
             String time = cursor.getString(3);
             String additional_comments = cursor.getString(4);
+            int trip_id = cursor.getInt(5);
 
-            Expense expense = new Expense(id, type, amount, time, additional_comments);
+            Expense expense = new Expense(id, type, amount, time, additional_comments, trip_id);
             expensesList.add(expense);
         }
         return expensesList;
     }
 
-    public List<Expense> getTripExpenses(String trip_id) {
+    public List<Expense> getTripExpenses(String selected_trip_id) {
         Cursor cursor = null;
         if (database != null) {
-            cursor = database.rawQuery("SELECT * FROM " + EXPENSE_TABLE_NAME + " WHERE trip_id=?", new String[] { trip_id });
+            cursor = database.rawQuery("SELECT * FROM " + EXPENSE_TABLE_NAME + " WHERE trip_id=?", new String[] { selected_trip_id });
         }
 
         while(cursor.moveToNext()) {
@@ -284,8 +286,9 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             String amount = cursor.getString(2);
             String time = cursor.getString(3);
             String additional_comments = cursor.getString(4);
+            int trip_id = cursor.getInt(5);
 
-            Expense expense = new Expense(id, type, amount, time, additional_comments);
+            Expense expense = new Expense(id, type, amount, time, additional_comments, trip_id);
             tripExpensesList.add(expense);
         }
         return tripExpensesList;
