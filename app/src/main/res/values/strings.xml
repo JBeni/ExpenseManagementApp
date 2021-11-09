@@ -20,7 +20,8 @@
     <string name="duration_trip_hint">Duration, e.g: 10 days, 1 hour</string>
     <string name="aim_trip_hint">Aim, e.g: set the budget</string>
     <string name="status_trip_hint">Status, e.g: Started, OnGoing, Finished</string>
-    <string name="save_trip_db_button_text">Add trip</string>
+    <string name="add_save_trip_db_button_text">Add trip</string>
+    <string name="update_save_trip_db_button_text">Update trip</string>
 
     // Expense Activity Resources
     <string name="type_expense_hint">e.g: travel, food, other</string>
