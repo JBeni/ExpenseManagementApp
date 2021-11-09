@@ -22,7 +22,7 @@ public class UpdateTripActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_trip);
-
+/*
         title_input = findViewById(R.id.title_input2);
         author_input = findViewById(R.id.author_input2);
         // pages_input = findViewById(R.id.pages_input2);
@@ -55,7 +55,7 @@ public class UpdateTripActivity extends AppCompatActivity {
                 confirmDialog();
             }
         });
-
+*/
     }
 
     void getAndSetIntentData(){
