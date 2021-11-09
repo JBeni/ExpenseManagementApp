@@ -7,14 +7,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,6 +38,7 @@ public class MainTripActivity extends AppCompatActivity {
         add_button = findViewById(R.id.trip_add_main_button);
         empty_imageview = findViewById(R.id.empty_imageview);
         no_data = findViewById(R.id.no_data);
+
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,16 +56,6 @@ public class MainTripActivity extends AppCompatActivity {
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(MainTripActivity.this, 3));
     }
-
-/*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            recreate();
-        }
-    }
-*/
 
     /**
      * Code taken from https://github.com/stevdza-san/SQLite_Android-Complete_Tutorial/blob/master/app/src/main/java/com/jovanovic/stefan/sqlitetutorial/MainActivity.java
@@ -96,7 +84,7 @@ public class MainTripActivity extends AppCompatActivity {
             case R.id.delete_trip_card_button:
                 Toast.makeText(MainTripActivity.this, "Delete The selected Trip", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.delete_all:
+            case R.id.delete_all_data:
                 confirmDialog();
                 return true;
             default:
