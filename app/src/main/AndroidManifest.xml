@@ -36,6 +36,7 @@
         <activity
             android:name=".AddTripActivity"
             android:label="Add Book"
+            android:noHistory="true"
             android:parentActivityName=".MainTripActivity" />
 
         <activity
