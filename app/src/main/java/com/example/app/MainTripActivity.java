@@ -62,7 +62,7 @@ public class MainTripActivity extends AppCompatActivity {
      */
     void storeDataInArrays() {
         trips = databaseHandler.getAllTrips();
-        if (trips.size() == 0){
+        if (trips.size() == 0) {
             empty_imageview.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
         } else {
@@ -105,8 +105,6 @@ public class MainTripActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 databaseHandler.deleteAllData();
-
-                // Refresh after delete operation
                 Intent intent = new Intent(MainTripActivity.this, MainTripActivity.class);
                 startActivity(intent);
                 finish();

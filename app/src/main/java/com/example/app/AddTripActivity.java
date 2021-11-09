@@ -2,11 +2,14 @@ package com.example.app;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -63,15 +66,8 @@ public class AddTripActivity extends AppCompatActivity {
                 isTextEmpty(status);
 
                 if (allConditionChecked) {
-                    SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(AddTripActivity.this);
                     risk_assessment = risk_assessment_spinner.getSelectedItem().toString();
-
-                    databaseHandler.insertTrip(
-                        name.getText().toString().trim(), destination.getText().toString().trim(), date.getText().toString().trim(),
-                        risk_assessment, description.getText().toString().trim(),
-                        duration.getText().toString().trim(), aim.getText().toString().trim(), status.getText().toString().trim()
-                    );
-                    finish();
+                    confirmTripDetails(risk_assessment);
                 } else {
                     allConditionChecked = true;
                 }
@@ -109,6 +105,48 @@ public class AddTripActivity extends AppCompatActivity {
         });
     }
 
+    public void confirmTripDetails(String risk_assessment) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(AddTripActivity.this);
+        builder.setTitle("Do you confirm these details?");
+
+        String message = String.format("Name: " + name.getText().toString().trim() + "\n" +
+            "Destination: " + destination.getText().toString().trim() + "\n" +
+             "Date: " + date.getText().toString().trim() + "\n" +
+             "Risk Assessment: " + risk_assessment + "\n" +
+             "Description: " + description.getText().toString().trim() + "\n" +
+             "Duration: " + duration.getText().toString().trim() + "\n" +
+             "Aim: " + aim.getText().toString().trim() + "\n" +
+             "Status: " + status.getText().toString().trim() + "\n");
+
+        builder.setMessage(message);
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(AddTripActivity.this);
+
+                databaseHandler.insertTrip(
+                        name.getText().toString().trim(), destination.getText().toString().trim(), date.getText().toString().trim(),
+                        risk_assessment, description.getText().toString().trim(),
+                        duration.getText().toString().trim(), aim.getText().toString().trim(), status.getText().toString().trim()
+                );
+                Intent intent = new Intent(AddTripActivity.this, MainTripActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
     public void showDatePickerDialog(View view) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.setCancelable(false);
@@ -121,7 +159,6 @@ public class AddTripActivity extends AppCompatActivity {
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-
         @NonNull
         @Override
         public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
