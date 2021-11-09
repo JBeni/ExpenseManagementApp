@@ -14,8 +14,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
@@ -48,17 +52,21 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
 
     @Override
     public void onBindViewHolder(@NonNull final TripViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        String beniamin = trips.get(position).getName();
         holder.trip_name_txt.setText(trips.get(position).getName().toString());
 
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+        holder.trip_main_grid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, TripExpensesActivity.class);
+                SharedTripViewModel sharedTripView = (SharedTripViewModel) context.getApplicationContext();
+                sharedTripView.setSharedTripId(String.valueOf(trips.get(position).getId()));
+
+                Intent intent = new Intent(context, MainTripExpensesActivity.class);
                 intent.putExtra("trip_id", String.valueOf(trips.get(position).getId()));
                 activity.startActivityForResult(intent, 1);
             }
         });
+
+
 
 /*
         holder.edit_button.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +112,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         holder.trip_menu_options.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopupMenu(holder.trip_menu_options);
+                showPopupMenu(holder.trip_menu_options, position);
             }
         });
     }
@@ -112,7 +120,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
     /**
      * https://stackoverflow.com/questions/34641240/toolbar-inside-cardview-to-create-a-popup-menu-overflow-icon
      */
-    public void showPopupMenu(View view) {
+    public void showPopupMenu(View view, int position) {
         PopupMenu popup = new PopupMenu(view.getContext(), view);
         popup.getMenuInflater().inflate(R.menu.trip_menu, popup.getMenu());
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -120,7 +128,10 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.view_trip_card_button:
-                        Toast.makeText(view.getContext(), "View Trip Data", Toast.LENGTH_LONG).show();
+                        long trip_id = trips.get(position).getId();
+                        String trip_name = trips.get(position).getName();
+
+                        Toast.makeText(view.getContext(), "View Trip Data: id= " + trip_id + " , name= " + trip_name, Toast.LENGTH_LONG).show();
                         return true;
                     case R.id.edit_trip_card_button:
                         Toast.makeText(view.getContext(), "Add to favourite", Toast.LENGTH_LONG).show();
@@ -145,18 +156,18 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
 
     class TripViewHolder extends RecyclerView.ViewHolder {
         TextView trip_name_txt;
-        CardView mainLayout;
+        CardView trip_main_grid;
         ImageButton trip_menu_options;
 
         TripViewHolder(@NonNull View itemView) {
             super(itemView);
             trip_name_txt = itemView.findViewById(R.id.trip_name_card_view);
-            mainLayout = itemView.findViewById(R.id.main_content_trip_card_view);
+            trip_main_grid = itemView.findViewById(R.id.main_content_trip_card_view);
             trip_menu_options = itemView.findViewById(R.id.trip_card_options);
 
             //Animate Recyclerview
             Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
-            mainLayout.setAnimation(translate_anim);
+            trip_main_grid.setAnimation(translate_anim);
         }
     }
 }
