@@ -25,11 +25,9 @@ import java.util.List;
 
 
 /**
- *
- * Code taken https://github.com/stevdza-san/SQLite_Android-Complete_Tutorial
- *
+ * The link was used to guide me and to adjust to me needs using parts of code from
+ * https://stackoverflow.com/questions/26517855/using-the-recyclerview-with-a-database
  **/
-
 public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTripAdapter.TripViewHolder> {
 
     private Context context;
