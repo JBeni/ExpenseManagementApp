@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".MainTripActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/trip_add_main_button"
