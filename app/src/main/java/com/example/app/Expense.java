@@ -7,15 +7,17 @@ public class Expense {
     private String amount; // required field
     private String time; // required field
     private String additional_comments; // optional field
+    private long trip_id;
 
     public Expense(
-            long id, String type, String amount, String time, String additional_comments
+            long id, String type, String amount, String time, String additional_comments, long trip_id
     ) {
         this.id = id;
         this.type = type;
         this.amount = amount;
         this.time = time;
         this.additional_comments = additional_comments;
+        this.trip_id = trip_id;
     }
 
     public long getId() {
@@ -24,6 +26,14 @@ public class Expense {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getTripId() {
+        return trip_id;
+    }
+
+    public void setTripId(long trip_id) {
+        this.trip_id = trip_id;
     }
 
     public String getType() {
