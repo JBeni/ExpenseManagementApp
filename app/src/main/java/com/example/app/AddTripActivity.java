@@ -24,12 +24,13 @@ import java.time.LocalDate;
 
 public class AddTripActivity extends AppCompatActivity {
 
-    EditText name, destination, date, description, duration, aim, status;
-    String risk_assessment;
+    EditText name, destination, date, description, duration, aim;
+    String risk_assessment, status;
     Button save_button;
     private boolean allConditionChecked = true;
 
     private final String[] riskAssessmentDropdown = { "No", "Yes" };
+    private final String[] statusDropdown = { "Started", "OnGoing", "Finished" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +42,23 @@ public class AddTripActivity extends AppCompatActivity {
         date = findViewById(R.id.add_date_trip_column);
 
         Spinner risk_assessment_spinner = (Spinner) findViewById(R.id.add_risk_assessment_trip_column);
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, riskAssessmentDropdown);
-        risk_assessment_spinner.setAdapter(dataAdapter);
+        ArrayAdapter<String> dataRiskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, riskAssessmentDropdown);
+        risk_assessment_spinner.setAdapter(dataRiskAdapter);
+
+        Spinner status_spinner = (Spinner) findViewById(R.id.add_status_trip_column);
+        ArrayAdapter<String> dataStatusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, statusDropdown);
+        status_spinner.setAdapter(dataStatusAdapter);
 
         description = findViewById(R.id.add_description_trip_column);
         duration = findViewById(R.id.add_duration_trip_column);
         aim = findViewById(R.id.add_aim_trip_column);
-        status = findViewById(R.id.add_status_trip_column);
+
+        //status = findViewById(R.id.add_status_trip_column);
 
         checkEditTextErrors(name);
         checkEditTextErrors(destination);
         checkEditTextErrors(date);
         checkEditTextErrors(duration);
-        checkEditTextErrors(status);
 
         save_button = findViewById(R.id.add_save_trip_db_button);
         save_button.setOnClickListener(new View.OnClickListener() {
@@ -63,11 +68,11 @@ public class AddTripActivity extends AppCompatActivity {
                 isTextEmpty(destination);
                 isTextEmpty(date);
                 isTextEmpty(duration);
-                isTextEmpty(status);
 
                 if (allConditionChecked) {
                     risk_assessment = risk_assessment_spinner.getSelectedItem().toString();
-                    confirmTripDetails(risk_assessment);
+                    status = status_spinner.getSelectedItem().toString();
+                    confirmTripDetails(risk_assessment, status);
                 } else {
                     allConditionChecked = true;
                 }
@@ -105,7 +110,7 @@ public class AddTripActivity extends AppCompatActivity {
         });
     }
 
-    public void confirmTripDetails(String risk_assessment) {
+    public void confirmTripDetails(String risk_assessment, String status) {
         AlertDialog.Builder builder = new AlertDialog.Builder(AddTripActivity.this);
         builder.setTitle("Do you confirm these details?");
 
@@ -116,7 +121,7 @@ public class AddTripActivity extends AppCompatActivity {
              "Description: " + description.getText().toString().trim() + "\n" +
              "Duration: " + duration.getText().toString().trim() + "\n" +
              "Aim: " + aim.getText().toString().trim() + "\n" +
-             "Status: " + status.getText().toString().trim() + "\n");
+             "Status: " + status + "\n");
 
         builder.setMessage(message);
         builder.setCancelable(false);
@@ -129,7 +134,7 @@ public class AddTripActivity extends AppCompatActivity {
                 databaseHandler.insertTrip(
                         name.getText().toString().trim(), destination.getText().toString().trim(), date.getText().toString().trim(),
                         risk_assessment, description.getText().toString().trim(),
-                        duration.getText().toString().trim(), aim.getText().toString().trim(), status.getText().toString().trim()
+                        duration.getText().toString().trim(), aim.getText().toString().trim(), status
                 );
                 Intent intent = new Intent(AddTripActivity.this, MainTripActivity.class);
                 startActivity(intent);
