@@ -57,9 +57,6 @@ public class MainTripExpensesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(MainTripExpensesActivity.this, 3));
     }
 
-    /**
-     * Code taken from https://github.com/stevdza-san/SQLite_Android-Complete_Tutorial/blob/master/app/src/main/java/com/jovanovic/stefan/sqlitetutorial/MainActivity.java
-     */
     void storeDataInArrays() {
         SharedTripViewModel sharedTripView = (SharedTripViewModel) getApplicationContext();
         String trip_id = sharedTripView.getSharedTripId();
