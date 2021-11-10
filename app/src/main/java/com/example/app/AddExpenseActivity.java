@@ -1,6 +1,7 @@
 package com.example.app;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.text.Editable;
@@ -48,11 +49,13 @@ public class AddExpenseActivity extends AppCompatActivity {
 
                 if (allConditionChecked) {
                     SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(AddExpenseActivity.this);
-
                     databaseHandler.insertExpense(
                         type.getText().toString().trim(), amount.getText().toString().trim(), time.getText().toString().trim(),
-                            additional_comments.getText().toString().trim(), Long.parseLong(getIntent().getStringExtra("trip_id"))
+                            additional_comments.getText().toString().trim(), String.valueOf(getIntent().getStringExtra("trip_id"))
                     );
+                    Intent intent = new Intent(AddExpenseActivity.this, MainTripExpensesActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     allConditionChecked = true;
                 }

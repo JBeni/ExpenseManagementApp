@@ -56,14 +56,6 @@ public class MainTripActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(MainTripActivity.this, 3));
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            recreate();
-        }
-    }
-
     /**
      * Code taken from https://github.com/stevdza-san/SQLite_Android-Complete_Tutorial/blob/master/app/src/main/java/com/jovanovic/stefan/sqlitetutorial/MainActivity.java
      */

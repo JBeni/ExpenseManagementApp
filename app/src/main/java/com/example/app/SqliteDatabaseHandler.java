@@ -109,7 +109,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
-    public void insertExpense(String type, String amount, String time, String additional_comments, long trip_id) {
+    public void insertExpense(String type, String amount, String time, String additional_comments, String trip_id) {
         ContentValues rowValues = new ContentValues();
 
         rowValues.put(EXPENSE_TYPE_COLUMN, type);

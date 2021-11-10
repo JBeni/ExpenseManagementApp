@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="40dp"
-        android:text="@string/save_expense_db_button_text"
+        android:text="@string/update_expense_db_button_text"
         android:textSize="20sp"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"

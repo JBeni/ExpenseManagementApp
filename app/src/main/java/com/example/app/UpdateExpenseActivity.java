@@ -64,8 +64,7 @@ public class UpdateExpenseActivity extends AppCompatActivity {
         databaseHandler.updateExpense(
                 getIntent().getStringExtra("id"),
                 type.getText().toString().trim(), amount.getText().toString().trim(),
-                additional_comments.getText().toString().trim(),
-                getIntent().getStringExtra("trip_id")
+                time.getText().toString().trim(), additional_comments.getText().toString().trim()
         );
         Intent intent = new Intent(UpdateExpenseActivity.this, MainTripExpensesActivity.class);
         startActivity(intent);
@@ -74,12 +73,12 @@ public class UpdateExpenseActivity extends AppCompatActivity {
 
     void populateUpdateExpenseText() {
         if (getIntent().hasExtra("id") && getIntent().hasExtra("type") &&
-                getIntent().hasExtra("time") && getIntent().hasExtra("trip_id")
+                getIntent().hasExtra("amount") && getIntent().hasExtra("time") && getIntent().hasExtra("trip_id")
         ) {
-            type.setText(getIntent().getStringExtra("name"));
-            amount.setText(getIntent().getStringExtra("destination"));
-            time.setText(getIntent().getStringExtra("date"));
-            additional_comments.setText(getIntent().getStringExtra("description"));
+            type.setText(getIntent().getStringExtra("type"));
+            amount.setText(getIntent().getStringExtra("amount"));
+            time.setText(getIntent().getStringExtra("time"));
+            additional_comments.setText(getIntent().getStringExtra("additional_comments"));
         } else {
             Toast.makeText(UpdateExpenseActivity.this, "No data was received by the Update Activity", Toast.LENGTH_LONG).show();
         }

@@ -75,7 +75,7 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.edit_expense_card_button:
-                        Intent edit_intent = new Intent(context, UpdateTripActivity.class);
+                        Intent edit_intent = new Intent(context, UpdateExpenseActivity.class);
                         setExpenseExtraIntentData(edit_intent, position);
                         activity.startActivityForResult(edit_intent, 1);
                         return true;
@@ -92,8 +92,8 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
 
     private void confirmDeleteExpense(String expense_id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Delete The Trip");
-        builder.setMessage("Are you sure you want to delete the selected trip and the expenses related to it from the database?");
+        builder.setTitle("Delete The Expense");
+        builder.setMessage("Are you sure you want to delete the selected expenses from the database?");
         builder.setCancelable(false);
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
