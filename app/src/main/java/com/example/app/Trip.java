@@ -27,21 +27,6 @@ public class Trip {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "  id=" + this.id +
-                ", name='" + this.name + '\'' +
-                ", destination='" + this.destination + '\'' +
-                ", date=" + this.date + '\'' +
-                ", risk_assessment='" + this.risk_assessment + '\'' +
-                ", description='" + this.description + '\'' +
-                ", duration='" + this.duration + '\'' +
-                ", aim='" + this.aim + '\'' +
-                ", status='" + this.status +
-                '}';
-    }
-
     public long getId() {
         return id;
     }
