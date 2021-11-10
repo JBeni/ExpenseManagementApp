@@ -56,7 +56,6 @@
             android:textColor="#546E7A"
             android:inputType="date"
             android:focusable="false"
-            android:onClick="showDatePickerDialog"
             android:autofillHints="@string/name_trip_value_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
