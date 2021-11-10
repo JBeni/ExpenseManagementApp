@@ -8,7 +8,7 @@
     android:padding="30dp">
 
     <EditText
-        android:id="@+id/type_expense_column"
+        android:id="@+id/add_type_expense_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/amount_expense_column"
+        android:id="@+id/add_amount_expense_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -33,10 +33,10 @@
         android:textColor="#546BBA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/type_expense_column" />
+        app:layout_constraintTop_toBottomOf="@+id/add_type_expense_column" />
 
     <EditText
-        android:id="@+id/time_expense_column"
+        android:id="@+id/add_time_expense_column"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -47,10 +47,10 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amount_expense_column" />
+        app:layout_constraintTop_toBottomOf="@+id/add_amount_expense_column" />
 
     <EditText
-        android:id="@+id/additional_comments_expense_column"
+        android:id="@+id/add_additional_comments_expense_column"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
@@ -62,11 +62,11 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time_expense_column"
+        app:layout_constraintTop_toBottomOf="@+id/add_time_expense_column"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/save_expense_db_button_text"
+        android:id="@+id/add_save_expense_db_button"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="40dp"
@@ -75,6 +75,6 @@
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/additional_comments_expense_column" />
+        app:layout_constraintTop_toBottomOf="@+id/add_additional_comments_expense_column" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
