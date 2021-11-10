@@ -42,7 +42,7 @@ public class MainTripExpensesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainTripExpensesActivity.this, AddExpenseActivity.class);
-                intent.putExtra("trip_id", getIntent().getStringExtra("trip_id"));
+                intent.putExtra("trip_id", String.valueOf(getIntent().getStringExtra("trip_id")));
                 startActivity(intent);
             }
         });
@@ -56,21 +56,6 @@ public class MainTripExpensesActivity extends AppCompatActivity {
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(MainTripExpensesActivity.this, 3));
     }
-
-    /*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK && requestCode == 1) {
-            if (data.hasExtra("trip_id")) {
-                Toast.makeText(this, data.getExtras().getString("trip_id"),
-                        Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-    */
-
 
     /**
      * Code taken from https://github.com/stevdza-san/SQLite_Android-Complete_Tutorial/blob/master/app/src/main/java/com/jovanovic/stefan/sqlitetutorial/MainActivity.java
