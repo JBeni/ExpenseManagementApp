@@ -7,7 +7,7 @@ public class Expense {
     private String amount; // required field
     private String time; // required field
     private String additional_comments; // optional field
-    private long trip_id;
+    private long trip_id; // required field
 
     public Expense(
             long id, String type, String amount, String time, String additional_comments, long trip_id

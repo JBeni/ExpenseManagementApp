@@ -57,7 +57,7 @@ public class MainTripActivity extends AppCompatActivity {
     }
 
     /**
-     * Code taken from https://github.com/stevdza-san/SQLite_Android-Complete_Tutorial/blob/master/app/src/main/java/com/jovanovic/stefan/sqlitetutorial/MainActivity.java
+     * from https://github.com/stevdza-san/SQLite_Android-Complete_Tutorial/blob/master/app/src/main/java/com/jovanovic/stefan/sqlitetutorial/MainActivity.java
      */
     void storeDataInArrays() {
         trips = databaseHandler.getAllTrips();

@@ -220,7 +220,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * Code inspired from https://stackoverflow.com/questions/14266575/getting-all-records-from-sqlite-android/14266660
+     * https://stackoverflow.com/questions/14266575/getting-all-records-from-sqlite-android/14266660
      */
     public List<Trip> getAllTrips() {
         String query =" SELECT * FROM " + TRIP_TABLE_NAME;
