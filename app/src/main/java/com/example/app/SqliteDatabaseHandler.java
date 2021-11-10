@@ -163,6 +163,19 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
+    public void deleteTripAndExpenses(String trip_id) {
+        long result_expense = database.delete(EXPENSE_TABLE_NAME, "trip_id=?", new String[]{ trip_id });
+        long result_trip = database.delete(TRIP_TABLE_NAME, "id=?", new String[]{ trip_id });
+
+        if (result_expense == -1 && result_trip == -1) {
+            Toast.makeText(context, "Delete operation has failed!", Toast.LENGTH_LONG).show();
+        } else if (result_expense == 0 && result_trip == 0) {
+            Toast.makeText(context, "Delete operation has failed! The id parameter could be null!!", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(context, "Delete operation was successful!", Toast.LENGTH_LONG).show();
+        }
+    }
+
     public void deleteTrip(String id) {
         long result = database.delete(TRIP_TABLE_NAME, "id=?", new String[]{ id });
         if (result == -1) {
