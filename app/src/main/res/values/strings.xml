@@ -26,7 +26,7 @@
     // Expense Activity Resources
     <string name="type_expense_hint">e.g: travel, food, other</string>
     <string name="amount_expense_hint">e.g: 100 dolars</string>
-    <string name="time_expense_hint">e.g: 25/10/2021 10:21 GMT+3</string>
+    <string name="time_expense_hint">Enter time</string>
     <string name="additional_comments_expense_hint">e.g: comments about expense, conference</string>
     <string name="save_expense_db_button_text">Add Expense</string>
 
