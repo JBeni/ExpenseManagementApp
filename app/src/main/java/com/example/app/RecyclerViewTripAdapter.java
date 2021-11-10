@@ -3,6 +3,7 @@ package com.example.app;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -14,14 +15,20 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 /**
- * The link was used to guide me and to adjust to me needs using parts of code from
+ * The links was used to guide me and to adjust to the needs using parts of code from
  * https://stackoverflow.com/questions/26517855/using-the-recyclerview-with-a-database
+ * https://developer.android.com/guide/topics/ui/layout/recyclerview
+ *
+ * https://github.com/android/views-widgets-samples/tree/main/RecyclerView
+ * https://github.com/android/views-widgets-samples/tree/main/RecyclerViewAnimations
+ * https://github.com/android/views-widgets-samples/tree/main/RecyclerViewSimple
  **/
 public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTripAdapter.TripViewHolder> {
 
@@ -59,46 +66,6 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
             }
         });
 
-
-
-/*
-        holder.edit_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateTripActivity.class);
-                intent.putExtra("id", String.valueOf(trips.get(position).getId()));
-
-                activity.startActivityForResult(intent, 1);
-            }
-        });
-
-        holder.delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateTripActivity.class);
-                activity.startActivityForResult(intent, 1);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                builder.setTitle("Delete ?");
-                builder.setMessage("Are you sure you want to delete ?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //SqliteDatabaseHandler myDB = new SqliteDatabaseHandler(UpdateTripActivity.this);
-                        //myDB.deleteOneRow(id);
-                        //finish();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                });
-                builder.create().show();
-            }
-        });
-*/
-
         /**
          * https://stackoverflow.com/questions/34641240/toolbar-inside-cardview-to-create-a-popup-menu-overflow-icon
          */
@@ -121,26 +88,17 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.view_trip_card_button:
-                        Intent intent = new Intent(context, ViewTripActivity.class);
-
-                        intent.putExtra("id", trips.get(position).getId());
-                        intent.putExtra("name", trips.get(position).getName());
-                        intent.putExtra("destination", trips.get(position).getDestination());
-                        intent.putExtra("date", trips.get(position).getDate());
-                        intent.putExtra("risk_assessment", trips.get(position).getRisk_assessment());
-                        intent.putExtra("description", trips.get(position).getDescription());
-                        intent.putExtra("duration", trips.get(position).getDuration());
-                        intent.putExtra("aim", trips.get(position).getAim());
-                        intent.putExtra("status", trips.get(position).getStatus());
-
-                        activity.startActivityForResult(intent, 1);
+                        Intent view_intent = new Intent(context, ViewTripActivity.class);
+                        setExtraIntentData(view_intent, position);
+                        activity.startActivityForResult(view_intent, 1);
                         return true;
                     case R.id.edit_trip_card_button:
-                        Toast.makeText(view.getContext(), "Add to favourite", Toast.LENGTH_LONG).show();
+                        Intent edit_intent = new Intent(context, UpdateTripActivity.class);
+                        setExtraIntentData(edit_intent, position);
+                        activity.startActivityForResult(edit_intent, 1);
                         return true;
                     case R.id.delete_trip_card_button:
-                        //mDataSet.remove(position);
-                        Toast.makeText(view.getContext(), "Done for now", Toast.LENGTH_LONG).show();
+                        confirmDeleteTripAndExpenses(String.valueOf(trips.get(position).getId()));
                         return true;
                     default:
                         return false;
@@ -148,6 +106,46 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
             }
         });
         popup.show();
+    }
+
+    private void setExtraIntentData(Intent intent, int position) {
+        intent.putExtra("id", String.valueOf(trips.get(position).getId()));
+        intent.putExtra("name", trips.get(position).getName());
+        intent.putExtra("destination", trips.get(position).getDestination());
+        intent.putExtra("date", trips.get(position).getDate());
+        intent.putExtra("risk_assessment", trips.get(position).getRisk_assessment());
+        intent.putExtra("description", trips.get(position).getDescription());
+        intent.putExtra("duration", trips.get(position).getDuration());
+        intent.putExtra("aim", trips.get(position).getAim());
+        intent.putExtra("status", trips.get(position).getStatus());
+    }
+
+    private void confirmDeleteTripAndExpenses(String trip_id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Delete The Trip");
+        builder.setMessage("Are you sure you want to delete the selected trip and the expenses related to it from the database?");
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(context);
+                databaseHandler.deleteTripAndExpenses(trip_id);
+
+                Intent intent = new Intent(context, MainTripActivity.class);
+                activity.startActivityForResult(intent, 1);
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     @Override
