@@ -3,20 +3,20 @@
 
     // Instructions Area
     <string name="instructions_trip"><![CDATA[
-        To delete all the data from the database check the option from the toolbar.
+        To delete all the data from the database check the option from the toolbar.\n\n
 
-        Use the button (+) from the bottom of the screen to add new trips.
-        To Edit or Delete a Trip check the dots from the specific trip card view.
+        Use the button (+) from the bottom of the screen to add new trips.\n
+        To Edit or Delete a Trip check the dots from the specific trip card view.\n\n
 
-        Observation: when you delete a trip all the expenses related to the trip with as well be removed from database.
+        Observation: when you delete a trip all the expenses related to the trip with as well be removed from database.\n\n
 
-        To add expenses for a trip click on the image card view.
+        To add expenses for a trip click on the image card view.\n
     ]]></string>
     <string name="instructions_expense"><![CDATA[
-        Use the button (+) from the bottom of the screen to add new expenses.
-        To Edit or Delete an Expense check the dots from the specific expense card view.
+        Use the button (+) from the bottom of the screen to add new expenses.\n
+        To Edit or Delete an Expense check the dots from the specific expense card view.\n\n
 
-        To view an expense click on the image card view.
+        To view an expense click on the image card view.\n
     ]]></string>
 
     // Add, Edit, Delete and View Trip Area
