@@ -1,101 +1,162 @@
 package com.example.app;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.DialogInterface;
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 public class UpdateTripActivity extends AppCompatActivity {
+    DatePickerDialog picker;
+    EditText name, destination, date, description, duration, aim;
+    Spinner risk_assessment_spinner, status_spinner;
+    String risk_assessment, status;
+    Button update_button;
+    private boolean allConditionChecked = true;
 
-    EditText title_input, author_input, pages_input;
-    Button update_button, delete_button;
-
-    String id, title, author, pages;
+    private final String[] riskAssessmentDropdown = { "No", "Yes" };
+    private final String[] statusDropdown = { "Started", "OnGoing", "Finished" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_trip);
-/*
-        title_input = findViewById(R.id.title_input2);
-        author_input = findViewById(R.id.author_input2);
-        // pages_input = findViewById(R.id.pages_input2);
-        update_button = findViewById(R.id.update_button);
-        delete_button = findViewById(R.id.delete_button);
 
-        //First we call this
-        getAndSetIntentData();
+        name = findViewById(R.id.update_name_trip_column);
+        destination = findViewById(R.id.update_destination_trip_column);
 
-        //Set actionbar title after getAndSetIntentData method
-        ActionBar ab = getSupportActionBar();
-        if (ab != null) {
-            ab.setTitle(title);
-        }
+        date = findViewById(R.id.update_date_trip_column);
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showUpdateDatePicker();
+            }
+        });
 
+        description = findViewById(R.id.update_description_trip_column);
+        duration = findViewById(R.id.update_duration_trip_column);
+        aim = findViewById(R.id.update_aim_trip_column);
+
+        risk_assessment_spinner = (Spinner) findViewById(R.id.update_risk_assessment_trip_column);
+        ArrayAdapter<String> dataRiskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, riskAssessmentDropdown);
+        risk_assessment_spinner.setAdapter(dataRiskAdapter);
+
+        status_spinner = (Spinner) findViewById(R.id.update_status_trip_column);
+        ArrayAdapter<String> dataStatusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, statusDropdown);
+        status_spinner.setAdapter(dataStatusAdapter);
+
+        populateEditText();
+
+        checkEditTextErrors(name);
+        checkEditTextErrors(destination);
+        checkEditTextErrors(date);
+        checkEditTextErrors(duration);
+
+        update_button = findViewById(R.id.update_save_trip_db_button);
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //And only then we call this
-                SqliteDatabaseHandler myDB = new SqliteDatabaseHandler(UpdateTripActivity.this);
-                title = title_input.getText().toString().trim();
-                author = author_input.getText().toString().trim();
-                pages = "3";
-                //myDB.updateData(id, title, author, pages);
+                isTextEmpty(name);
+                isTextEmpty(destination);
+                isTextEmpty(date);
+                isTextEmpty(duration);
+
+                if (allConditionChecked) {
+                    risk_assessment = risk_assessment_spinner.getSelectedItem().toString();
+                    status = status_spinner.getSelectedItem().toString();
+                    saveIntoDatabase(risk_assessment, status);
+                } else {
+                    allConditionChecked = true;
+                }
             }
         });
-        delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                confirmDialog();
-            }
-        });
-*/
     }
 
-    void getAndSetIntentData(){
-        if(getIntent().hasExtra("id") && getIntent().hasExtra("title") &&
-                getIntent().hasExtra("author")){
-            //Getting Data from Intent
-            id = getIntent().getStringExtra("id");
-            title = getIntent().getStringExtra("title");
-            author = getIntent().getStringExtra("author");
-            // pages = getIntent().getStringExtra("pages");
+    public void saveIntoDatabase(String risk_assessment, String status) {
+        SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(UpdateTripActivity.this);
+        databaseHandler.updateTrip(
+                getIntent().getStringExtra("id"),
+                name.getText().toString().trim(), destination.getText().toString().trim(), date.getText().toString().trim(),
+                risk_assessment, description.getText().toString().trim(),
+                duration.getText().toString().trim(), aim.getText().toString().trim(), status
+        );
+        Intent intent = new Intent(UpdateTripActivity.this, MainTripActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
-            //Setting Intent Data
-            title_input.setText(title);
-            author_input.setText(author);
-            //pages_input.setText(pages);
-            Log.d("stev", title+" "+author);
-        }else{
-            Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show();
+    public void isTextEmpty(EditText textName) {
+        if (textName.getText().toString().length() == 0) {
+            textName.setError("This field is required.");
+            allConditionChecked = false;
+        } else if (textName.getText().toString().length() <= 2) {
+            textName.setError("The value must have at least 3 characters.");
+            allConditionChecked = false;
         }
     }
 
-    void confirmDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete " + title + " ?");
-        builder.setMessage("Are you sure you want to delete " + title + " ?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+    public void checkEditTextErrors(EditText textName) {
+        textName.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                SqliteDatabaseHandler myDB = new SqliteDatabaseHandler(UpdateTripActivity.this);
-                //myDB.deleteOneRow(id);
-                finish();
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (textName.getText().toString().length() <= 2) {
+                    textName.setError("The value must have at least 3 characters.");
+                }
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.create().show();
     }
 
+    void populateEditText() {
+        if (getIntent().hasExtra("id") && getIntent().hasExtra("name") &&
+                getIntent().hasExtra("destination") && getIntent().hasExtra("date") &&
+                getIntent().hasExtra("risk_assessment") && getIntent().hasExtra("duration") &&
+                getIntent().hasExtra("status")
+        ) {
+            name.setText(getIntent().getStringExtra("name"));
+            destination.setText(getIntent().getStringExtra("destination"));
+            date.setText(getIntent().getStringExtra("date"));
+            description.setText(getIntent().getStringExtra("description"));
+            duration.setText(getIntent().getStringExtra("duration"));
+            aim.setText(getIntent().getStringExtra("aim"));
+
+            int risk_dropdown_position = Arrays.asList(riskAssessmentDropdown).indexOf(getIntent().getStringExtra("risk_assessment"));
+            int status_dropdown_position = Arrays.asList(statusDropdown).indexOf(getIntent().getStringExtra("status"));
+
+            risk_assessment_spinner.setSelection(risk_dropdown_position);
+            status_spinner.setSelection(status_dropdown_position);
+        } else {
+            Toast.makeText(UpdateTripActivity.this, "No data was received by the Update Activity", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    void showUpdateDatePicker() {
+        final Calendar cldr = Calendar.getInstance();
+        int day = cldr.get(Calendar.DAY_OF_MONTH);
+        int month = cldr.get(Calendar.MONTH);
+        int year = cldr.get(Calendar.YEAR);
+
+        picker = new DatePickerDialog(UpdateTripActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+            }
+        }, year, month, day);
+        picker.getDatePicker().setMinDate(System.currentTimeMillis());
+        picker.show();
+    }
 }
