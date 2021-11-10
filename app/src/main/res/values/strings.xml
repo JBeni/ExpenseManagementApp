@@ -1,20 +1,26 @@
 <resources>
     <string name="app_name">Expense Management</string>
 
-
+    // Instructions Area
     <string name="instructions_trip"><![CDATA[
-            Use the add button (+) in the toolbar above to create new tasks.\n\nTasks with lower sort orders will be placed higher up the list.
-            Tasks with the same sort order will be sorted alphabetically.\n\nTapping a task will start the timer for that task (and will stop the timer
-            for any previous task that was being timed).
-            \n\nEach task has Edit and Delete buttons if you want to change the details or remove the task.
+        To delete all the data from the database check the option from the toolbar.
+
+        Use the button (+) from the bottom of the screen to add new trips.
+        To Edit or Delete a Trip check the dots from the specific trip card view.
+
+        Observation: when you delete a trip all the expenses related to the trip with as well be removed from database.
+
+        To add expenses for a trip click on the image card view.
+    ]]></string>
+    <string name="instructions_expense"><![CDATA[
+        Use the button (+) from the bottom of the screen to add new expenses.
+        To Edit or Delete an Expense check the dots from the specific expense card view.
+
+        To view an expense click on the image card view.
     ]]></string>
 
-    <string name="instructions_expense">Use the add button (+) in the toolbar above to create new tasks.\n\nTasks with lower sort orders will be placed higher up the list. Tasks with the same sort order will be sorted alphabetically.\n\nTapping a task will start the timer for that task (and will stop the timer for any previous task that was being timed). \n\nEach task has Edit and Delete buttons if you want to change the details or remove the task.</string>
-
-
-    // AddEdit Trip Fragment
+    // Add, Edit, Delete and View Trip Area
     <string name="name_trip_value_hint">value</string>
-
     <string name="name_trip_hint">Name, e.g: meeting, conference</string>
     <string name="destination_trip_hint">Destination, e.g: London</string>
     <string name="date_trip_hint">Date, e.g: day/month/year 24/12/1990</string>
@@ -26,7 +32,7 @@
     <string name="add_save_trip_db_button_text">Add trip</string>
     <string name="update_save_trip_db_button_text">Update trip</string>
 
-    // Expense Activity Resources
+    // Add, Edit, Delete and View Expense Area
     <string name="type_expense_hint">e.g: travel, food, other</string>
     <string name="amount_expense_hint">e.g: 100 dolars</string>
     <string name="time_expense_hint">Enter time</string>

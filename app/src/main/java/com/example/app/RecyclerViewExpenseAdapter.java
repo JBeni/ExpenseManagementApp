@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -143,10 +141,6 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
             expense_type_txt = itemView.findViewById(R.id.expense_type_card_view);
             expense_main_grid = itemView.findViewById(R.id.main_content_expense_card_view);
             expense_menu_options = itemView.findViewById(R.id.expense_card_options);
-
-            //Animate Recyclerview
-            Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
-            expense_main_grid.setAnimation(translate_anim);
         }
     }
 }

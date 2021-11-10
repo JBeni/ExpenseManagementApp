@@ -9,11 +9,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.PopupMenu;
@@ -164,10 +161,6 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
             trip_name_txt = itemView.findViewById(R.id.trip_name_card_view);
             trip_main_grid = itemView.findViewById(R.id.main_content_trip_card_view);
             trip_menu_options = itemView.findViewById(R.id.trip_card_options);
-
-            //Animate Recyclerview
-            Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
-            trip_main_grid.setAnimation(translate_anim);
         }
     }
 }
