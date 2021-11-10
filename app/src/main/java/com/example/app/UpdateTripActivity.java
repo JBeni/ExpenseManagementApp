@@ -14,7 +14,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import java.util.Arrays;
 
 public class UpdateTripActivity extends AppCompatActivity {
@@ -56,7 +55,7 @@ public class UpdateTripActivity extends AppCompatActivity {
         ArrayAdapter<String> dataStatusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, statusDropdown);
         status_spinner.setAdapter(dataStatusAdapter);
 
-        populateEditText();
+        populateUpdateTripText();
 
         checkEditTextErrors(name);
         checkEditTextErrors(destination);
@@ -121,7 +120,7 @@ public class UpdateTripActivity extends AppCompatActivity {
         });
     }
 
-    void populateEditText() {
+    void populateUpdateTripText() {
         if (getIntent().hasExtra("id") && getIntent().hasExtra("name") &&
                 getIntent().hasExtra("destination") && getIntent().hasExtra("date") &&
                 getIntent().hasExtra("risk_assessment") && getIntent().hasExtra("duration") &&
