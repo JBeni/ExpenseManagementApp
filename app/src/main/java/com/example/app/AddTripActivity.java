@@ -94,6 +94,7 @@ public class AddTripActivity extends AppCompatActivity {
                 date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
             }
         }, year, month, day);
+        picker.setCancelable(false);
         picker.getDatePicker().setMinDate(System.currentTimeMillis());
         picker.show();
     }
