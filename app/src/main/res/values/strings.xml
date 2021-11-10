@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">Expense Management</string>
 
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
 
-    <string name="add_trip_button">Add Trip</string>
-    <string name="edit_trip_button">Edit Trip</string>
-    <string name="delete_trip_button">Delete Trip</string>
+    <string name="instructions_trip"><![CDATA[
+            Use the add button (+) in the toolbar above to create new tasks.\n\nTasks with lower sort orders will be placed higher up the list.
+            Tasks with the same sort order will be sorted alphabetically.\n\nTapping a task will start the timer for that task (and will stop the timer
+            for any previous task that was being timed).
+            \n\nEach task has Edit and Delete buttons if you want to change the details or remove the task.
+    ]]></string>
+
+    <string name="instructions_expense">Use the add button (+) in the toolbar above to create new tasks.\n\nTasks with lower sort orders will be placed higher up the list. Tasks with the same sort order will be sorted alphabetically.\n\nTapping a task will start the timer for that task (and will stop the timer for any previous task that was being timed). \n\nEach task has Edit and Delete buttons if you want to change the details or remove the task.</string>
+
 
     // AddEdit Trip Fragment
     <string name="name_trip_value_hint">value</string>

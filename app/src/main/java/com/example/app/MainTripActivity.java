@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,11 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainTripActivity extends AppCompatActivity {
-
     RecyclerView recyclerView;
     FloatingActionButton add_button;
-    ImageView empty_imageview;
-    TextView no_data;
+    TextView instructions_trip;
 
     SqliteDatabaseHandler databaseHandler;
     List<Trip> trips;
@@ -35,8 +32,7 @@ public class MainTripActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.trip_recycler_view);
         add_button = findViewById(R.id.trip_add_main_button);
-        empty_imageview = findViewById(R.id.empty_imageview);
-        no_data = findViewById(R.id.no_data);
+        instructions_trip = findViewById(R.id.instructions_trip);
 
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,24 +45,19 @@ public class MainTripActivity extends AppCompatActivity {
         databaseHandler = new SqliteDatabaseHandler(MainTripActivity.this);
         trips = new ArrayList<Trip>();
 
-        storeDataInArrays();
+        getTripsData();
 
         customAdapter = new RecyclerViewTripAdapter(MainTripActivity.this,this, trips);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(MainTripActivity.this, 3));
     }
 
-    /**
-     * from https://github.com/stevdza-san/SQLite_Android-Complete_Tutorial/blob/master/app/src/main/java/com/jovanovic/stefan/sqlitetutorial/MainActivity.java
-     */
-    void storeDataInArrays() {
+    private void getTripsData() {
         trips = databaseHandler.getAllTrips();
         if (trips.size() == 0) {
-            empty_imageview.setVisibility(View.VISIBLE);
-            no_data.setVisibility(View.VISIBLE);
+            instructions_trip.setVisibility(View.VISIBLE);
         } else {
-            empty_imageview.setVisibility(View.GONE);
-            no_data.setVisibility(View.GONE);
+            instructions_trip.setVisibility(View.GONE);
         }
     }
 
@@ -91,7 +82,7 @@ public class MainTripActivity extends AppCompatActivity {
     /**
      * https://www.geeksforgeeks.org/android-alert-dialog-box-and-how-to-create-it/
      */
-    void confirmDialog() {
+    private void confirmDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainTripActivity.this);
         builder.setTitle("Delete Database Data");
         builder.setMessage("Are you sure you want to delete all the data from database?");
