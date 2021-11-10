@@ -1,15 +1,11 @@
 package com.example.app;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,11 +15,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import java.time.LocalDate;
 
 public class AddTripActivity extends AppCompatActivity {
-
+    DatePickerDialog picker;
     EditText name, destination, date, description, duration, aim;
     String risk_assessment, status;
     Button save_button;
@@ -41,6 +35,13 @@ public class AddTripActivity extends AppCompatActivity {
         destination = findViewById(R.id.add_destination_trip_column);
         date = findViewById(R.id.add_date_trip_column);
 
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAddDatePicker();
+            }
+        });
+
         Spinner risk_assessment_spinner = (Spinner) findViewById(R.id.add_risk_assessment_trip_column);
         ArrayAdapter<String> dataRiskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, riskAssessmentDropdown);
         risk_assessment_spinner.setAdapter(dataRiskAdapter);
@@ -52,8 +53,6 @@ public class AddTripActivity extends AppCompatActivity {
         description = findViewById(R.id.add_description_trip_column);
         duration = findViewById(R.id.add_duration_trip_column);
         aim = findViewById(R.id.add_aim_trip_column);
-
-        //status = findViewById(R.id.add_status_trip_column);
 
         checkEditTextErrors(name);
         checkEditTextErrors(destination);
@@ -78,6 +77,25 @@ public class AddTripActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    /**
+     * https://www.tutlane.com/tutorial/android/android-datepicker-with-examples
+     */
+    void showAddDatePicker() {
+        final Calendar cldr = Calendar.getInstance();
+        int day = cldr.get(Calendar.DAY_OF_MONTH);
+        int month = cldr.get(Calendar.MONTH);
+        int year = cldr.get(Calendar.YEAR);
+
+        picker = new DatePickerDialog(AddTripActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+            }
+        }, year, month, day);
+        picker.getDatePicker().setMinDate(System.currentTimeMillis());
+        picker.show();
     }
 
     public void isTextEmpty(EditText textName) {
@@ -150,37 +168,5 @@ public class AddTripActivity extends AppCompatActivity {
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-    }
-
-    public void showDatePickerDialog(View view) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.setCancelable(false);
-        newFragment.show(getSupportFragmentManager(), "datePicker");
-    }
-
-    public void updateDate(LocalDate dob) {
-        TextView dobText = (TextView)findViewById(R.id.add_date_trip_column);
-        dobText.setText(dob.toString());
-    }
-
-    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-            LocalDate d = LocalDate.now();
-            int year = d.getYear();
-            int month = d.getMonthValue();
-            int day = d.getDayOfMonth();
-
-            DatePickerDialog picker = new DatePickerDialog(getActivity(), this, year, --month, day);
-            picker.getDatePicker().setMinDate(System.currentTimeMillis());
-            return picker;
-        }
-
-        @Override
-        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-            LocalDate dob = LocalDate.of(year, ++month, day);
-            ((AddTripActivity)getActivity()).updateDate(dob);
-        }
     }
 }
