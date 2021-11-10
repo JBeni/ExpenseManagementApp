@@ -89,12 +89,12 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
                 switch (item.getItemId()) {
                     case R.id.view_trip_card_button:
                         Intent view_intent = new Intent(context, ViewTripActivity.class);
-                        setExtraIntentData(view_intent, position);
+                        setTripExtraIntentData(view_intent, position);
                         activity.startActivityForResult(view_intent, 1);
                         return true;
                     case R.id.edit_trip_card_button:
                         Intent edit_intent = new Intent(context, UpdateTripActivity.class);
-                        setExtraIntentData(edit_intent, position);
+                        setTripExtraIntentData(edit_intent, position);
                         activity.startActivityForResult(edit_intent, 1);
                         return true;
                     case R.id.delete_trip_card_button:
@@ -108,7 +108,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         popup.show();
     }
 
-    private void setExtraIntentData(Intent intent, int position) {
+    private void setTripExtraIntentData(Intent intent, int position) {
         intent.putExtra("id", String.valueOf(trips.get(position).getId()));
         intent.putExtra("name", trips.get(position).getName());
         intent.putExtra("destination", trips.get(position).getDestination());
