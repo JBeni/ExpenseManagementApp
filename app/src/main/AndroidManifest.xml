@@ -10,16 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseManagementApp">
+
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".SearchActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainTripActivity"
-            android:exported="false"
-            android:label="Main Activity" />
+
         <activity
             android:name=".UpdateExpenseActivity"
             android:label="Update Trip Expense"
@@ -48,8 +46,9 @@
             android:label="Add Trip"
             android:noHistory="true"
             android:parentActivityName=".MainTripActivity" />
+
         <activity
-            android:name=".MainActivity"
+            android:name=".MainTripActivity"
             android:exported="true"
             android:label="View Trips">
             <intent-filter>
