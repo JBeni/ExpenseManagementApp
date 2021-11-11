@@ -1,8 +1,15 @@
 package com.example.app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class ViewTripActivity extends AppCompatActivity {
 
@@ -36,5 +43,24 @@ public class ViewTripActivity extends AppCompatActivity {
             aim.setText(getIntent().getStringExtra("aim"));
             status.setText(getIntent().getStringExtra("status"));
         }
+
+        BottomNavigationView bottomNavigation = findViewById(R.id.navigation_bottom);
+        bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home_navigation:
+                        startActivity(new Intent(getApplicationContext(), MainTripActivity.class));
+                        break;
+                    case R.id.search_navigation:
+                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                        break;
+                    case R.id.settings_navigation:
+                        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                        break;
+                }
+                return true;
+            }
+        });
     }
 }

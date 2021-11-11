@@ -2,12 +2,19 @@ package com.example.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +53,25 @@ public class MainTripExpensesActivity extends AppCompatActivity {
         customAdapter = new RecyclerViewExpenseAdapter(MainTripExpensesActivity.this,this, expenses);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(MainTripExpensesActivity.this, 3));
+
+        BottomNavigationView bottomNavigation = findViewById(R.id.navigation_bottom);
+        bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home_navigation:
+                        startActivity(new Intent(getApplicationContext(), MainTripActivity.class));
+                        break;
+                    case R.id.search_navigation:
+                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                        break;
+                    case R.id.settings_navigation:
+                        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     private void getTripExpensesData() {

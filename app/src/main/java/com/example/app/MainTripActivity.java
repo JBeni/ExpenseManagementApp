@@ -8,11 +8,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +53,29 @@ public class MainTripActivity extends AppCompatActivity {
         customAdapter = new RecyclerViewTripAdapter(MainTripActivity.this,this, trips);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(MainTripActivity.this, 3));
+
+        /**
+         * https://medium.com/@makkenasrinivasarao1/bottom-navigation-in-android-application-with-activities-material-design-7a056b8cf38
+         ***/
+        BottomNavigationView bottomNavigation = findViewById(R.id.navigation_bottom);
+        bottomNavigation.setSelectedItemId(R.id.home_navigation);
+        bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home_navigation:
+                        startActivity(new Intent(getApplicationContext(), MainTripActivity.class));
+                        break;
+                    case R.id.search_navigation:
+                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                        break;
+                    case R.id.settings_navigation:
+                        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     private void getTripsData() {
