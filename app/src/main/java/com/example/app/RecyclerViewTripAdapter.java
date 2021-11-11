@@ -26,6 +26,7 @@ import java.util.List;
  * https://github.com/android/views-widgets-samples/tree/main/RecyclerView
  * https://github.com/android/views-widgets-samples/tree/main/RecyclerViewAnimations
  * https://github.com/android/views-widgets-samples/tree/main/RecyclerViewSimple
+ * https://www.dev2qa.com/android-cardview-with-image-and-text-example/
  **/
 public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTripAdapter.TripViewHolder> {
 
