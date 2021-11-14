@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.project;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -11,35 +11,38 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddExpenseActivity extends AppCompatActivity {
+public class UpdateExpenseActivity extends AppCompatActivity {
     TimePickerDialog picker;
     EditText type, amount, time, additional_comments;
-    Button save_button;
+    Button update_save_button;
     private boolean allConditionChecked = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_expense);
+        setContentView(R.layout.activity_update_expense);
 
-        type = findViewById(R.id.add_type_expense_column);
-        amount = findViewById(R.id.add_amount_expense_column);
-        additional_comments = findViewById(R.id.add_additional_comments_expense_column);
+        type = findViewById(R.id.update_type_expense_column);
+        amount = findViewById(R.id.update_amount_expense_column);
+        additional_comments = findViewById(R.id.update_additional_comments_expense_column);
 
-        time = findViewById(R.id.add_time_expense_column);
+        time = findViewById(R.id.update_time_expense_column);
         time.setFocusable(false);
         time.setInputType(InputType.TYPE_NULL);
-        addTimePicker(time);
+        updateTimePicker(time);
+
+        populateUpdateExpenseText();
 
         checkTextErrors(type);
         checkTextErrors(amount);
         checkTextErrors(time);
         checkTextErrors(additional_comments);
 
-        save_button = findViewById(R.id.add_save_expense_db_button);
-        save_button.setOnClickListener(new View.OnClickListener() {
+        update_save_button = findViewById(R.id.update_save_expense_db_button);
+        update_save_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isTextEmpty(type);
@@ -48,14 +51,7 @@ public class AddExpenseActivity extends AppCompatActivity {
                 isTextEmpty(additional_comments);
 
                 if (allConditionChecked) {
-                    SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(AddExpenseActivity.this);
-                    databaseHandler.insertExpense(
-                        type.getText().toString().trim(), amount.getText().toString().trim(), time.getText().toString().trim(),
-                            additional_comments.getText().toString().trim(), String.valueOf(getIntent().getStringExtra("trip_id"))
-                    );
-                    Intent intent = new Intent(AddExpenseActivity.this, MainTripExpensesActivity.class);
-                    startActivity(intent);
-                    finish();
+                    saveIntoDatabase();
                 } else {
                     allConditionChecked = true;
                 }
@@ -63,10 +59,32 @@ public class AddExpenseActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * https://www.tutlane.com/tutorial/android/android-timepicker-with-examples
-     */
-    public void addTimePicker(EditText eText) {
+    public void saveIntoDatabase() {
+        SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(UpdateExpenseActivity.this);
+        databaseHandler.updateExpense(
+                getIntent().getStringExtra("id"),
+                type.getText().toString().trim(), amount.getText().toString().trim(),
+                time.getText().toString().trim(), additional_comments.getText().toString().trim()
+        );
+        Intent intent = new Intent(UpdateExpenseActivity.this, MainTripExpensesActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    void populateUpdateExpenseText() {
+        if (getIntent().hasExtra("id") && getIntent().hasExtra("type") &&
+                getIntent().hasExtra("amount") && getIntent().hasExtra("time") && getIntent().hasExtra("trip_id")
+        ) {
+            type.setText(getIntent().getStringExtra("type"));
+            amount.setText(getIntent().getStringExtra("amount"));
+            time.setText(getIntent().getStringExtra("time"));
+            additional_comments.setText(getIntent().getStringExtra("additional_comments"));
+        } else {
+            Toast.makeText(UpdateExpenseActivity.this, "No data was received by the Update Activity", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void updateTimePicker(EditText eText) {
         eText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +92,7 @@ public class AddExpenseActivity extends AppCompatActivity {
                 int hour = cldr.get(Calendar.HOUR_OF_DAY);
                 int minutes = cldr.get(Calendar.MINUTE);
 
-                picker = new TimePickerDialog(AddExpenseActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                picker = new TimePickerDialog(UpdateExpenseActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
                         eText.setText(sHour + ":" + sMinute);

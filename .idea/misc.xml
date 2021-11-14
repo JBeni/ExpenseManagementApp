@@ -3,7 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/activity_main.xml" value="0.12310030395136778" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/activity_add_expense.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/activity_add_trip.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/activity_search.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/activity_settings.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/activity_trip_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/activity_update_expense.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/activity_update_trip.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/activity_view_expense.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/list_expense_card_view_item.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/list_trip_card_view_item.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/layout/menu_bottom_navigation.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/menu/expense_menu.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/menu/main_menu.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/menu/trip_menu.xml" value="0.20520833333333333" />
       </map>
     </option>
   </component>
