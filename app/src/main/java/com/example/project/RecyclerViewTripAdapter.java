@@ -111,7 +111,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         intent.putExtra("name", trips.get(position).getName());
         intent.putExtra("destination", trips.get(position).getDestination());
         intent.putExtra("date", trips.get(position).getDate());
-        intent.putExtra("risk_assessment", trips.get(position).getRisk_assessment());
+        intent.putExtra("risk_assessment", trips.get(position).getRiskAssessment());
         intent.putExtra("description", trips.get(position).getDescription());
         intent.putExtra("duration", trips.get(position).getDuration());
         intent.putExtra("aim", trips.get(position).getAim());

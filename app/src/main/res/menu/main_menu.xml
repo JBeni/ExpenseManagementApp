@@ -7,4 +7,9 @@
         android:title="Delete All Data"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/upload_data_cloud"
+        android:title="Upload Data Cloud"
+        app:showAsAction="never" />
+
 </menu>

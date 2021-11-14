@@ -59,11 +59,11 @@ public class Trip {
         this.date = date;
     }
 
-    public String getRisk_assessment() {
+    public String getRiskAssessment() {
         return risk_assessment;
     }
 
-    public void setRisk_assessment(String risk_assessment) {
+    public void setRiskAssessment(String risk_assessment) {
         this.risk_assessment = risk_assessment;
     }
 

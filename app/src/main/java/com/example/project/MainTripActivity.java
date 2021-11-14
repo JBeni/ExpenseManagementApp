@@ -16,6 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +37,7 @@ public class MainTripActivity extends AppCompatActivity {
 
     SqliteDatabaseHandler databaseHandler;
     List<Trip> trips;
+    List<JsonCloudModel> jsonCloudData;
     RecyclerViewTripAdapter customAdapter;
 
     @Override
@@ -44,10 +56,9 @@ public class MainTripActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         databaseHandler = new SqliteDatabaseHandler(MainTripActivity.this);
         trips = new ArrayList<Trip>();
-
+        jsonCloudData = new ArrayList<JsonCloudModel>();
         getTripsData();
 
         customAdapter = new RecyclerViewTripAdapter(MainTripActivity.this,this, trips);
@@ -97,11 +108,63 @@ public class MainTripActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.upload_data_cloud:
+                uploadDataWebCloud();
+                return true;
             case R.id.delete_all_data:
                 confirmDialog();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * https://stackoverflow.com/questions/36833798/sending-json-object-via-http-post-method-in-android
+     */
+    public void uploadDataWebCloud() {
+        jsonCloudData = databaseHandler.getJsonCloudData();
+
+        try {
+            String jsonPayload;
+            JSONObject jsonData = new JSONObject();
+            jsonData.put("userId", "001095988");
+
+            JSONArray expenseArray = new JSONArray();
+            for (int index = 0; index < jsonCloudData.size(); index++) {
+                JSONObject expense = new JSONObject();
+
+                expense.put("name", jsonCloudData.get(index).getTripName());
+                expense.put("expense_type", jsonCloudData.get(index).getType());
+                expense.put("expense_amount", jsonCloudData.get(index).getAmount());
+                expense.put("expense_time", jsonCloudData.get(index).getTime());
+                expense.put("expense_additional_comments", jsonCloudData.get(index).getAdditionalComments());
+
+                expenseArray.put(expense);
+            }
+            jsonData.put("detailList", expenseArray);
+            jsonPayload = jsonData.toString();
+
+            URL url = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw");
+            HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setRequestProperty("Content-Type", "application/json");
+            httpURLConnection.connect();
+
+            DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
+            wr.writeBytes(jsonPayload.toString());
+            wr.flush();
+            wr.close();
+
+            // DISPLAY THE RESPONSE MESSAGE TO USER
+
+        } catch (JSONException | MalformedURLException e) {
+            e.printStackTrace();
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

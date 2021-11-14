@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     List<Trip> tripsList = new ArrayList<>();
     List<Expense> expensesList = new ArrayList<>();
     List<Expense> tripExpensesList = new ArrayList<>();
+    List<JsonCloudModel> jsonClouddata = new ArrayList<>();
     private SQLiteDatabase database;
     Context context;
 
@@ -285,6 +288,27 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             expensesList.add(expense);
         }
         return expensesList;
+    }
+
+    public List<JsonCloudModel> getJsonCloudData() {
+        String query = "SELECT trips.name, expenses.type, expenses.amount, expenses.time, expenses.additional_comments" +
+                " FROM expenses JOIN trips on expenses.trip_id = trips.id";
+        Cursor cursor = null;
+        if (database != null) {
+            cursor = database.rawQuery(query, null);
+        }
+
+        while(cursor.moveToNext()) {
+            String trip_name = cursor.getString(0);
+            String expense_type = cursor.getString(1);
+            String expense_amount = cursor.getString(2);
+            String expense_time = cursor.getString(3);
+            String expense_additional_comments = cursor.getString(4);
+
+            JsonCloudModel expense = new JsonCloudModel(trip_name, expense_type, expense_amount, expense_time, expense_additional_comments);
+            jsonClouddata.add(expense);
+        }
+        return jsonClouddata;
     }
 
     public List<Expense> getTripExpenses(String selected_trip_id) {

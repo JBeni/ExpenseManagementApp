@@ -121,7 +121,7 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
         intent.putExtra("type", expenses.get(position).getType());
         intent.putExtra("amount", expenses.get(position).getAmount());
         intent.putExtra("time", expenses.get(position).getTime());
-        intent.putExtra("additional_comments", expenses.get(position).getAdditional_comments());
+        intent.putExtra("additional_comments", expenses.get(position).getAdditionalComments());
         intent.putExtra("trip_id", expenses.get(position).getTripId());
     }
 
