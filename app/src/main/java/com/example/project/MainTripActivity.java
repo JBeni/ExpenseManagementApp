@@ -3,11 +3,14 @@ package com.example.project;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,14 +24,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.DataOutputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.IOException;
-import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class MainTripActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -121,12 +128,16 @@ public class MainTripActivity extends AppCompatActivity {
 
     /**
      * https://stackoverflow.com/questions/36833798/sending-json-object-via-http-post-method-in-android
+     * https://stackoverflow.com/questions/2938502/sending-post-data-in-android
      */
     public void uploadDataWebCloud() {
+        // https://www.educative.io/edpresso/how-to-fix-androidosnetworkonmainthreadexception-error
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         jsonCloudData = databaseHandler.getJsonCloudData();
 
         try {
-            String jsonPayload;
             JSONObject jsonData = new JSONObject();
             jsonData.put("userId", "001095988");
 
@@ -143,29 +154,65 @@ public class MainTripActivity extends AppCompatActivity {
                 expenseArray.put(expense);
             }
             jsonData.put("detailList", expenseArray);
-            jsonPayload = jsonData.toString();
 
             URL url = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw");
-            HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setRequestProperty("Content-Type", "application/json");
-            httpURLConnection.connect();
+            HttpsURLConnection httpsConnection = (HttpsURLConnection)url.openConnection();
+            httpsConnection.setDoOutput(true);
+            httpsConnection.setRequestMethod("POST");
+            httpsConnection.setRequestProperty("Content-Type", "application/json;");
+            httpsConnection.connect();
 
-            DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
-            wr.writeBytes(jsonPayload.toString());
-            wr.flush();
-            wr.close();
+            OutputStream out = new BufferedOutputStream(httpsConnection.getOutputStream());
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+            writer.write(jsonData.toString());
+            writer.flush();
+            writer.close();
+            out.close();
 
-            // DISPLAY THE RESPONSE MESSAGE TO USER
+            int response_code = httpsConnection.getResponseCode();
+            if (response_code >= HttpsURLConnection.HTTP_OK && response_code <= HttpsURLConnection.HTTP_PARTIAL) {
+                JSONObject jsonObject = new JSONObject(httpsConnection.getResponseMessage());
 
+                // FOR TESTING PURPOSE
+                /*
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("uploadResponseCode", "SUCCESS");
+                    jsonObject.put("userid", "wm123");
+                    jsonObject.put("number", 2);
+                    jsonObject.put("names", "Android Conference, Client Meeting");
+                    jsonObject.put("message", "successful upload – all done!");
+                */
+
+                displayResponseMessageDialog(jsonObject);
+            } else {
+                Toast.makeText(this, "Error: Something went wrong with the request process.", Toast.LENGTH_LONG).show();
+            }
         } catch (JSONException | MalformedURLException e) {
-            e.printStackTrace();
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         } catch (ProtocolException e) {
-            e.printStackTrace();
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         } catch (IOException e) {
-            e.printStackTrace();
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void displayResponseMessageDialog(JSONObject message) throws JSONException {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainTripActivity.this);
+        builder.setCancelable(false);
+        builder.setTitle("Upload Data Response");
+        String formatMessage = String.format(
+                "Upload Response Code: " + message.getString("uploadResponseCode") + "\n" +
+                "UserId: " + message.getString("userid") + "\n" +
+                "Number: " + message.getInt("number") + "\n" +
+                "Names: " + message.getString("names") + "\n" +
+                "Message: " + message.getString("message") + "\n");
+        builder.setMessage(formatMessage);
+        builder.setNegativeButton("Close Dialog", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) { dialog.cancel(); }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     /**
