@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Expense Management</string>
+    <string name="app_name">Expense Management App</string>
 
-    // Bottom Navigation Area
+    <!-- Bottom Navigation Area -->
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     <string name="title_settings">Settings</string>
 
-    // Instructions Area
+    <!-- Instructions Area -->
     <string name="instructions_trip"><![CDATA[
         To delete all the data from the database check the option from the toolbar.\n\n
 
@@ -24,7 +24,8 @@
         To view an expense click on the image card view.\n
     ]]></string>
 
-    // Add, Edit, Delete and View Trip Area
+
+    <!-- Add, Edit, Delete and View Trip Area -->
     <string name="name_trip_value_hint">value</string>
     <string name="name_trip_hint">Name, e.g: meeting, conference</string>
     <string name="destination_trip_hint">Destination, e.g: London</string>
@@ -37,12 +38,48 @@
     <string name="add_save_trip_db_button_text">Add trip</string>
     <string name="update_save_trip_db_button_text">Update trip</string>
 
-    // Add, Edit, Delete and View Expense Area
+    <!-- Add, Edit, Delete and View Expense Area -->
     <string name="type_expense_hint">e.g: travel, food, other</string>
     <string name="amount_expense_hint">e.g: 100 dolars</string>
     <string name="time_expense_hint">Enter time</string>
     <string name="additional_comments_expense_hint">e.g: comments about expense, conference</string>
     <string name="save_expense_db_button_text">Add Expense</string>
     <string name="update_expense_db_button_text">Update Expense</string>
+
+    <!-- Main Trip Activity Menu Settings -->
+    <string name="upload_data_cloud_option">Upload Data Cloud</string>
+    <string name="delete_all_data_option">Delete All Data</string>
+
+    <!-- Trip Menu -->
+    <string name="view_trip_option_menu">View</string>
+    <string name="edit_trip_option_menu">Edit</string>
+    <string name="delete_trip_option_menu">Delete</string>
+
+    <!-- Expense Menu -->
+    <string name="edit_expense_option_menu">Edit</string>
+    <string name="delete_expense_option_menu">Delete</string>
+
+    <!-- activity_view_trip -->
+    <string name="status_activity_view_trip">Status</string>
+    <string name="aim_activity_view_trip">Aim</string>
+    <string name="duration_activity_view_trip">Duration</string>
+    <string name="description_activity_view_trip">Description</string>
+    <string name="risk_assessment_activity_view_trip">Risk Assessment</string>
+    <string name="date_activity_view_trip">Date</string>
+    <string name="destination_activity_view_trip">Destination</string>
+    <string name="name_activity_view_trip">Name</string>
+
+    <!-- activity_view_expense -->
+    <string name="type_activity_view_expense">Type</string>
+    <string name="amount_activity_view_expense">Amount</string>
+    <string name="time_activity_view_expense">Time</string>
+    <string name="additional_comments_activity_view_expense">Additional Comments</string>
+
+    <!-- Other Settings -->
+    <string name="alt_image">TODO</string>
+    <string name="trip_name_text_card">Trip Name</string>
+    <string name="expense_type_card_view">Expense Type</string>
+    <string name="textview_activity_settings">TextView</string>
+    <string name="textview_activity_search">TextView</string>
 
 </resources>
