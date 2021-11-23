@@ -4,12 +4,12 @@
 
     <item
         android:id="@+id/delete_all_data"
-        android:title="Delete All Data"
+        android:title="@string/delete_all_data_option"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/upload_data_cloud"
-        android:title="Upload Data Cloud"
+        android:title="@string/upload_data_cloud_option"
         app:showAsAction="never" />
 
 </menu>
