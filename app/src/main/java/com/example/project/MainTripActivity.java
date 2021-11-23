@@ -1,6 +1,6 @@
 package com.example.project;
 
-import android.content.DialogInterface;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -10,31 +10,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationBarView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.net.ssl.HttpsURLConnection;
 
 public class MainTripActivity extends AppCompatActivity {
@@ -47,6 +40,7 @@ public class MainTripActivity extends AppCompatActivity {
     List<JsonCloudModel> jsonCloudData;
     RecyclerViewTripAdapter customAdapter;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,43 +50,35 @@ public class MainTripActivity extends AppCompatActivity {
         add_button = findViewById(R.id.trip_add_main_button);
         instructions_trip = findViewById(R.id.instructions_trip);
 
-        add_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainTripActivity.this, AddTripActivity.class);
-                startActivity(intent);
-            }
+        add_button.setOnClickListener(view -> {
+            Intent intent = new Intent(MainTripActivity.this, AddTripActivity.class);
+            startActivity(intent);
         });
         databaseHandler = new SqliteDatabaseHandler(MainTripActivity.this);
-        trips = new ArrayList<Trip>();
-        jsonCloudData = new ArrayList<JsonCloudModel>();
+        trips = new ArrayList<>();
+        jsonCloudData = new ArrayList<>();
         getTripsData();
 
         customAdapter = new RecyclerViewTripAdapter(MainTripActivity.this,this, trips);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(MainTripActivity.this, 3));
 
-        /**
-         * https://medium.com/@makkenasrinivasarao1/bottom-navigation-in-android-application-with-activities-material-design-7a056b8cf38
-         ***/
+        // https://medium.com/@makkenasrinivasarao1/bottom-navigation-in-android-application-with-activities-material-design-7a056b8cf38
         BottomNavigationView bottomNavigation = findViewById(R.id.navigation_bottom);
         bottomNavigation.setSelectedItemId(R.id.home_navigation);
-        bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home_navigation:
-                        startActivity(new Intent(getApplicationContext(), MainTripActivity.class));
-                        break;
-                    case R.id.search_navigation:
-                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
-                        break;
-                    case R.id.settings_navigation:
-                        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                        break;
-                }
-                return true;
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home_navigation:
+                    startActivity(new Intent(getApplicationContext(), MainTripActivity.class));
+                    break;
+                case R.id.search_navigation:
+                    startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                    break;
+                case R.id.settings_navigation:
+                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                    break;
             }
+            return true;
         });
     }
 
@@ -112,6 +98,7 @@ public class MainTripActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -126,10 +113,8 @@ public class MainTripActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * https://stackoverflow.com/questions/36833798/sending-json-object-via-http-post-method-in-android
-     * https://stackoverflow.com/questions/2938502/sending-post-data-in-android
-     */
+    // https://stackoverflow.com/questions/36833798/sending-json-object-via-http-post-method-in-android
+    // https://stackoverflow.com/questions/2938502/sending-post-data-in-android
     public void uploadDataWebCloud() {
         // https://www.educative.io/edpresso/how-to-fix-androidosnetworkonmainthreadexception-error
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -155,6 +140,8 @@ public class MainTripActivity extends AppCompatActivity {
             }
             jsonData.put("detailList", expenseArray);
 
+
+
             URL url = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw");
             HttpsURLConnection httpsConnection = (HttpsURLConnection)url.openConnection();
             httpsConnection.setDoOutput(true);
@@ -163,7 +150,7 @@ public class MainTripActivity extends AppCompatActivity {
             httpsConnection.connect();
 
             OutputStream out = new BufferedOutputStream(httpsConnection.getOutputStream());
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, StandardCharsets.UTF_8));
             writer.write(jsonData.toString());
             writer.flush();
             writer.close();
@@ -175,6 +162,7 @@ public class MainTripActivity extends AppCompatActivity {
 
                 // FOR TESTING PURPOSE
                 /*
+
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("uploadResponseCode", "SUCCESS");
                     jsonObject.put("userid", "wm123");
@@ -187,11 +175,7 @@ public class MainTripActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Error: Something went wrong with the request process.", Toast.LENGTH_LONG).show();
             }
-        } catch (JSONException | MalformedURLException e) {
-            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        } catch (ProtocolException e) {
-            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        } catch (IOException e) {
+        } catch (JSONException | IOException e) {
             Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -200,46 +184,37 @@ public class MainTripActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainTripActivity.this);
         builder.setCancelable(false);
         builder.setTitle("Upload Data Response");
-        String formatMessage = String.format(
-                "Upload Response Code: " + message.getString("uploadResponseCode") + "\n" +
-                "UserId: " + message.getString("userid") + "\n" +
+        String formatMessage = "Upload Response Code: " + message.getString("uploadResponseCode") + "\n" +
+                "UserId: " + message.getString("userId") + "\n" +
                 "Number: " + message.getInt("number") + "\n" +
                 "Names: " + message.getString("names") + "\n" +
-                "Message: " + message.getString("message") + "\n");
+                "Message: " + message.getString("message") + "\n";
         builder.setMessage(formatMessage);
-        builder.setNegativeButton("Close Dialog", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) { dialog.cancel(); }
-        });
+        builder.setNegativeButton("Close Dialog", (dialog, which) -> dialog.cancel());
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
-    /**
-     * https://www.geeksforgeeks.org/android-alert-dialog-box-and-how-to-create-it/
-     */
+    // https://www.geeksforgeeks.org/android-alert-dialog-box-and-how-to-create-it/
     private void confirmDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainTripActivity.this);
         builder.setTitle("Delete Database Data");
-        builder.setMessage("Are you sure you want to delete all the data from database?");
         builder.setCancelable(false);
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        if (trips.size() > 0) {
+            builder.setMessage("Are you sure you want to delete all the data from database?");
+
+            builder.setPositiveButton("Yes", (dialog, which) -> {
                 databaseHandler.deleteAllData();
                 Intent intent = new Intent(MainTripActivity.this, MainTripActivity.class);
                 startActivity(intent);
                 finish();
-            }
-        });
-
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+            });
+            builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
+        } else {
+            builder.setMessage("There are not data stored in the database at this moment.");
+            builder.setNegativeButton("Close Dialog", (dialog, which) -> dialog.cancel());
+        }
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
