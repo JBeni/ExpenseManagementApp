@@ -5,14 +5,14 @@
 
     <item
         android:id="@+id/view_trip_card_button"
-        android:title="View"/>
+        android:title="@string/view_trip_option_menu"/>
 
     <item
         android:id="@+id/edit_trip_card_button"
-        android:title="Edit"/>
+        android:title="@string/edit_trip_option_menu"/>
 
     <item
         android:id="@+id/delete_trip_card_button"
-        android:title="Delete"/>
+        android:title="@string/delete_trip_option_menu"/>
 
 </menu>
