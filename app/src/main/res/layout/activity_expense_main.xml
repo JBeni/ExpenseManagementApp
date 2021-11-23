@@ -17,7 +17,8 @@
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add" />
+        app:srcCompat="@drawable/ic_add"
+        tools:ignore="ContentDescription" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/expense_recycler_view"
@@ -25,8 +26,8 @@
         android:layout_height="600dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="25dp"
-        android:paddingLeft="13dp"
-        android:paddingRight="3dp"
+        android:paddingStart="13dp"
+        android:paddingEnd="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
