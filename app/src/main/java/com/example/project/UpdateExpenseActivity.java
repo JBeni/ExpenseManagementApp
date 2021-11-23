@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
@@ -7,10 +8,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TimePicker;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,19 +41,16 @@ public class UpdateExpenseActivity extends AppCompatActivity {
         checkTextErrors(additional_comments);
 
         update_save_button = findViewById(R.id.update_save_expense_db_button);
-        update_save_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isTextEmpty(type);
-                isTextEmpty(amount);
-                isTextEmpty(time);
-                isTextEmpty(additional_comments);
+        update_save_button.setOnClickListener(view -> {
+            isTextEmpty(type);
+            isTextEmpty(amount);
+            isTextEmpty(time);
+            isTextEmpty(additional_comments);
 
-                if (allConditionChecked) {
-                    saveIntoDatabase();
-                } else {
-                    allConditionChecked = true;
-                }
+            if (allConditionChecked) {
+                saveIntoDatabase();
+            } else {
+                allConditionChecked = true;
             }
         });
     }
@@ -84,23 +80,17 @@ public class UpdateExpenseActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void updateTimePicker(EditText eText) {
-        eText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar cldr = Calendar.getInstance();
-                int hour = cldr.get(Calendar.HOUR_OF_DAY);
-                int minutes = cldr.get(Calendar.MINUTE);
+        eText.setOnClickListener(v -> {
+            final Calendar cldr = Calendar.getInstance();
+            int hour = cldr.get(Calendar.HOUR_OF_DAY);
+            int minutes = cldr.get(Calendar.MINUTE);
 
-                picker = new TimePickerDialog(UpdateExpenseActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                        eText.setText(sHour + ":" + sMinute);
-                    }
-                }, hour, minutes, true);
-                picker.setCancelable(false);
-                picker.show();
-            }
+            picker = new TimePickerDialog(UpdateExpenseActivity.this,
+                    (tp, sHour, sMinute) -> eText.setText(sHour + ":" + sMinute), hour, minutes, true);
+            picker.setCancelable(false);
+            picker.show();
         });
     }
 
