@@ -1,16 +1,16 @@
 package com.example.project;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -36,12 +36,7 @@ public class UpdateTripActivity extends AppCompatActivity {
         destination = findViewById(R.id.update_destination_trip_column);
 
         date = findViewById(R.id.update_date_trip_column);
-        date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showUpdateDatePicker();
-            }
-        });
+        date.setOnClickListener(v -> showUpdateDatePicker());
 
         description = findViewById(R.id.update_description_trip_column);
         duration = findViewById(R.id.update_duration_trip_column);
@@ -63,21 +58,18 @@ public class UpdateTripActivity extends AppCompatActivity {
         checkEditTextErrors(duration);
 
         update_button = findViewById(R.id.update_save_trip_db_button);
-        update_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isTextEmpty(name);
-                isTextEmpty(destination);
-                isTextEmpty(date);
-                isTextEmpty(duration);
+        update_button.setOnClickListener(view -> {
+            isTextEmpty(name);
+            isTextEmpty(destination);
+            isTextEmpty(date);
+            isTextEmpty(duration);
 
-                if (allConditionChecked) {
-                    risk_assessment = risk_assessment_spinner.getSelectedItem().toString();
-                    status = status_spinner.getSelectedItem().toString();
-                    saveIntoDatabase(risk_assessment, status);
-                } else {
-                    allConditionChecked = true;
-                }
+            if (allConditionChecked) {
+                risk_assessment = risk_assessment_spinner.getSelectedItem().toString();
+                status = status_spinner.getSelectedItem().toString();
+                saveIntoDatabase(risk_assessment, status);
+            } else {
+                allConditionChecked = true;
             }
         });
     }
@@ -143,18 +135,15 @@ public class UpdateTripActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     void showUpdateDatePicker() {
         final Calendar cldr = Calendar.getInstance();
         int day = cldr.get(Calendar.DAY_OF_MONTH);
         int month = cldr.get(Calendar.MONTH);
         int year = cldr.get(Calendar.YEAR);
 
-        picker = new DatePickerDialog(UpdateTripActivity.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-            }
-        }, year, month, day);
+        picker = new DatePickerDialog(UpdateTripActivity.this,
+                (view, year1, monthOfYear, dayOfMonth) -> date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1), year, month, day);
         picker.getDatePicker().setMinDate(System.currentTimeMillis());
         picker.show();
     }
