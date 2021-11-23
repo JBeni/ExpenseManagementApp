@@ -2,17 +2,15 @@ package com.example.project;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -35,12 +33,7 @@ public class AddTripActivity extends AppCompatActivity {
         destination = findViewById(R.id.add_destination_trip_column);
         date = findViewById(R.id.add_date_trip_column);
 
-        date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showAddDatePicker();
-            }
-        });
+        date.setOnClickListener(v -> showAddDatePicker());
 
         Spinner risk_assessment_spinner = (Spinner) findViewById(R.id.add_risk_assessment_trip_column);
         ArrayAdapter<String> dataRiskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, riskAssessmentDropdown);
@@ -60,40 +53,32 @@ public class AddTripActivity extends AppCompatActivity {
         checkEditTextErrors(duration);
 
         save_button = findViewById(R.id.add_save_trip_db_button);
-        save_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isTextEmpty(name);
-                isTextEmpty(destination);
-                isTextEmpty(date);
-                isTextEmpty(duration);
+        save_button.setOnClickListener(view -> {
+            isTextEmpty(name);
+            isTextEmpty(destination);
+            isTextEmpty(date);
+            isTextEmpty(duration);
 
-                if (allConditionChecked) {
-                    risk_assessment = risk_assessment_spinner.getSelectedItem().toString();
-                    status = status_spinner.getSelectedItem().toString();
-                    confirmTripDetails(risk_assessment, status);
-                } else {
-                    allConditionChecked = true;
-                }
+            if (allConditionChecked) {
+                risk_assessment = risk_assessment_spinner.getSelectedItem().toString();
+                status = status_spinner.getSelectedItem().toString();
+                confirmTripDetails(risk_assessment, status);
+            } else {
+                allConditionChecked = true;
             }
         });
     }
 
-    /**
-     * https://www.tutlane.com/tutorial/android/android-datepicker-with-examples
-     */
+    // https://www.tutlane.com/tutorial/android/android-datepicker-with-examples
+    @SuppressLint("SetTextI18n")
     void showAddDatePicker() {
         final Calendar cldr = Calendar.getInstance();
         int day = cldr.get(Calendar.DAY_OF_MONTH);
         int month = cldr.get(Calendar.MONTH);
         int year = cldr.get(Calendar.YEAR);
 
-        picker = new DatePickerDialog(AddTripActivity.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-            }
-        }, year, month, day);
+        picker = new DatePickerDialog(AddTripActivity.this,
+                (view, year1, monthOfYear, dayOfMonth) -> date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1), year, month, day);
         picker.setCancelable(false);
         picker.getDatePicker().setMinDate(System.currentTimeMillis());
         picker.show();
@@ -133,40 +118,32 @@ public class AddTripActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(AddTripActivity.this);
         builder.setTitle("Do you confirm these details?");
 
-        String message = String.format("Name: " + name.getText().toString().trim() + "\n" +
-            "Destination: " + destination.getText().toString().trim() + "\n" +
-             "Date: " + date.getText().toString().trim() + "\n" +
-             "Risk Assessment: " + risk_assessment + "\n" +
-             "Description: " + description.getText().toString().trim() + "\n" +
-             "Duration: " + duration.getText().toString().trim() + "\n" +
-             "Aim: " + aim.getText().toString().trim() + "\n" +
-             "Status: " + status + "\n");
+        String message = "Name: " + name.getText().toString().trim() + "\n" +
+                "Destination: " + destination.getText().toString().trim() + "\n" +
+                "Date: " + date.getText().toString().trim() + "\n" +
+                "Risk Assessment: " + risk_assessment + "\n" +
+                "Description: " + description.getText().toString().trim() + "\n" +
+                "Duration: " + duration.getText().toString().trim() + "\n" +
+                "Aim: " + aim.getText().toString().trim() + "\n" +
+                "Status: " + status + "\n";
 
         builder.setMessage(message);
         builder.setCancelable(false);
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(AddTripActivity.this);
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(AddTripActivity.this);
 
-                databaseHandler.insertTrip(
-                        name.getText().toString().trim(), destination.getText().toString().trim(), date.getText().toString().trim(),
-                        risk_assessment, description.getText().toString().trim(),
-                        duration.getText().toString().trim(), aim.getText().toString().trim(), status
-                );
-                Intent intent = new Intent(AddTripActivity.this, MainTripActivity.class);
-                startActivity(intent);
-                finish();
-            }
+            databaseHandler.insertTrip(
+                    name.getText().toString().trim(), destination.getText().toString().trim(), date.getText().toString().trim(),
+                    risk_assessment, description.getText().toString().trim(),
+                    duration.getText().toString().trim(), aim.getText().toString().trim(), status
+            );
+            Intent intent = new Intent(AddTripActivity.this, MainTripActivity.class);
+            startActivity(intent);
+            finish();
         });
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
