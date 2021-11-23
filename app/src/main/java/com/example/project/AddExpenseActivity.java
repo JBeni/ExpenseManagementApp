@@ -63,9 +63,7 @@ public class AddExpenseActivity extends AppCompatActivity {
         });
     }
 
-    /*
-        https://www.tutlane.com/tutorial/android/android-timepicker-with-examples
-    */
+    // https://www.tutlane.com/tutorial/android/android-timepicker-with-examples
     @SuppressLint("SetTextI18n")
     public void addTimePicker(EditText eText) {
         eText.setOnClickListener(v -> {

@@ -140,8 +140,6 @@ public class MainTripActivity extends AppCompatActivity {
             }
             jsonData.put("detailList", expenseArray);
 
-
-
             URL url = new URL("https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw");
             HttpsURLConnection httpsConnection = (HttpsURLConnection)url.openConnection();
             httpsConnection.setDoOutput(true);
@@ -162,7 +160,6 @@ public class MainTripActivity extends AppCompatActivity {
 
                 // FOR TESTING PURPOSE
                 /*
-
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("uploadResponseCode", "SUCCESS");
                     jsonObject.put("userid", "wm123");

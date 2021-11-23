@@ -94,9 +94,7 @@ public class AddTripActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * https://stackoverflow.com/questions/18225365/show-error-on-the-tip-of-the-edit-text-android
-     */
+    // https://stackoverflow.com/questions/18225365/show-error-on-the-tip-of-the-edit-text-android
     public void checkEditTextErrors(EditText textName) {
         textName.addTextChangedListener(new TextWatcher() {
             @Override

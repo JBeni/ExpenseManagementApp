@@ -2,9 +2,6 @@ package com.example.project;
 
 import android.app.Application;
 
-/**
- * https://stackoverflow.com/questions/1944656/android-global-variable
- */
 public class SharedTripViewModel extends Application {
 
     private String shared_trip_id;
