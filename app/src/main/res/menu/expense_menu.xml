@@ -5,10 +5,10 @@
 
     <item
         android:id="@+id/edit_expense_card_button"
-        android:title="Edit"/>
+        android:title="@string/edit_expense_option_menu"/>
 
     <item
         android:id="@+id/delete_expense_card_button"
-        android:title="Delete"/>
+        android:title="@string/delete_expense_option_menu"/>
 
 </menu>
