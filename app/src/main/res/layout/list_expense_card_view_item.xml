@@ -17,7 +17,8 @@
         android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
 
             <ImageView
                 android:id="@+id/expense_card_view_img_foreground"
@@ -25,7 +26,8 @@
                 android:layout_height="150dp"
                 android:background="#ADD8E6"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_image_trip_foreground" />
+                app:srcCompat="@drawable/ic_image_trip_foreground"
+                tools:ignore="ContentDescription" />
 
             <ImageButton
                 android:id="@+id/expense_card_options"
@@ -33,7 +35,8 @@
                 android:layout_height="30dp"
                 android:background="#bbade6"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_dots" />
+                android:src="@drawable/ic_dots"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/expense_type_card_view"
@@ -41,7 +44,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="150dp"
                 android:gravity="center"
-                android:text="Expense Type"
+                android:text="@string/expense_type_card_view"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp" />
 
