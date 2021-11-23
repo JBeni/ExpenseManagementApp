@@ -3,10 +3,8 @@ package com.example.project;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -40,49 +38,35 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public void onBindViewHolder(@NonNull final ExpenseViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        holder.expense_type_txt.setText(expenses.get(position).getType().toString());
+        holder.expense_type_txt.setText(expenses.get(position).getType());
 
-        holder.expense_main_grid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent view_intent = new Intent(context, ViewExpenseActivity.class);
-                setExpenseExtraIntentData(view_intent, position);
-                activity.startActivityForResult(view_intent, 1);
-            }
+        holder.expense_main_grid.setOnClickListener(view -> {
+            Intent view_intent = new Intent(context, ViewExpenseActivity.class);
+            setExpenseExtraIntentData(view_intent, position);
+            activity.startActivityForResult(view_intent, 1);
         });
 
-        /**
-         * https://stackoverflow.com/questions/34641240/toolbar-inside-cardview-to-create-a-popup-menu-overflow-icon
-         */
-        holder.expense_menu_options.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showPopupMenu(holder.expense_menu_options, position);
-            }
-        });
+        // https://stackoverflow.com/questions/34641240/toolbar-inside-cardview-to-create-a-popup-menu-overflow-icon
+        holder.expense_menu_options.setOnClickListener(view -> showPopupMenu(holder.expense_menu_options, position));
     }
 
-    /**
-     * https://stackoverflow.com/questions/34641240/toolbar-inside-cardview-to-create-a-popup-menu-overflow-icon
-     */
+    // https://stackoverflow.com/questions/34641240/toolbar-inside-cardview-to-create-a-popup-menu-overflow-icon
+    @SuppressLint("NonConstantResourceId")
     private void showPopupMenu(View view, int position) {
         PopupMenu popup = new PopupMenu(view.getContext(), view);
         popup.getMenuInflater().inflate(R.menu.expense_menu, popup.getMenu());
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.edit_expense_card_button:
-                        Intent edit_intent = new Intent(context, UpdateExpenseActivity.class);
-                        setExpenseExtraIntentData(edit_intent, position);
-                        activity.startActivityForResult(edit_intent, 1);
-                        return true;
-                    case R.id.delete_expense_card_button:
-                        confirmDeleteExpense(String.valueOf(expenses.get(position).getId()));
-                        return true;
-                    default:
-                        return false;
-                }
+        popup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.edit_expense_card_button:
+                    Intent edit_intent = new Intent(context, UpdateExpenseActivity.class);
+                    setExpenseExtraIntentData(edit_intent, position);
+                    activity.startActivityForResult(edit_intent, 1);
+                    return true;
+                case R.id.delete_expense_card_button:
+                    confirmDeleteExpense(String.valueOf(expenses.get(position).getId()));
+                    return true;
+                default:
+                    return false;
             }
         });
         popup.show();
@@ -91,26 +75,18 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
     private void confirmDeleteExpense(String expense_id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Delete The Expense");
-        builder.setMessage("Are you sure you want to delete the selected expenses from the database?");
+        builder.setMessage("Are you sure you want to delete the selected expense from the database?");
         builder.setCancelable(false);
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(context);
-                databaseHandler.deleteExpense(expense_id);
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            SqliteDatabaseHandler databaseHandler = new SqliteDatabaseHandler(context);
+            databaseHandler.deleteExpense(expense_id);
 
-                Intent intent = new Intent(context, MainTripExpensesActivity.class);
-                activity.startActivityForResult(intent, 1);
-            }
+            Intent intent = new Intent(context, MainTripExpensesActivity.class);
+            activity.startActivityForResult(intent, 1);
         });
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
@@ -131,7 +107,7 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
         return expenses.size();
     }
 
-    protected class ExpenseViewHolder extends RecyclerView.ViewHolder {
+    static class ExpenseViewHolder extends RecyclerView.ViewHolder {
         TextView expense_type_txt;
         CardView expense_main_grid;
         ImageButton expense_menu_options;
