@@ -17,7 +17,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     List<Expense> expensesList = new ArrayList<>();
     List<Expense> tripExpensesList = new ArrayList<>();
     List<JsonCloudModel> jsonCloudData = new ArrayList<>();
-    private SQLiteDatabase database;
+    private final SQLiteDatabase database;
     Context context;
 
     private static final String DATABASE_NAME = "ExpenseManagement.db";
@@ -222,7 +222,6 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         return new Trip(id, name, destination, date, risk_assessment, description, duration, aim, status);
     }
 
-    // https://stackoverflow.com/questions/14266575/getting-all-records-from-sqlite-android/14266660
     public List<Trip> getAllTrips() {
         String query =" SELECT * FROM " + TRIP_TABLE_NAME;
         Cursor cursor = null;

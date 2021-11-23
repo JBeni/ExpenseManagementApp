@@ -16,11 +16,21 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
+/*
+  The links was used to guide me and to adjust to the needs using parts of code from
+    https://stackoverflow.com/questions/26517855/using-the-recyclerview-with-a-database
+    https://developer.android.com/guide/topics/ui/layout/recyclerview
+
+    https://github.com/android/views-widgets-samples/tree/main/RecyclerView
+    https://github.com/android/views-widgets-samples/tree/main/RecyclerViewAnimations
+    https://github.com/android/views-widgets-samples/tree/main/RecyclerViewSimple
+    https://www.dev2qa.com/android-cardview-with-image-and-text-example/
+*/
 public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerViewExpenseAdapter.ExpenseViewHolder> {
 
-    private Context context;
-    private Activity activity;
-    private List<Expense> expenses;
+    private final Context context;
+    private final Activity activity;
+    private final List<Expense> expenses;
 
     RecyclerViewExpenseAdapter(Activity activity, Context context, List<Expense> expenses) {
         this.activity = activity;

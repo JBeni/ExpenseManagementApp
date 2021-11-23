@@ -28,9 +28,9 @@ import java.util.List;
 */
 public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTripAdapter.TripViewHolder> {
 
-    private Context context;
-    private Activity activity;
-    private List<Trip> trips;
+    private final Context context;
+    private final Activity activity;
+    private final List<Trip> trips;
 
     RecyclerViewTripAdapter(Activity activity, Context context, List<Trip> trips) {
         this.activity = activity;
