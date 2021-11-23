@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="131dp"
         android:layout_height="28dp"
-        android:text="TextView"
+        android:text="@string/textview_activity_settings"
         tools:layout_editor_absoluteX="131dp"
         tools:layout_editor_absoluteY="324dp"
         tools:ignore="MissingConstraints" />
