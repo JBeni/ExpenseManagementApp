@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     List<Trip> tripsList = new ArrayList<>();
     List<Expense> expensesList = new ArrayList<>();
     List<Expense> tripExpensesList = new ArrayList<>();
-    List<JsonCloudModel> jsonClouddata = new ArrayList<>();
+    List<JsonCloudModel> jsonCloudData = new ArrayList<>();
     private SQLiteDatabase database;
     Context context;
 
@@ -207,6 +205,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         if (database != null) {
             cursor = database.rawQuery("SELECT * FROM " + TRIP_TABLE_NAME + " WHERE " + TRIP_ID_COLUMN + "=?", new String[] { trip_id });
         }
+        assert cursor != null;
         cursor.moveToFirst();
 
         int id = cursor.getInt(0);
@@ -219,12 +218,11 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         String aim = cursor.getString(7);
         String status = cursor.getString(8);
 
+        cursor.close();
         return new Trip(id, name, destination, date, risk_assessment, description, duration, aim, status);
     }
 
-    /**
-     * https://stackoverflow.com/questions/14266575/getting-all-records-from-sqlite-android/14266660
-     */
+    // https://stackoverflow.com/questions/14266575/getting-all-records-from-sqlite-android/14266660
     public List<Trip> getAllTrips() {
         String query =" SELECT * FROM " + TRIP_TABLE_NAME;
         Cursor cursor = null;
@@ -232,6 +230,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             cursor = database.rawQuery(query, null);
         }
 
+        assert cursor != null;
         while(cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String name = cursor.getString(1);
@@ -246,17 +245,17 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             Trip trip = new Trip(id, name, destination, date, risk_assessment, description, duration, aim, status);
             tripsList.add(trip);
         }
+        cursor.close();
         return tripsList;
     }
 
-    /**
-     * https://stackoverflow.com/questions/53219223/get-specific-row-of-sqlite-android
-     */
+    // https://stackoverflow.com/questions/53219223/get-specific-row-of-sqlite-android
     public Expense getExpense(String expense_id) {
         Cursor cursor = null;
         if (database != null) {
             cursor = database.rawQuery("SELECT * FROM " + EXPENSE_TABLE_NAME + " WHERE " + EXPENSE_ID_COLUMN + "=?", new String[] { expense_id });
         }
+        assert cursor != null;
         cursor.moveToFirst();
 
         int id = cursor.getInt(0);
@@ -266,6 +265,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         String additional_comments = cursor.getString(4);
         int trip_id = cursor.getInt(5);
 
+        cursor.close();
         return new Expense(id, type, amount, time, additional_comments, trip_id);
     }
 
@@ -276,6 +276,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             cursor = database.rawQuery(query, null);
         }
 
+        assert cursor != null;
         while(cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String type = cursor.getString(1);
@@ -287,6 +288,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             Expense expense = new Expense(id, type, amount, time, additional_comments, trip_id);
             expensesList.add(expense);
         }
+        cursor.close();
         return expensesList;
     }
 
@@ -298,6 +300,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             cursor = database.rawQuery(query, null);
         }
 
+        assert cursor != null;
         while(cursor.moveToNext()) {
             String trip_name = cursor.getString(0);
             String expense_type = cursor.getString(1);
@@ -306,9 +309,10 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             String expense_additional_comments = cursor.getString(4);
 
             JsonCloudModel expense = new JsonCloudModel(trip_name, expense_type, expense_amount, expense_time, expense_additional_comments);
-            jsonClouddata.add(expense);
+            jsonCloudData.add(expense);
         }
-        return jsonClouddata;
+        cursor.close();
+        return jsonCloudData;
     }
 
     public List<Expense> getTripExpenses(String selected_trip_id) {
@@ -317,6 +321,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             cursor = database.rawQuery("SELECT * FROM " + EXPENSE_TABLE_NAME + " WHERE trip_id=?", new String[] { selected_trip_id });
         }
 
+        assert cursor != null;
         while(cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String type = cursor.getString(1);
@@ -328,6 +333,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             Expense expense = new Expense(id, type, amount, time, additional_comments, trip_id);
             tripExpensesList.add(expense);
         }
+        cursor.close();
         return tripExpensesList;
     }
 }
