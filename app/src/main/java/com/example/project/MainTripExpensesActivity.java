@@ -1,20 +1,15 @@
 package com.example.project;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationBarView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +22,7 @@ public class MainTripExpensesActivity extends AppCompatActivity {
     List<Expense> expenses;
     RecyclerViewExpenseAdapter customAdapter;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,17 +32,15 @@ public class MainTripExpensesActivity extends AppCompatActivity {
         add_button = findViewById(R.id.expense_add_main_button);
         instructions_expense = findViewById(R.id.instructions_expense);
 
-        add_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainTripExpensesActivity.this, AddExpenseActivity.class);
-                intent.putExtra("trip_id", String.valueOf(getIntent().getStringExtra("trip_id")));
-                startActivity(intent);
-            }
+        add_button.setOnClickListener(view -> {
+            Intent intent = new Intent(MainTripExpensesActivity.this, AddExpenseActivity.class);
+            intent.putExtra("trip_id", String.valueOf(getIntent().getStringExtra("trip_id")));
+            startActivity(intent);
+
         });
 
         databaseHandler = new SqliteDatabaseHandler(MainTripExpensesActivity.this);
-        expenses = new ArrayList<Expense>();
+        expenses = new ArrayList<>();
 
         getTripExpensesData();
 
@@ -55,22 +49,19 @@ public class MainTripExpensesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(MainTripExpensesActivity.this, 3));
 
         BottomNavigationView bottomNavigation = findViewById(R.id.navigation_bottom);
-        bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home_navigation:
-                        startActivity(new Intent(getApplicationContext(), MainTripActivity.class));
-                        break;
-                    case R.id.search_navigation:
-                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
-                        break;
-                    case R.id.settings_navigation:
-                        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                        break;
-                }
-                return true;
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home_navigation:
+                    startActivity(new Intent(getApplicationContext(), MainTripActivity.class));
+                    break;
+                case R.id.search_navigation:
+                    startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                    break;
+                case R.id.settings_navigation:
+                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                    break;
             }
+            return true;
         });
     }
 
