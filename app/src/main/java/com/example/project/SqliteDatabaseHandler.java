@@ -139,7 +139,6 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         rowValues.put(TRIP_AIM_COLUMN, aim);
         rowValues.put(TRIP_STATUS_COLUMN, status);
 
-        // Code from https://stackoverflow.com/questions/9798473/sqlite-in-android-how-to-update-a-specific-row
         long result = database.update(TRIP_TABLE_NAME, rowValues, "id=?", new String[]{ id });
         if (result == -1) {
             Toast.makeText(context, "Update Trip operation has failed!", Toast.LENGTH_LONG).show();
@@ -248,7 +247,6 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         return tripsList;
     }
 
-    // https://stackoverflow.com/questions/53219223/get-specific-row-of-sqlite-android
     public Expense getExpense(String expense_id) {
         Cursor cursor = null;
         if (database != null) {
