@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- For setting globaly the SharedTripViewModel -> https://stackoverflow.com/questions/1944656/android-global-variable -->
+    <!-- For setting globally the SharedTripViewModel -> https://stackoverflow.com/questions/1944656/android-global-variable -->
     <application
         android:name=".SharedTripViewModel"
         android:allowBackup="true"

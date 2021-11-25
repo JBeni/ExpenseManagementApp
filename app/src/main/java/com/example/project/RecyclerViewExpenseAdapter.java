@@ -95,7 +95,6 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
             Intent intent = new Intent(context, MainTripExpensesActivity.class);
             activity.startActivityForResult(intent, 1);
         });
-
         builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
 
         AlertDialog alertDialog = builder.create();

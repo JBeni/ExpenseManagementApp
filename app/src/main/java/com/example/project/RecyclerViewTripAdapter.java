@@ -115,7 +115,6 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
             Intent intent = new Intent(context, MainTripActivity.class);
             activity.startActivityForResult(intent, 1);
         });
-
         builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
 
         AlertDialog alertDialog = builder.create();

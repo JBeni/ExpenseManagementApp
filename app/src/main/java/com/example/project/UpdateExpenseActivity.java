@@ -80,6 +80,7 @@ public class UpdateExpenseActivity extends AppCompatActivity {
         }
     }
 
+    // https://www.tutlane.com/tutorial/android/android-timepicker-with-examples
     @SuppressLint("SetTextI18n")
     public void updateTimePicker(EditText eText) {
         eText.setOnClickListener(v -> {
@@ -104,6 +105,7 @@ public class UpdateExpenseActivity extends AppCompatActivity {
         }
     }
 
+    // https://stackoverflow.com/questions/18225365/show-error-on-the-tip-of-the-edit-text-android
     public void checkTextErrors(EditText textName) {
         textName.addTextChangedListener(new TextWatcher() {
             @Override

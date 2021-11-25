@@ -113,8 +113,6 @@ public class MainTripActivity extends AppCompatActivity {
         }
     }
 
-    // https://stackoverflow.com/questions/36833798/sending-json-object-via-http-post-method-in-android
-    // https://stackoverflow.com/questions/2938502/sending-post-data-in-android
     public void uploadDataWebCloud() {
         // https://www.educative.io/edpresso/how-to-fix-androidosnetworkonmainthreadexception-error
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -147,12 +145,16 @@ public class MainTripActivity extends AppCompatActivity {
             httpsConnection.setRequestProperty("Content-Type", "application/json;");
             httpsConnection.connect();
 
-            OutputStream out = new BufferedOutputStream(httpsConnection.getOutputStream());
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, StandardCharsets.UTF_8));
-            writer.write(jsonData.toString());
-            writer.flush();
-            writer.close();
-            out.close();
+            //region
+                // https://stackoverflow.com/questions/36833798/sending-json-object-via-http-post-method-in-android
+                // https://stackoverflow.com/questions/2938502/sending-post-data-in-android
+                OutputStream out = new BufferedOutputStream(httpsConnection.getOutputStream());
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, StandardCharsets.UTF_8));
+                writer.write(jsonData.toString());
+                writer.flush();
+                writer.close();
+                out.close();
+            //endregion
 
             int response_code = httpsConnection.getResponseCode();
             if (response_code >= HttpsURLConnection.HTTP_OK && response_code <= HttpsURLConnection.HTTP_PARTIAL) {
@@ -192,7 +194,6 @@ public class MainTripActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    // https://www.geeksforgeeks.org/android-alert-dialog-box-and-how-to-create-it/
     private void confirmDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainTripActivity.this);
         builder.setTitle("Delete Database Data");

@@ -14,7 +14,6 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        // https://medium.com/@makkenasrinivasarao1/bottom-navigation-in-android-application-with-activities-material-design-7a056b8cf38
         BottomNavigationView bottomNavigation = findViewById(R.id.navigation_bottom);
         bottomNavigation.setSelectedItemId(R.id.settings_navigation);
         bottomNavigation.setOnItemSelectedListener(item -> {

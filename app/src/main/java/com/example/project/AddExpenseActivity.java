@@ -88,6 +88,7 @@ public class AddExpenseActivity extends AppCompatActivity {
         }
     }
 
+    // https://stackoverflow.com/questions/18225365/show-error-on-the-tip-of-the-edit-text-android
     public void checkTextErrors(EditText textName) {
         textName.addTextChangedListener(new TextWatcher() {
             @Override

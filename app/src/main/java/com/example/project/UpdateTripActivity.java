@@ -97,6 +97,7 @@ public class UpdateTripActivity extends AppCompatActivity {
         }
     }
 
+    // https://stackoverflow.com/questions/18225365/show-error-on-the-tip-of-the-edit-text-android
     public void checkEditTextErrors(EditText textName) {
         textName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -135,6 +136,7 @@ public class UpdateTripActivity extends AppCompatActivity {
         }
     }
 
+    // https://www.tutlane.com/tutorial/android/android-datepicker-with-examples
     @SuppressLint("SetTextI18n")
     void showUpdateDatePicker() {
         final Calendar cldr = Calendar.getInstance();
