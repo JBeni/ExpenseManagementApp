@@ -24,24 +24,24 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     //region TABLES DATA
-        private static final String TRIP_TABLE_NAME = "Trips";
-        public static final String TRIP_ID_COLUMN = "id";
-        public static final String TRIP_NAME_COLUMN = "name";
-        public static final String TRIP_DESTINATION_COLUMN = "destination";
-        public static final String TRIP_DATE_COLUMN = "date";
-        public static final String TRIP_RISK_ASSESSMENT_COLUMN = "risk_assessment";
-        public static final String TRIP_DESCRIPTION_COLUMN = "description";
-        public static final String TRIP_DURATION_COLUMN = "duration";
-        public static final String TRIP_AIM_COLUMN = "aim";
-        public static final String TRIP_STATUS_COLUMN = "status";
+    private static final String TRIP_TABLE_NAME = "Trips";
+    public static final String TRIP_ID_COLUMN = "id";
+    public static final String TRIP_NAME_COLUMN = "name";
+    public static final String TRIP_DESTINATION_COLUMN = "destination";
+    public static final String TRIP_DATE_COLUMN = "date";
+    public static final String TRIP_RISK_ASSESSMENT_COLUMN = "risk_assessment";
+    public static final String TRIP_DESCRIPTION_COLUMN = "description";
+    public static final String TRIP_DURATION_COLUMN = "duration";
+    public static final String TRIP_AIM_COLUMN = "aim";
+    public static final String TRIP_STATUS_COLUMN = "status";
 
-        private static final String EXPENSE_TABLE_NAME = "Expenses";
-        public static final String EXPENSE_ID_COLUMN = "id";
-        public static final String EXPENSE_TYPE_COLUMN = "type";
-        public static final String EXPENSE_AMOUNT_COLUMN = "amount";
-        public static final String EXPENSE_TIME_COLUMN = "time";
-        public static final String EXPENSE_COMMENTS_COLUMN = "additional_comments";
-        public static final String EXPENSE_TRIP_ID_COLUMN = "trip_id";
+    private static final String EXPENSE_TABLE_NAME = "Expenses";
+    public static final String EXPENSE_ID_COLUMN = "id";
+    public static final String EXPENSE_TYPE_COLUMN = "type";
+    public static final String EXPENSE_AMOUNT_COLUMN = "amount";
+    public static final String EXPENSE_TIME_COLUMN = "time";
+    public static final String EXPENSE_COMMENTS_COLUMN = "additional_comments";
+    public static final String EXPENSE_TRIP_ID_COLUMN = "trip_id";
     //endregion
 
     public SqliteDatabaseHandler(@Nullable Context context) {

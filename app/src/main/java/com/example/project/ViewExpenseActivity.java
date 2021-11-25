@@ -22,16 +22,16 @@ public class ViewExpenseActivity extends AppCompatActivity {
         additional_comments = findViewById(R.id.view_additional_comments_expense_column);
 
         if (getIntent().hasExtra("id") && getIntent().hasExtra("type") &&
-            getIntent().hasExtra("amount") && getIntent().hasExtra("time")
+                getIntent().hasExtra("amount") && getIntent().hasExtra("time")
         ) {
             type.setText(getIntent().getStringExtra("type"));
             amount.setText(getIntent().getStringExtra("amount"));
             time.setText(getIntent().getStringExtra("time"));
 
             additional_comments.setText(
-                getIntent().getStringExtra("additional_comments").length() == 0
-                    ? "Empty field"
-                    : getIntent().getStringExtra("additional_comments")
+                    getIntent().getStringExtra("additional_comments").length() == 0
+                            ? "Empty field"
+                            : getIntent().getStringExtra("additional_comments")
             );
         }
 

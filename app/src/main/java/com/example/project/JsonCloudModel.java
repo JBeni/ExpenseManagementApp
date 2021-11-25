@@ -9,7 +9,7 @@ public class JsonCloudModel {
     private String additional_comments;
 
     public JsonCloudModel(
-       String trip_name, String type, String amount, String time, String additional_comments
+            String trip_name, String type, String amount, String time, String additional_comments
     ) {
         this.trip_name = trip_name;
         this.type = type;

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Expense Management App</string>
+    <string name="app_name">Expense Management</string>
 
     <!-- Bottom Navigation Area -->
     <string name="title_home">Home</string>

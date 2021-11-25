@@ -51,7 +51,7 @@ public class AddExpenseActivity extends AppCompatActivity {
                 String trip_id = sharedTripView.getSharedTripId();
 
                 databaseHandler.insertExpense(
-                    type.getText().toString().trim(), amount.getText().toString().trim(), time.getText().toString().trim(),
+                        type.getText().toString().trim(), amount.getText().toString().trim(), time.getText().toString().trim(),
                         additional_comments.getText().toString().trim(), String.valueOf(trip_id)
                 );
                 Intent intent = new Intent(AddExpenseActivity.this, MainTripExpensesActivity.class);

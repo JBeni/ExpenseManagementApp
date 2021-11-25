@@ -26,9 +26,9 @@ public class ViewTripActivity extends AppCompatActivity {
         status = findViewById(R.id.view_status_trip_column);
 
         if (getIntent().hasExtra("id") && getIntent().hasExtra("name") &&
-            getIntent().hasExtra("destination") && getIntent().hasExtra("date") &&
-            getIntent().hasExtra("risk_assessment") && getIntent().hasExtra("duration") &&
-            getIntent().hasExtra("status")
+                getIntent().hasExtra("destination") && getIntent().hasExtra("date") &&
+                getIntent().hasExtra("risk_assessment") && getIntent().hasExtra("duration") &&
+                getIntent().hasExtra("status")
         ) {
             name.setText(getIntent().getStringExtra("name"));
             destination.setText(getIntent().getStringExtra("destination"));
