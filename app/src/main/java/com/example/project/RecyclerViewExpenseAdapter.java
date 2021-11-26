@@ -124,11 +124,11 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
         CardView expense_main_grid;
         ImageButton expense_menu_options;
 
-        ExpenseViewHolder(@NonNull View itemView) {
-            super(itemView);
-            expense_type_txt = itemView.findViewById(R.id.expense_type_card_view);
-            expense_main_grid = itemView.findViewById(R.id.main_content_expense_card_view);
-            expense_menu_options = itemView.findViewById(R.id.expense_card_options);
+        ExpenseViewHolder(@NonNull View itemCardView) {
+            super(itemCardView);
+            expense_type_txt = itemCardView.findViewById(R.id.expense_type_card_view);
+            expense_main_grid = iteitemCardViewmView.findViewById(R.id.main_content_expense_card_view);
+            expense_menu_options = itemCardView.findViewById(R.id.expense_card_options);
         }
     }
 }

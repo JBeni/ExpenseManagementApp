@@ -135,11 +135,11 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         CardView trip_main_grid;
         ImageButton trip_menu_options;
 
-        TripViewHolder(@NonNull View itemView) {
-            super(itemView);
-            trip_name_txt = itemView.findViewById(R.id.trip_name_card_view);
-            trip_main_grid = itemView.findViewById(R.id.main_content_trip_card_view);
-            trip_menu_options = itemView.findViewById(R.id.trip_card_options);
+        TripViewHolder(@NonNull View itemCardView) {
+            super(itemCardView);
+            trip_name_txt = itemCardView.findViewById(R.id.trip_name_card_view);
+            trip_main_grid = itemCardView.findViewById(R.id.main_content_trip_card_view);
+            trip_menu_options = itemCardView.findViewById(R.id.trip_card_options);
         }
     }
 }
