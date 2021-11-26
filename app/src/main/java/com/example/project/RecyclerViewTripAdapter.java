@@ -17,7 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 /*
-  The links was used to guide me and to adjust to the needs using parts of code from
+    The links was used to guide me and to adjust to the needs using parts of code from
+
     https://stackoverflow.com/questions/26517855/using-the-recyclerview-with-a-database
     https://developer.android.com/guide/topics/ui/layout/recyclerview
 
@@ -38,6 +39,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         this.trips = trips;
     }
 
+    // Source https://stackoverflow.com/questions/26517855/using-the-recyclerview-with-a-database
     @NonNull
     @Override
     public TripViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,6 +48,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
         return new TripViewHolder(view);
     }
 
+    // https://www.dev2qa.com/android-cardview-with-image-and-text-example/
     @Override
     public void onBindViewHolder(@NonNull final TripViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.trip_name_txt.setText(trips.get(position).getName());
