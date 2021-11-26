@@ -127,7 +127,7 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
         ExpenseViewHolder(@NonNull View itemCardView) {
             super(itemCardView);
             expense_type_txt = itemCardView.findViewById(R.id.expense_type_card_view);
-            expense_main_grid = iteitemCardViewmView.findViewById(R.id.main_content_expense_card_view);
+            expense_main_grid = itemCardView.findViewById(R.id.main_content_expense_card_view);
             expense_menu_options = itemCardView.findViewById(R.id.expense_card_options);
         }
     }
