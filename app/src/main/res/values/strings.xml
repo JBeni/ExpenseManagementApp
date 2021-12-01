@@ -13,7 +13,7 @@
         Use the button (+) from the bottom of the screen to add new trips.\n
         To Edit or Delete a Trip check the dots from the specific trip card view.\n\n
 
-        Observation: when you delete a trip all the expenses related to the trip with as well be removed from database.\n\n
+        Observation: when you delete a trip all the expenses related to the trip will as well be removed from database.\n\n
 
         To add expenses for a trip click on the image card view.\n
     ]]></string>
