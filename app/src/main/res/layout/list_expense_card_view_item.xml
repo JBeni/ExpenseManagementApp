@@ -39,8 +39,8 @@
                 android:id="@+id/expense_card_options"
                 android:layout_width="20dp"
                 android:layout_height="30dp"
-                android:background="#bbade6"
                 android:layout_alignParentEnd="true"
+                android:background="#bbade6"
                 android:src="@drawable/ic_dots"
                 tools:ignore="ContentDescription" />
 
