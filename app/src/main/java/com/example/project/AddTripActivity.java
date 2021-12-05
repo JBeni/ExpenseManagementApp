@@ -35,11 +35,11 @@ public class AddTripActivity extends AppCompatActivity {
 
         date.setOnClickListener(v -> showAddDatePicker());
 
-        Spinner risk_assessment_spinner = (Spinner) findViewById(R.id.add_risk_assessment_trip_column);
+        Spinner risk_assessment_spinner = findViewById(R.id.add_risk_assessment_trip_column);
         ArrayAdapter<String> dataRiskAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, riskAssessmentDropdown);
         risk_assessment_spinner.setAdapter(dataRiskAdapter);
 
-        Spinner status_spinner = (Spinner) findViewById(R.id.add_status_trip_column);
+        Spinner status_spinner = findViewById(R.id.add_status_trip_column);
         ArrayAdapter<String> dataStatusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, statusDropdown);
         status_spinner.setAdapter(dataStatusAdapter);
 
@@ -107,6 +107,8 @@ public class AddTripActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 if (textName.getText().toString().length() <= 2) {
                     textName.setError("The value must have at least 3 characters.");
+                } else {
+                    textName.setError(null);
                 }
             }
         });

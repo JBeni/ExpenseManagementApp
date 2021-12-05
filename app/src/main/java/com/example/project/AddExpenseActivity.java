@@ -101,6 +101,8 @@ public class AddExpenseActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 if (textName.getText().toString().length() <= 2) {
                     textName.setError("The value must have at least 3 characters.");
+                } else {
+                    textName.setError(null);
                 }
             }
         });
