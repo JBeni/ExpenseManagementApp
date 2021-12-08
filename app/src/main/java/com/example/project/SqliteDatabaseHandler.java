@@ -13,10 +13,6 @@ import java.util.List;
 
 public class SqliteDatabaseHandler extends SQLiteOpenHelper {
 
-    List<Trip> tripsList = new ArrayList<>();
-    List<Expense> expensesList = new ArrayList<>();
-    List<Expense> tripExpensesList = new ArrayList<>();
-    List<JsonCloudModel> jsonCloudData = new ArrayList<>();
     private final SQLiteDatabase database;
     Context context;
 
@@ -222,6 +218,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     }
 
     public List<Trip> getAllTrips() {
+        List<Trip> tripsList = new ArrayList<>();
         String query =" SELECT * FROM " + TRIP_TABLE_NAME;
         Cursor cursor = null;
         if (database != null) {
@@ -267,6 +264,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     }
 
     public List<Expense> getAllExpenses() {
+        List<Expense> expensesList = new ArrayList<>();
         String query =" SELECT * FROM " + EXPENSE_TABLE_NAME;
         Cursor cursor = null;
         if (database != null) {
@@ -290,6 +288,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     }
 
     public List<JsonCloudModel> getJsonCloudData() {
+        List<JsonCloudModel> jsonCloudData = new ArrayList<>();
         String query = "SELECT trips.name, expenses.type, expenses.amount, expenses.time, expenses.additional_comments" +
                 " FROM expenses JOIN trips on expenses.trip_id = trips.id";
         Cursor cursor = null;
@@ -313,6 +312,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     }
 
     public List<Expense> getTripExpenses(String selected_trip_id) {
+        List<Expense> tripExpensesList = new ArrayList<>();
         Cursor cursor = null;
         if (database != null) {
             cursor = database.rawQuery("SELECT * FROM " + EXPENSE_TABLE_NAME + " WHERE trip_id=?", new String[] { selected_trip_id });
