@@ -6,23 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="131dp"
-        android:layout_height="28dp"
-        android:text="@string/textview_activity_search"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="324dp"
+    <EditText
+        android:id="@+id/search_text_view_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="@string/search_trip_hint"
+        android:minHeight="48dp"
+        android:textColor="#546E7A"
+        android:autofillHints="@string/name_trip_value_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:id="@+id/liear_layout_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/search_text_view_field"
+        tools:ignore="MissingConstraints"
+        android:orientation="vertical">
+    </LinearLayout>
 
-    <!--
-        https://medium.com/@makkenasrinivasarao1/bottom-navigation-in-android-application-with-activities-material-design-7a056b8cf38
-    -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_trip_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="527dp"
+        android:layout_marginTop="110dp"
+        android:paddingStart="13dp"
+        android:paddingEnd="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- https://medium.com/@makkenasrinivasarao1/bottom-navigation-in-android-application-with-activities-material-design-7a056b8cf38 -->
     <include
         layout="@layout/menu_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/reset_search_trip_button"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:text="@string/reset_search_trip_button"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/liear_layout_search"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="52dp" />
+
+    <Button
+        android:id="@+id/search_trip_db_button"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:text="@string/search_trip_db_button"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/liear_layout_search"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
