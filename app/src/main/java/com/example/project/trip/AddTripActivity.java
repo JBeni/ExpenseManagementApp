@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.project.database.SqliteDatabaseHandler;
+
 public class AddTripActivity extends AppCompatActivity {
     DatePickerDialog picker;
     EditText name, destination, date, description, duration, aim;
