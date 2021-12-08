@@ -14,14 +14,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.project.Expense;
 import com.example.project.MainTripExpensesActivity;
 import com.example.project.R;
 import com.example.project.SqliteDatabaseHandler;
 import com.example.project.UpdateExpenseActivity;
 import com.example.project.ViewExpenseActivity;
-
 import java.util.List;
 
 /*
@@ -41,7 +39,7 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
     private final Activity activity;
     private final List<Expense> expenses;
 
-    RecyclerViewExpenseAdapter(Activity activity, Context context, List<Expense> expenses) {
+    public RecyclerViewExpenseAdapter(Activity activity, Context context, List<Expense> expenses) {
         this.activity = activity;
         this.context = context;
         this.expenses = expenses;

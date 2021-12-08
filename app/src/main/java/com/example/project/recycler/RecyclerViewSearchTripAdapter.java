@@ -11,10 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.project.R;
 import com.example.project.Trip;
-
 import java.util.List;
 
 public class RecyclerViewSearchTripAdapter extends RecyclerView.Adapter<RecyclerViewSearchTripAdapter.SearchTripViewHolder> {
@@ -23,7 +21,7 @@ public class RecyclerViewSearchTripAdapter extends RecyclerView.Adapter<Recycler
     private final Activity activity;
     private final List<Trip> trips;
 
-    RecyclerViewSearchTripAdapter(Activity activity, Context context, List<Trip> trips) {
+    public RecyclerViewSearchTripAdapter(Activity activity, Context context, List<Trip> trips) {
         this.activity = activity;
         this.context = context;
         this.trips = trips;

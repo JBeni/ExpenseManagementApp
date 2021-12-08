@@ -41,7 +41,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
     private final Activity activity;
     private final List<Trip> trips;
 
-    RecyclerViewTripAdapter(Activity activity, Context context, List<Trip> trips) {
+    public RecyclerViewTripAdapter(Activity activity, Context context, List<Trip> trips) {
         this.activity = activity;
         this.context = context;
         this.trips = trips;
