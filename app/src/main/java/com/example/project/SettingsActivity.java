@@ -6,11 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class SettingsActivity extends AppCompatActivity {
     TextView instructionsTrip, instructionsExpense, instructionsSearch;

@@ -37,9 +37,7 @@ public class RecyclerViewSearchTripAdapter extends RecyclerView.Adapter<Recycler
     public void onBindViewHolder(@NonNull final SearchTripViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.search_trip_name_txt.setText(trips.get(position).getName());
 
-        holder.search_trip_main_grid.setOnClickListener(view -> {
-            viewSearchTripDialog(trips.get(position));
-        });
+        holder.search_trip_main_grid.setOnClickListener(view -> viewSearchTripDialog(trips.get(position)));
     }
 
     private void viewSearchTripDialog(Trip trip) {
