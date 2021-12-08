@@ -52,7 +52,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
     @Override
     public TripViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.list_trip_card_view_item, parent, false);
+        View view = inflater.inflate(R.layout.trip_list_item_card_view, parent, false);
         return new TripViewHolder(view);
     }
 
@@ -78,7 +78,7 @@ public class RecyclerViewTripAdapter extends RecyclerView.Adapter<RecyclerViewTr
     @SuppressLint("NonConstantResourceId")
     public void showPopupMenu(View view, int position) {
         PopupMenu popup = new PopupMenu(view.getContext(), view);
-        popup.getMenuInflater().inflate(R.menu.trip_menu, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.menu_trip, popup.getMenu());
         popup.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.view_trip_card_button:

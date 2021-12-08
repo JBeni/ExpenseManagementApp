@@ -15,7 +15,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.settings_activity);
 
         instructionsTrip = findViewById(R.id.instructions_trip_page);
         instructionsExpense = findViewById(R.id.instructions_expense_page);

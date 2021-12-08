@@ -31,7 +31,7 @@ public class MainTripExpensesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expense_main);
+        setContentView(R.layout.expense_main_activity);
 
         recyclerView = findViewById(R.id.expense_recycler_view);
         add_button = findViewById(R.id.expense_add_main_button);

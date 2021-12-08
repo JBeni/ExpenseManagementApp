@@ -17,7 +17,7 @@ public class ViewTripActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_trip);
+        setContentView(R.layout.trip_view_activity);
 
         name = findViewById(R.id.view_name_trip_column);
         destination = findViewById(R.id.view_destination_trip_column);

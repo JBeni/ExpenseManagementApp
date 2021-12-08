@@ -30,7 +30,7 @@ public class AddTripActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_trip);
+        setContentView(R.layout.trip_add_activity);
 
         name = findViewById(R.id.add_name_trip_column);
         destination = findViewById(R.id.add_destination_trip_column);

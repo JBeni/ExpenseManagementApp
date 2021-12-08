@@ -25,7 +25,7 @@ public class UpdateExpenseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_expense);
+        setContentView(R.layout.expense_update_activity);
 
         type = findViewById(R.id.update_type_expense_column);
         amount = findViewById(R.id.update_amount_expense_column);

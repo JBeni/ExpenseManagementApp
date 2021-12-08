@@ -31,7 +31,7 @@ public class RecyclerViewSearchTripAdapter extends RecyclerView.Adapter<Recycler
     @Override
     public SearchTripViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.list_search_trip_item, parent, false);
+        View view = inflater.inflate(R.layout.search_list_item_trip, parent, false);
         return new SearchTripViewHolder(view);
     }
 

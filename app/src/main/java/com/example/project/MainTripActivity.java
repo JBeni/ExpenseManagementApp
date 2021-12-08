@@ -49,7 +49,7 @@ public class MainTripActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trip_main);
+        setContentView(R.layout.trip_main_activity);
 
         recyclerView = findViewById(R.id.trip_recycler_view);
         add_button = findViewById(R.id.trip_add_main_button);
@@ -99,7 +99,7 @@ public class MainTripActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

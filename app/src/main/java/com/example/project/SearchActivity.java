@@ -37,7 +37,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.search_activity);
 
         recyclerView = findViewById(R.id.search_trip_recycler_view);
         search_button = findViewById(R.id.search_trip_db_button);
@@ -105,7 +105,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.search_advanced, menu);
+        inflater.inflate(R.menu.menu_search_advanced, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

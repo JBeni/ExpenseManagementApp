@@ -50,7 +50,7 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public ExpenseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.list_expense_card_view_item, parent, false);
+        View view = inflater.inflate(R.layout.expense_list_item_card_view, parent, false);
         return new ExpenseViewHolder(view);
     }
 
@@ -73,7 +73,7 @@ public class RecyclerViewExpenseAdapter extends RecyclerView.Adapter<RecyclerVie
     @SuppressLint("NonConstantResourceId")
     private void showPopupMenu(View view, int position) {
         PopupMenu popup = new PopupMenu(view.getContext(), view);
-        popup.getMenuInflater().inflate(R.menu.expense_menu, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.menu_expense, popup.getMenu());
         popup.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.edit_expense_card_button:

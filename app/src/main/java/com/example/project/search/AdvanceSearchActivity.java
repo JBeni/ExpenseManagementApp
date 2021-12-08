@@ -18,7 +18,7 @@ public class AdvanceSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_advance_search);
+        setContentView(R.layout.search_advance_activity);
 
         name = findViewById(R.id.advance_search_trip_name);
         destination = findViewById(R.id.advance_search_trip_destination);

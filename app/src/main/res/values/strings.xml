@@ -78,7 +78,7 @@
     <string name="destination_activity_view_trip">Destination</string>
     <string name="name_activity_view_trip">Name</string>
 
-    <!-- activity_view_expense -->
+    <!-- expense_view_activity -->
     <string name="type_activity_view_expense">Type</string>
     <string name="amount_activity_view_expense">Amount</string>
     <string name="time_activity_view_expense">Time</string>

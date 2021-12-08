@@ -32,7 +32,7 @@ public class UpdateTripActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_trip);
+        setContentView(R.layout.trip_update_activity);
 
         name = findViewById(R.id.update_name_trip_column);
         destination = findViewById(R.id.update_destination_trip_column);
