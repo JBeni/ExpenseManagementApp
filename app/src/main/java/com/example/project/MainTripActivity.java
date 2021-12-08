@@ -26,14 +26,9 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 public class MainTripActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -164,16 +159,6 @@ public class MainTripActivity extends AppCompatActivity {
             int response_code = httpsConnection.getResponseCode();
             if (response_code >= HttpsURLConnection.HTTP_OK && response_code <= HttpsURLConnection.HTTP_PARTIAL) {
                 JSONObject jsonObject = new JSONObject(httpsConnection.getResponseMessage());
-
-                // FOR TESTING PURPOSE
-                /*
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("uploadResponseCode", "SUCCESS");
-                    jsonObject.put("userid", "wm123");
-                    jsonObject.put("number", 2);
-                    jsonObject.put("names", "Android Conference, Client Meeting");
-                    jsonObject.put("message", "successful upload – all done!");
-                */
 
                 displayResponseMessageDialog(jsonObject);
             } else {
