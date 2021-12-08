@@ -7,7 +7,8 @@
     <string name="title_settings">Settings</string>
 
     <!-- Instructions Area -->
-    <string name="instructions_trip"><![CDATA[
+    <string name="instructions_trip_information"><![CDATA[
+        \n
         To delete all the data from the database check the option from the toolbar.\n\n
 
         Use the button (+) from the bottom of the screen to add new trips.\n
@@ -17,11 +18,19 @@
 
         To add expenses for a trip click on the image card view.\n
     ]]></string>
-    <string name="instructions_expense"><![CDATA[
+
+    <string name="instructions_expense_information"><![CDATA[
+        \n
         Use the button (+) from the bottom of the screen to add new expenses.\n
         To Edit or Delete an Expense check the dots from the specific expense card view.\n\n
-
         To view an expense click on the image card view.\n
+    ]]></string>
+
+    <string name="instructions_search_information"><![CDATA[
+        \n
+        The filter will get the trips that will contains some of the characters entered.\n
+        To view the details of a trip click on the name.\n
+        Check the menu to use the advance search filter.
     ]]></string>
 
 
@@ -82,6 +91,11 @@
     <string name="search_trip_name">Trip Name</string>
     <string name="search_advance_item">Advance Search</string>
     <string name="advance_search_trip_button">Search</string>
+
+    <!-- Settings Activity -->
+    <string name="instructions_trip_page">Instructions Trip</string>
+    <string name="instructions_expense_page">Instructions Expense</string>
+    <string name="instructions_search_page">Instructions Search</string>
 
     <!-- Other Settings -->
     <string name="alt_image">TODO</string>
