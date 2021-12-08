@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,8 +81,8 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TRIP_TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS " + EXPENSE_TABLE_NAME);
+        db.execSQL(String.format("DROP TABLE IF EXISTS %s", TRIP_TABLE_NAME));
+        db.execSQL(String.format("DROP TABLE IF EXISTS %s", EXPENSE_TABLE_NAME));
         Log.v(this.getClass().getName(), DATABASE_NAME + " database upgrade to version " + newVersion + " - old data lost");
         onCreate(db);
     }
@@ -191,14 +192,14 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void deleteAllData() {
-        database.execSQL("DELETE FROM " + EXPENSE_TABLE_NAME);
-        database.execSQL("DELETE FROM " + TRIP_TABLE_NAME);
+        database.execSQL(String.format("DELETE FROM %s", EXPENSE_TABLE_NAME));
+        database.execSQL(String.format("DELETE FROM %s", TRIP_TABLE_NAME));
     }
 
     public Trip getTrip(String trip_id) {
         Cursor cursor = null;
         if (database != null) {
-            cursor = database.rawQuery("SELECT * FROM " + TRIP_TABLE_NAME + " WHERE " + TRIP_ID_COLUMN + "=?", new String[] { trip_id });
+            cursor = database.rawQuery(String.format("SELECT * FROM %s WHERE %s=?", TRIP_TABLE_NAME, TRIP_ID_COLUMN), new String[] { trip_id });
         }
         assert cursor != null;
         cursor.moveToFirst();
@@ -219,7 +220,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
 
     public List<Trip> getAllTrips() {
         List<Trip> tripsList = new ArrayList<>();
-        String query =" SELECT * FROM " + TRIP_TABLE_NAME;
+        String query = String.format("SELECT * FROM %s", TRIP_TABLE_NAME);
         Cursor cursor = null;
         if (database != null) {
             cursor = database.rawQuery(query, null);
@@ -244,28 +245,9 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         return tripsList;
     }
 
-    public Expense getExpense(String expense_id) {
-        Cursor cursor = null;
-        if (database != null) {
-            cursor = database.rawQuery("SELECT * FROM " + EXPENSE_TABLE_NAME + " WHERE " + EXPENSE_ID_COLUMN + "=?", new String[] { expense_id });
-        }
-        assert cursor != null;
-        cursor.moveToFirst();
-
-        int id = cursor.getInt(0);
-        String type = cursor.getString(1);
-        String amount = cursor.getString(2);
-        String time = cursor.getString(3);
-        String additional_comments = cursor.getString(4);
-        int trip_id = cursor.getInt(5);
-
-        cursor.close();
-        return new Expense(id, type, amount, time, additional_comments, trip_id);
-    }
-
-    public List<Expense> getAllExpenses() {
-        List<Expense> expensesList = new ArrayList<>();
-        String query =" SELECT * FROM " + EXPENSE_TABLE_NAME;
+    public List<Trip> getSimpleSearchFilter(String nameSearched) {
+        List<Trip> tripsListFilter = new ArrayList<>();
+        String query = MessageFormat.format("SELECT * FROM {0} WHERE {1} LIKE ''%{2}%''", TRIP_TABLE_NAME, TRIP_NAME_COLUMN, nameSearched);
         Cursor cursor = null;
         if (database != null) {
             cursor = database.rawQuery(query, null);
@@ -274,23 +256,56 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         assert cursor != null;
         while(cursor.moveToNext()) {
             int id = cursor.getInt(0);
-            String type = cursor.getString(1);
-            String amount = cursor.getString(2);
-            String time = cursor.getString(3);
-            String additional_comments = cursor.getString(4);
-            int trip_id = cursor.getInt(5);
+            String name = cursor.getString(1);
+            String destination = cursor.getString(2);
+            String date = cursor.getString(3);
+            String risk_assessment = cursor.getString(4);
+            String description = cursor.getString(5);
+            String duration = cursor.getString(6);
+            String aim = cursor.getString(7);
+            String status = cursor.getString(8);
 
-            Expense expense = new Expense(id, type, amount, time, additional_comments, trip_id);
-            expensesList.add(expense);
+            Trip trip = new Trip(id, name, destination, date, risk_assessment, description, duration, aim, status);
+            tripsListFilter.add(trip);
         }
         cursor.close();
-        return expensesList;
+        return tripsListFilter;
     }
+
+    public List<Trip> getAdvanceSearchFilter(String name_search, String destination_search, String date_search) {
+        List<Trip> tripsListAdvanced = new ArrayList<>();
+        String query = MessageFormat.format("SELECT * FROM {0} WHERE {1} LIKE ''%{2}%'' AND {3} LIKE ''%{4}%'' AND {5} LIKE ''%{6}%''",
+            TRIP_TABLE_NAME, TRIP_NAME_COLUMN, name_search, TRIP_DESTINATION_COLUMN, destination_search, TRIP_DATE_COLUMN, date_search);
+        Cursor cursor = null;
+        if (database != null) {
+            cursor = database.rawQuery(query, null);
+        }
+
+        assert cursor != null;
+        while(cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String name = cursor.getString(1);
+            String destination = cursor.getString(2);
+            String date = cursor.getString(3);
+            String risk_assessment = cursor.getString(4);
+            String description = cursor.getString(5);
+            String duration = cursor.getString(6);
+            String aim = cursor.getString(7);
+            String status = cursor.getString(8);
+
+            Trip trip = new Trip(id, name, destination, date, risk_assessment, description, duration, aim, status);
+            tripsListAdvanced.add(trip);
+        }
+        cursor.close();
+        return tripsListAdvanced;
+    }
+
+
+
 
     public List<JsonCloudModel> getJsonCloudData() {
         List<JsonCloudModel> jsonCloudData = new ArrayList<>();
-        String query = "SELECT trips.name, expenses.type, expenses.amount, expenses.time, expenses.additional_comments" +
-                " FROM expenses JOIN trips on expenses.trip_id = trips.id";
+        String query = "SELECT trips.name, expenses.type, expenses.amount, expenses.time, expenses.additional_comments FROM expenses JOIN trips on expenses.trip_id = trips.id";
         Cursor cursor = null;
         if (database != null) {
             cursor = database.rawQuery(query, null);
@@ -315,7 +330,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         List<Expense> tripExpensesList = new ArrayList<>();
         Cursor cursor = null;
         if (database != null) {
-            cursor = database.rawQuery("SELECT * FROM " + EXPENSE_TABLE_NAME + " WHERE trip_id=?", new String[] { selected_trip_id });
+            cursor = database.rawQuery(String.format("SELECT * FROM %s WHERE trip_id=?", EXPENSE_TABLE_NAME), new String[] { selected_trip_id });
         }
 
         assert cursor != null;
@@ -332,5 +347,48 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         }
         cursor.close();
         return tripExpensesList;
+    }
+
+    public Expense getExpense(String expense_id) {
+        Cursor cursor = null;
+        if (database != null) {
+            cursor = database.rawQuery(String.format("SELECT * FROM %s WHERE %s=?", EXPENSE_TABLE_NAME, EXPENSE_ID_COLUMN), new String[] { expense_id });
+        }
+        assert cursor != null;
+        cursor.moveToFirst();
+
+        int id = cursor.getInt(0);
+        String type = cursor.getString(1);
+        String amount = cursor.getString(2);
+        String time = cursor.getString(3);
+        String additional_comments = cursor.getString(4);
+        int trip_id = cursor.getInt(5);
+
+        cursor.close();
+        return new Expense(id, type, amount, time, additional_comments, trip_id);
+    }
+
+    public List<Expense> getAllExpenses() {
+        List<Expense> expensesList = new ArrayList<>();
+        String query = String.format("SELECT * FROM %s", EXPENSE_TABLE_NAME);
+        Cursor cursor = null;
+        if (database != null) {
+            cursor = database.rawQuery(query, null);
+        }
+
+        assert cursor != null;
+        while(cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String type = cursor.getString(1);
+            String amount = cursor.getString(2);
+            String time = cursor.getString(3);
+            String additional_comments = cursor.getString(4);
+            int trip_id = cursor.getInt(5);
+
+            Expense expense = new Expense(id, type, amount, time, additional_comments, trip_id);
+            expensesList.add(expense);
+        }
+        cursor.close();
+        return expensesList;
     }
 }
