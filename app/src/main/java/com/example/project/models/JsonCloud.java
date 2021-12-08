@@ -1,6 +1,6 @@
-package com.example.project;
+package com.example.project.models;
 
-public class JsonCloudModel {
+public class JsonCloud {
 
     private String trip_name;
     private String type;
@@ -8,9 +8,7 @@ public class JsonCloudModel {
     private String time;
     private String additional_comments;
 
-    public JsonCloudModel(
-            String trip_name, String type, String amount, String time, String additional_comments
-    ) {
+    public JsonCloud(String trip_name, String type, String amount, String time, String additional_comments) {
         this.trip_name = trip_name;
         this.type = type;
         this.amount = amount;
