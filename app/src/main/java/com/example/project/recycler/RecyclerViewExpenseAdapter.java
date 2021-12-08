@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.recycler;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -14,6 +14,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.project.Expense;
+import com.example.project.MainTripExpensesActivity;
+import com.example.project.R;
+import com.example.project.SqliteDatabaseHandler;
+import com.example.project.UpdateExpenseActivity;
+import com.example.project.ViewExpenseActivity;
+
 import java.util.List;
 
 /*

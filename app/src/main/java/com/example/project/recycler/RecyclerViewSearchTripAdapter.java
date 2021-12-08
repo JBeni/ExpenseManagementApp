@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.recycler;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,6 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.project.R;
+import com.example.project.Trip;
+
 import java.util.List;
 
 public class RecyclerViewSearchTripAdapter extends RecyclerView.Adapter<RecyclerViewSearchTripAdapter.SearchTripViewHolder> {
