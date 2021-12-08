@@ -15,13 +15,14 @@
         android:hint="@string/search_trip_hint"
         android:minHeight="48dp"
         android:textColor="#546E7A"
+        android:inputType="text"
         android:autofillHints="@string/name_trip_value_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
     <LinearLayout
-        android:id="@+id/liear_layout_search"
+        android:id="@+id/linear_layout_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/search_text_view_field"
@@ -59,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/liear_layout_search"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_search"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="52dp" />
 
@@ -73,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/liear_layout_search"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_search"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
