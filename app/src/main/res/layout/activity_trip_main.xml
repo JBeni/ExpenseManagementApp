@@ -43,11 +43,9 @@
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="ContentDescription" />
 
-    <!--
-        https://medium.com/@makkenasrinivasarao1/bottom-navigation-in-android-application-with-activities-material-design-7a056b8cf38
-    -->
+    <!-- https://medium.com/@makkenasrinivasarao1/bottom-navigation-in-android-application-with-activities-material-design-7a056b8cf38 -->
     <include
-        layout="@layout/menu_bottom_navigation"
+        layout="@menu/menu_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
