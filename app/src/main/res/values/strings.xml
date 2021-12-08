@@ -75,6 +75,14 @@
     <string name="time_activity_view_expense">Time</string>
     <string name="additional_comments_activity_view_expense">Additional Comments</string>
 
+    <!-- Search Trip Database -->
+    <string name="search_trip_db_button">Search Trip</string>
+    <string name="search_trip_hint">meeting, travel</string>
+    <string name="reset_search_trip_button">Reset Filter</string>
+    <string name="search_trip_name">Trip Name</string>
+    <string name="search_advance_item">Advance Search</string>
+    <string name="advance_search_trip_button">Search</string>
+
     <!-- Other Settings -->
     <string name="alt_image">TODO</string>
     <string name="trip_name_text_card">Trip Name</string>
