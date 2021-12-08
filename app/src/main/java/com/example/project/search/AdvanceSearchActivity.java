@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.search;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.project.R;
 
 public class AdvanceSearchActivity extends AppCompatActivity {
     DatePickerDialog picker;

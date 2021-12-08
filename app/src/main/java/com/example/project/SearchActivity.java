@@ -15,9 +15,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.example.project.models.Trip;
+import com.example.project.database.SqliteDatabaseHandler;
+import com.example.project.model.Trip;
 import com.example.project.recycler.RecyclerViewSearchTripAdapter;
+import com.example.project.search.AdvanceSearchActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;

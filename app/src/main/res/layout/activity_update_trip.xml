@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".UpdateTripActivity"
+    tools:context=".trip.UpdateTripActivity"
     android:padding="5dp"
     android:fillViewport="true">
 

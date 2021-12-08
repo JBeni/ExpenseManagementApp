@@ -14,12 +14,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.project.models.Expense;
+import com.example.project.model.Expense;
 import com.example.project.MainTripExpensesActivity;
 import com.example.project.R;
-import com.example.project.SqliteDatabaseHandler;
-import com.example.project.UpdateExpenseActivity;
-import com.example.project.ViewExpenseActivity;
+import com.example.project.database.SqliteDatabaseHandler;
+import com.example.project.expense.UpdateExpenseActivity;
+import com.example.project.expense.ViewExpenseActivity;
 import java.util.List;
 
 /*

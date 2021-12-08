@@ -1,10 +1,13 @@
-package com.example.project;
+package com.example.project.trip;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import com.example.project.MainTripActivity;
+import com.example.project.R;
+import com.example.project.SearchActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ViewTripActivity extends AppCompatActivity {

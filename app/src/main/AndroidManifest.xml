@@ -5,13 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".SharedTripViewModel"
+        android:name=".utils.SharedTripViewModel"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ExpenseManagement">
+        android:theme="@style/Theme.ExpenseManagement"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity
             android:name=".SettingsActivity"
             android:label="Settings Section" />
@@ -19,19 +20,19 @@
             android:name=".SearchActivity"
             android:label="Search Filter" />
         <activity
-            android:name=".AdvanceSearchActivity"
+            android:name=".search.AdvanceSearchActivity"
             android:label="Advance Search"
             android:parentActivityName=".SearchActivity" />
         <activity
-            android:name=".UpdateExpenseActivity"
+            android:name=".expense.UpdateExpenseActivity"
             android:label="Update Trip Expense"
             android:parentActivityName=".MainTripExpensesActivity" />
         <activity
-            android:name=".ViewExpenseActivity"
+            android:name=".expense.ViewExpenseActivity"
             android:label="View Trip Expense"
             android:parentActivityName=".MainTripExpensesActivity" />
         <activity
-            android:name=".AddExpenseActivity"
+            android:name=".expense.AddExpenseActivity"
             android:label="Add Trip Expense"
             android:parentActivityName=".MainTripExpensesActivity" />
         <activity
@@ -39,14 +40,14 @@
             android:label="View Trip Expenses"
             android:parentActivityName=".MainTripActivity" />
         <activity
-            android:name=".ViewTripActivity"
+            android:name=".trip.ViewTripActivity"
             android:label="View Trip"
             android:parentActivityName=".MainTripActivity" />
         <activity
-            android:name=".UpdateTripActivity"
+            android:name=".trip.UpdateTripActivity"
             android:parentActivityName=".MainTripActivity" />
         <activity
-            android:name=".AddTripActivity"
+            android:name=".trip.AddTripActivity"
             android:label="Add Trip"
             android:noHistory="true"
             android:parentActivityName=".MainTripActivity" />

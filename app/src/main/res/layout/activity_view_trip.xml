@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     android:layout_marginTop="10dp"
-    tools:context=".ViewTripActivity">
+    tools:context=".trip.ViewTripActivity">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_1"

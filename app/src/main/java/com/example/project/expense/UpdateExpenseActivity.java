@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.expense;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
@@ -12,7 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.project.MainTripExpensesActivity;
+import com.example.project.R;
 import com.example.project.database.SqliteDatabaseHandler;
 
 public class UpdateExpenseActivity extends AppCompatActivity {

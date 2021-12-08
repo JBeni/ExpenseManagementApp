@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".AddTripActivity"
+    tools:context=".trip.AddTripActivity"
     android:padding="5dp"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".AddTripActivity"
+        tools:context=".trip.AddTripActivity"
         android:padding="3dp">
 
         <EditText

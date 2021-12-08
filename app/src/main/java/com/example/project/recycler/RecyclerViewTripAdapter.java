@@ -17,11 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.project.MainTripActivity;
 import com.example.project.MainTripExpensesActivity;
 import com.example.project.R;
-import com.example.project.SharedTripViewModel;
-import com.example.project.SqliteDatabaseHandler;
-import com.example.project.models.Trip;
-import com.example.project.UpdateTripActivity;
-import com.example.project.ViewTripActivity;
+import com.example.project.utils.SharedTripViewModel;
+import com.example.project.database.SqliteDatabaseHandler;
+import com.example.project.model.Trip;
+import com.example.project.trip.UpdateTripActivity;
+import com.example.project.trip.ViewTripActivity;
 import java.util.List;
 
 /*

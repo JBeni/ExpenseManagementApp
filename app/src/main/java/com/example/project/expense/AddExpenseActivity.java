@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.expense;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
@@ -11,7 +11,8 @@ import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.project.MainTripExpensesActivity;
+import com.example.project.R;
 import com.example.project.database.SqliteDatabaseHandler;
 import com.example.project.utils.SharedTripViewModel;
 

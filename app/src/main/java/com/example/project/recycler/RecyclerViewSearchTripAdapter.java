@@ -12,7 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.project.R;
-import com.example.project.models.Trip;
+import com.example.project.model.Trip;
 import java.util.List;
 
 public class RecyclerViewSearchTripAdapter extends RecyclerView.Adapter<RecyclerViewSearchTripAdapter.SearchTripViewHolder> {

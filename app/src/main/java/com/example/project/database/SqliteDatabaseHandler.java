@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
-import com.example.project.models.Expense;
-import com.example.project.models.JsonCloud;
-import com.example.project.models.Trip;
+import com.example.project.model.Expense;
+import com.example.project.model.JsonCloud;
+import com.example.project.model.Trip;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;

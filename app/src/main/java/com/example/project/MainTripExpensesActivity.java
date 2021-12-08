@@ -8,9 +8,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.project.models.Expense;
+import com.example.project.database.SqliteDatabaseHandler;
+import com.example.project.expense.AddExpenseActivity;
+import com.example.project.model.Expense;
 import com.example.project.recycler.RecyclerViewExpenseAdapter;
+import com.example.project.utils.SharedTripViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;

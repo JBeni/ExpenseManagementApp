@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.trip;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
@@ -13,9 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import com.example.project.MainTripActivity;
+import com.example.project.R;
 import com.example.project.database.SqliteDatabaseHandler;
-
 import java.util.Arrays;
 
 public class UpdateTripActivity extends AppCompatActivity {

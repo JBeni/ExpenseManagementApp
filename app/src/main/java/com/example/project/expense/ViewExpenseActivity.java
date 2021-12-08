@@ -1,10 +1,13 @@
-package com.example.project;
+package com.example.project.expense;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.project.MainTripActivity;
+import com.example.project.R;
+import com.example.project.SearchActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ViewExpenseActivity extends AppCompatActivity {

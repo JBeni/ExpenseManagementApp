@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.trip;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
+import com.example.project.MainTripActivity;
+import com.example.project.R;
 import com.example.project.database.SqliteDatabaseHandler;
 
 public class AddTripActivity extends AppCompatActivity {
