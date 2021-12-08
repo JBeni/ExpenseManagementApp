@@ -50,9 +50,6 @@ public class ViewTripActivity extends AppCompatActivity {
                 case R.id.search_navigation:
                     startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                     break;
-                case R.id.settings_navigation:
-                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                    break;
             }
             return true;
         });
