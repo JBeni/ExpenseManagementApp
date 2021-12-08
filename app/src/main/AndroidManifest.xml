@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- For setting globally the SharedTripViewModel -> https://stackoverflow.com/questions/1944656/android-global-variable -->
     <application
         android:name=".SharedTripViewModel"
         android:allowBackup="true"
@@ -13,49 +12,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseManagement">
-
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings Section" />
         <activity
             android:name=".SearchActivity"
-            android:exported="false" />
+            android:label="Search Filter" />
         <activity
             android:name=".AdvanceSearchActivity"
-            android:exported="false" />
-
+            android:label="Advance Search"
+            android:parentActivityName=".SearchActivity" />
         <activity
             android:name=".UpdateExpenseActivity"
             android:label="Update Trip Expense"
             android:parentActivityName=".MainTripExpensesActivity" />
-
         <activity
             android:name=".ViewExpenseActivity"
             android:label="View Trip Expense"
             android:parentActivityName=".MainTripExpensesActivity" />
-
         <activity
             android:name=".AddExpenseActivity"
             android:label="Add Trip Expense"
             android:parentActivityName=".MainTripExpensesActivity" />
-
         <activity
             android:name=".MainTripExpensesActivity"
             android:label="View Trip Expenses"
             android:parentActivityName=".MainTripActivity" />
-
         <activity
             android:name=".ViewTripActivity"
             android:label="View Trip"
             android:parentActivityName=".MainTripActivity" />
-
         <activity
             android:name=".UpdateTripActivity"
             android:parentActivityName=".MainTripActivity" />
-
         <activity
             android:name=".AddTripActivity"
             android:label="Add Trip"
             android:noHistory="true"
             android:parentActivityName=".MainTripActivity" />
-
         <activity
             android:name=".MainTripActivity"
             android:exported="true"
