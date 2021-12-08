@@ -19,7 +19,7 @@ import com.example.project.MainTripExpensesActivity;
 import com.example.project.R;
 import com.example.project.SharedTripViewModel;
 import com.example.project.SqliteDatabaseHandler;
-import com.example.project.Trip;
+import com.example.project.models.Trip;
 import com.example.project.UpdateTripActivity;
 import com.example.project.ViewTripActivity;
 import java.util.List;

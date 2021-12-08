@@ -14,7 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.project.Expense;
+import com.example.project.models.Expense;
 import com.example.project.MainTripExpensesActivity;
 import com.example.project.R;
 import com.example.project.SqliteDatabaseHandler;

@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
+import com.example.project.models.Expense;
+import com.example.project.models.JsonCloud;
+import com.example.project.models.Trip;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -300,11 +303,8 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
         return tripsListAdvanced;
     }
 
-
-
-
-    public List<JsonCloudModel> getJsonCloudData() {
-        List<JsonCloudModel> jsonCloudData = new ArrayList<>();
+    public List<JsonCloud> getJsonCloudData() {
+        List<JsonCloud> jsonCloudData = new ArrayList<>();
         String query = "SELECT trips.name, expenses.type, expenses.amount, expenses.time, expenses.additional_comments FROM expenses JOIN trips on expenses.trip_id = trips.id";
         Cursor cursor = null;
         if (database != null) {
@@ -319,7 +319,7 @@ public class SqliteDatabaseHandler extends SQLiteOpenHelper {
             String expense_time = cursor.getString(3);
             String expense_additional_comments = cursor.getString(4);
 
-            JsonCloudModel expense = new JsonCloudModel(trip_name, expense_type, expense_amount, expense_time, expense_additional_comments);
+            JsonCloud expense = new JsonCloud(trip_name, expense_type, expense_amount, expense_time, expense_additional_comments);
             jsonCloudData.add(expense);
         }
         cursor.close();
