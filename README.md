@@ -11,6 +11,6 @@
   * Add, Update, Delete, View - an Expense
   * Delete a Trip and the related Expense(s)
   * Delete all the data from the Database
-  * Upload data to a cloud_based service
+  * Upload data to a cloud-based service
   * Search filter for Trips
   * Advanced search for Trips (by name, destination & date)
