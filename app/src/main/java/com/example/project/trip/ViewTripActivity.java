@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.project.MainTripActivity;
 import com.example.project.R;
 import com.example.project.SearchActivity;
+import com.example.project.SettingsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ViewTripActivity extends AppCompatActivity {
@@ -49,6 +50,9 @@ public class ViewTripActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.home_navigation:
                     startActivity(new Intent(getApplicationContext(), MainTripActivity.class));
+                    break;
+                case R.id.settings_navigation:
+                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                     break;
                 case R.id.search_navigation:
                     startActivity(new Intent(getApplicationContext(), SearchActivity.class));
