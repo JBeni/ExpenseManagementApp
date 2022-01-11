@@ -21,6 +21,26 @@
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/menu/menu_nav_bottom.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagement/app/src/main/res/menu/search_advanced.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/expense_add_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/expense_list_item_card_view.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/expense_main_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/expense_update_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/expense_view_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/search_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/search_advance_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/search_list_item_trip.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/settings_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/trip_add_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/trip_list_item_card_view.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/trip_main_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/trip_update_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/layout/trip_view_activity.xml" value="0.31657608695652173" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu_expense.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu_nav_bottom.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu_search_advanced.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Beniamin/source/repos/ExpenseManagementApp/app/src/main/res/menu/menu_trip.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
