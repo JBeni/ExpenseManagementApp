@@ -81,6 +81,7 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
+    // The results when the search button on the advanced search activity is pressed, the below code runs
     // https://stackoverflow.com/questions/61455381/how-to-replace-startactivityforresult-with-activity-result-apis
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
