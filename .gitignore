@@ -13,3 +13,11 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Removing android packages
+/caches
+/daemon
+/.tmp
+/jdks
+/native
+/wrapper
